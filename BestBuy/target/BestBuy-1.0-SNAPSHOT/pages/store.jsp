@@ -1,3 +1,6 @@
+<link href="css/style1.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.livequery.js"></script>
+<script type="text/javascript" src="js/store.js"></script>
 <div class="content">
     <div class="content-grids">
 

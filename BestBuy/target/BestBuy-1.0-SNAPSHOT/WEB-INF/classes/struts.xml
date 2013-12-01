@@ -17,6 +17,9 @@
         <action name="Store" class="controller.Store">
             <result name="success" type="tiles">Store</result>
         </action>
+        <action name="Single" class="controller.Store">
+            <result name="success" type="tiles">Single</result>
+        </action>
     </package>
  
 </struts>

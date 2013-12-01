@@ -1,3 +1,5 @@
+<script src="js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 <div class="content">
     <div class="top-3-grids">
         <div class="section group">

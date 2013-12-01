@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	
 	var Arrays=new Array();
 	
 	$('.add-to-cart-button').click(function(){
@@ -75,11 +74,11 @@ $(document).ready(function() {
 	});	
 	
 	// this is for 2nd row's li offset from top. It means how much offset you want to give them with animation
-	var single_li_offset 	= 200;
+	var single_li_offset 	= 400;
 	var current_opened_box  = -1;
 	
 	$('#wrap li').click(function() {
-	
+        
 		var thisID = $(this).attr('id');
 		var $this  = $(this);
 		
@@ -88,6 +87,7 @@ $(document).ready(function() {
 		if(current_opened_box == id) // if user click a opened box li again you close the box and return back
 		{
 			$('#wrap .detail-view').slideUp('slow');
+                        current_opened_box = -1;
 			return false;
 		}
 		$('#cart_wrapper').slideUp('slow');
@@ -101,19 +101,16 @@ $(document).ready(function() {
 		// below conditions assumes that there are four li in one row and total rows are 4. How ever if you want to increase the rows you have to increase else-if conditions and if you want to increase li in one row, then you have to increment all value below. (if(id<=3)), if(id<=7) etc
 		
 		if(id<=3)
-			targetOffset = 0;
-		else if(id<=7)
 			targetOffset = single_li_offset;
-		else if(id<=11)
+		else if(id<=7)
 			targetOffset = single_li_offset*2;
-		else if(id<=15)
+		else if(id<=11)
 			targetOffset = single_li_offset*3;
-		
-		$("html:not(:animated),body:not(:animated)").animate({scrollTop: targetOffset}, 800,function(){
-			
-			$('#wrap #detail-'+thisID).slideDown(500);
-			return false;
-		});
+		else if(id<=15)
+			targetOffset = single_li_offset*4;
+                    
+                $('#wrap #detail-'+thisID).slideDown(500);		
+		$("html:not(:animated),body:not(:animated)").animate({scrollTop: targetOffset});
 		
 	});
 	
@@ -136,15 +133,3 @@ $(document).ready(function() {
 	});
 	
 });
-
-function include(arr, obj) {
-  for(var i=0; i<arr.length; i++) {
-    if (arr[i] == obj) return true;
-  }
-}
-
-function getpos(arr, obj) {
-  for(var i=0; i<arr.length; i++) {
-    if (arr[i] == obj) return i;
-  }
-}
