@@ -11,8 +11,7 @@
             <ul>
                 <li><a href="#">Register</a></li>
                 <li><a href="#">Login</a></li>
-                <li><a href="#">Develivery</a></li>
-                <li><a href="#">Checkout</a></li>
+                <li><a href="#">Cart</a></li>
                 <li><a href="#">My account</a></li>
                 <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;noitems</lable></li>
             </ul>

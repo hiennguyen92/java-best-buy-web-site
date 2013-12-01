@@ -17,8 +17,14 @@
         <action name="Store" class="controller.Store">
             <result name="success" type="tiles">Store</result>
         </action>
-        <action name="Single" class="controller.Store">
+        <action name="Single" class="controller.Single">
             <result name="success" type="tiles">Single</result>
+        </action>
+        <action name="Login" class="controller.Login">
+            <result name="success" type="tiles">Login</result>
+        </action>
+        <action name="Register" class="controller.Register">
+            <result name="success" type="tiles">Register</result>
         </action>
     </package>
  

@@ -18,4 +18,10 @@
     <definition name="Single" extends="Page">
         <put-attribute name="body" value="/pages/single.jsp"/>    
     </definition>
+    <definition name="Login" extends="Page">
+        <put-attribute name="body" value="/pages/login.jsp"/>    
+    </definition>
+    <definition name="Register" extends="Page">
+        <put-attribute name="body" value="/pages/register.jsp"/>    
+    </definition>
 </tiles-definitions>
