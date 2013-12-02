@@ -17,6 +17,7 @@
                     </c:when>
                     <c:otherwise>
                         <li><a href="MyInfo">Hello ${User.username}</a></li>
+                        <li><a href="Logout">Log out</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li><a href="#">Cart</a></li>

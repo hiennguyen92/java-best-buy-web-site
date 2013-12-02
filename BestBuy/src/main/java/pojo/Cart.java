@@ -22,6 +22,7 @@ public class Cart implements Serializable {
     @Column(name = "CartId")
     private int cartId;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name="Username")
     private Account account;
     @Column(name = "TotalPrice")
     private int totalPrice;

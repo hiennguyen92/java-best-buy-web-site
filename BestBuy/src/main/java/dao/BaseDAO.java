@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,40 +33,92 @@ public class BaseDAO<T> {
     }
 
     public T get(int id) {
-        return (T) currentSession().get(cls, id);
+        T temp = null;
+        Session session = currentSession();
+        try {
+            temp = (T) currentSession().get(cls, id);
+        } catch (Exception ex) {
+            //Log the exception
+            System.out.println(ex);
+        } finally {
+            session.close();
+        }
+        return temp;
     }
     
     public T get(String id) {
-        return (T) currentSession().get(cls, id);
+        T temp = null;
+        Session session = currentSession();
+        try {
+            temp = (T) currentSession().get(cls, id);
+        } catch (Exception ex) {
+            //Log the exception
+            System.out.println(ex);
+        } finally {
+            session.close();
+        }
+        return temp;
     }
 
     public List<T> getList() {
-        return currentSession().createQuery("from " + cls.getSimpleName()).list();
+        List<T> list = null;
+        Session session = currentSession();
+
+        try {
+            list = session.createQuery("from " + cls.getSimpleName()).list();
+        } catch (Exception ex) {
+            //Log the exception
+            System.out.println(ex);
+        } finally {
+            session.close();
+        }
+        return list;
     }
 
     public boolean add(T temp) {
+        Session session = currentSession();
+        Transaction transaction = null;
         try {
-            currentSession().save(temp);
+            transaction = session.beginTransaction();
+            session.save(temp);
+            transaction.commit();
         } catch (Exception e) {
+            transaction.rollback();
             return false;
+        } finally{
+            session.close();
         }
         return true;
     }
 
     public boolean update(T temp) {
+        Session session = currentSession();
+        Transaction transaction = null;
         try {
-            currentSession().update(temp);
+            transaction = session.beginTransaction();
+            session.update(temp);
+            transaction.commit();
         } catch (Exception e) {
+            transaction.rollback();
             return false;
+        } finally{
+            session.close();
         }
         return true;
     }
 
     public boolean delete(T temp) {
+        Session session = currentSession();
+        Transaction transaction = null;
         try {
-            currentSession().delete(temp);
+            transaction = session.beginTransaction();
+            session.delete(temp);
+            transaction.commit();
         } catch (Exception e) {
+            transaction.rollback();
             return false;
+        } finally{
+            session.close();
         }
         return true;
     }

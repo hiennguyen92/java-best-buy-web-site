@@ -18,7 +18,6 @@ import javax.persistence.*;
 @Table(name = "Account")
 public class Account implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Username", length = 45)
     private String username;
     @Column(name = "Password", length = 45)
@@ -27,6 +26,8 @@ public class Account implements Serializable {
     private String realName;
     @Column(name = "Phone", length = 45)
     private String phone;
+    @OneToMany(mappedBy = "account")
+    public Set<Cart> carts = new HashSet<Cart>(0);
 
     public Account() { }
 
@@ -67,5 +68,13 @@ public class Account implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
     }
 }
