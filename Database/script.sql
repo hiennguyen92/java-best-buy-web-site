@@ -1,0 +1,109 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+CREATE SCHEMA IF NOT EXISTS `bestbuydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `bestbuydb` ;
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Account`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Account` (
+  `Username` VARCHAR(45) NOT NULL,
+  `Password` VARCHAR(45) NULL,
+  `RealName` VARCHAR(45) NULL,
+  `Phone` VARCHAR(45) NULL,
+  PRIMARY KEY (`Username`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Cart`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart` (
+  `CartId` INT NOT NULL AUTO_INCREMENT,
+  `Username` VARCHAR(45) NULL,
+  `TotalPrice` INT NULL,
+  PRIMARY KEY (`CartId`),
+  INDEX `FK_Account_idx` (`Username` ASC),
+  CONSTRAINT `FK_Account`
+    FOREIGN KEY (`Username`)
+    REFERENCES `bestbuydb`.`Account` (`Username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Brand`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Brand` (
+  `BrandId` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL,
+  PRIMARY KEY (`BrandId`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Category`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Category` (
+  `CategoryId` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL,
+  PRIMARY KEY (`CategoryId`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Product` (
+  `ProductId` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NULL,
+  `Description` VARCHAR(1000) NULL,
+  `Price` INT NULL,
+  `Rating` DOUBLE NULL,
+  `ImageUrl` VARCHAR(45) NULL,
+  `BrandId` INT NULL,
+  `CategoryId` INT NULL,
+  PRIMARY KEY (`ProductId`),
+  INDEX `FK_Brand_idx` (`BrandId` ASC),
+  INDEX `FK_Category_idx` (`CategoryId` ASC),
+  CONSTRAINT `FK_Brand`
+    FOREIGN KEY (`BrandId`)
+    REFERENCES `bestbuydb`.`Brand` (`BrandId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Category`
+    FOREIGN KEY (`CategoryId`)
+    REFERENCES `bestbuydb`.`Category` (`CategoryId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Cart_Detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart_Detail` (
+  `CartId` INT NOT NULL,
+  `ProductId` INT NOT NULL,
+  `Quantity` INT NULL,
+  PRIMARY KEY (`CartId`, `ProductId`),
+  INDEX `FK_Product_idx` (`ProductId` ASC),
+  CONSTRAINT `FK_Cart`
+    FOREIGN KEY (`CartId`)
+    REFERENCES `bestbuydb`.`Cart` (`CartId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Product`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `bestbuydb`.`Product` (`ProductId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

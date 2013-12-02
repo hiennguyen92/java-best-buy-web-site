@@ -12,6 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.2.5.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -30,6 +31,31 @@
 		<groupId>org.apache.struts</groupId>
 		<artifactId>struts2-tiles-plugin</artifactId>
 		<version>2.3.15.3</version>
+	</dependency>
+        <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+        <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+        <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>4.2.7.Final</version>
+	</dependency>
+        <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.27</version>
+	</dependency>
+        <dependency>
+		<groupId>org.apache.tomcat</groupId>
+		<artifactId>tomcat-dbcp</artifactId>
+		<version>7.0.47</version>
 	</dependency>
     </dependencies>
 

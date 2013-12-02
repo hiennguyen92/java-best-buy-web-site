@@ -945,7 +945,7 @@ body{
 	padding-bottom:5px;
 	font-family: 'Open Sans', sans-serif;
 }
-.contact-form input[type="text"],.contact-form textarea{
+.contact-form input[type="text"],.contact-form input[type="password"],.contact-form textarea{
 		    padding:8px;
 			display:block;
 			width:98%;
