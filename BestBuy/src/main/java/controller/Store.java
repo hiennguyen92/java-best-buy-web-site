@@ -23,6 +23,10 @@ public class Store implements ServletRequestAware {
     }
 
     public String execute() {
+        int page = 1;
+        if(request.getParameter("page") != null)
+            page = Integer.parseInt(request.getParameter("page"));
+        request.setAttribute("page", page);
         return "success";
     }
 }

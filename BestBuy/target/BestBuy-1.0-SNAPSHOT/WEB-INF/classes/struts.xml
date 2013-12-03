@@ -17,8 +17,8 @@
         <action name="Store" class="controller.Store">
             <result name="success" type="tiles">Store</result>
         </action>
-        <action name="Single" class="controller.Single">
-            <result name="success" type="tiles">Single</result>
+        <action name="Info" class="controller.Info">
+            <result name="success" type="tiles">Info</result>
         </action>
         <action name="Login" class="controller.Login">
             <result name="success" type="redirect">Home</result>

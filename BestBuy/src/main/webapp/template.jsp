@@ -12,8 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
         <meta name="keywords" content="Mobilestore iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
-        <script src="js/jquery-1.3.2.min.js" type="text/javascript"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     </head>
     <body>
         <!----start-Header---->

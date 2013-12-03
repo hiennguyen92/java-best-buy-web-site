@@ -15,7 +15,7 @@
     <definition name="Store" extends="Page">
         <put-attribute name="body" value="/pages/store.jsp"/>    
     </definition>
-    <definition name="Single" extends="Page">
+    <definition name="Info" extends="Page">
         <put-attribute name="body" value="/pages/single.jsp"/>    
     </definition>
     <definition name="Login" extends="Page">

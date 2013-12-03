@@ -878,14 +878,22 @@ body{
 }
 .menu_body {
 	background: #fff;
-}
-.menu_body p{
-	font-family: Arial, Helvetica, sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
 	font-size: 0.8em;
 	color: rgb(155, 155, 155);
 	line-height: 1.8em;
 	margin-bottom: 10px;
 	padding:10px;
+}
+.menu_body .firstrow{
+        font-size: 1.3em;
+	font-weight: bold;
+}
+.menu_body tr{
+	margin-bottom: 5px;
+}
+.menu_body .color{
+	background-color: rgb(243, 243, 244);
 }
 .plusminus{
 	float:right;
@@ -1273,6 +1281,9 @@ body{
 }
 .pagnation ul li a:hover{
 	color:#94CB32;
+}
+.pagnation .selected{
+	background-color:#94CB32;
 }
 /*----error-page-----*/
 .error-page{

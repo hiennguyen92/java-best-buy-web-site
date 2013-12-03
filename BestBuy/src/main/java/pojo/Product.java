@@ -22,14 +22,18 @@ public class Product implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ProductId")
     private int productId;
-    @Column(name = "Name", length = 45)
+    @Column(name = "Name", length = 200)
     private String name;
-    @Column(name = "Description", length = 1000)
+    @Column(name = "Description", length = 2000)
     private String description;
     @Column(name = "Price")
     private double price;
     @Column(name = "Rating")
     private double rating;
+    @Column(name = "Screen")
+    private int screen;
+    @Column(name = "Warranty")
+    private int warranty;
     @Column(name = "ImageUrl", length = 45)
     private String imageUrl;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -118,6 +122,22 @@ public class Product implements Serializable {
 
     public void setCarts(Set<Cart> carts) {
         this.carts = carts;
+    }
+
+    public int getScreen() {
+        return screen;
+    }
+
+    public void setScreen(int screen) {
+        this.screen = screen;
+    }
+
+    public int getWarranty() {
+        return warranty;
+    }
+
+    public void setWarranty(int warranty) {
+        this.warranty = warranty;
     }
 
 }

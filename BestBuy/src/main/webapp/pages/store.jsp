@@ -37,6 +37,7 @@
 
                                 <br clear="all" />
                                 <div>${product.name}</div>
+                                <br clear="all" />
                             </li>
                         </c:forEach>
                         <c:forEach var="product" items="${Products}" begin="${i}" end="${i+3}" >
@@ -65,6 +66,7 @@
                                     <br clear="all" />
 
                                     <button  class="add-to-cart-button">Add to Cart</button>
+                                    <button onClick="location.href = 'Info?id=${product.productId}'" class="add-to-cart-button">Detail</button>
 
                                 </div>
 
@@ -75,9 +77,21 @@
 
                     <br clear="all" />
                 </ul>
-                <br clear="all" />
             </div>
-
+            <div class="pagnation">
+                <ul>
+                    <c:forEach var="i" begin="1" end="${(Products.size() - 1) / 16 + 1}">
+                        <c:choose>
+                            <c:when test="${page == i}">
+                                <li><a href="Store?page=${i}" class="selected">${i}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="Store?page=${i}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                </ul>
+            </div>
 
         </div>
 
