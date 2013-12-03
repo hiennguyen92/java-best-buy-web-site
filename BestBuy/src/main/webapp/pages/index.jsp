@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <div class="content">
@@ -19,99 +20,36 @@
     </div>
 
     <div class="content-grids">
-        <h4>Deals of the day</h4>
+        <h4>Latest products</h4>
         <div class="section group">
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m1.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$260</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m2.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$150</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m7.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$130</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m4.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$460</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
+            <c:forEach var="i" begin="0" end="3" >
+                <div class="grid_1_of_4 images_1_of_4 products-info">
+                    <img src="${Products[0].imageUrl}">
+                    <a href="Single?id=${Products[0].productId}">${Products[0].name}</a>
+                    <h3>$${Products[0].price}</h3>
+                    <ul>
+                        <li><a  class="cart" href="single.html"> </a></li>
+                        <li><a  class="i" href="single.html"> </a></li>
+                        <li><a  class="Compar" href="single.html"> </a></li>
+                        <li><a  class="Wishlist" href="single.html"> </a></li>
+                    </ul>
+                </div>
+            </c:forEach> 
         </div>
         <div class="section group">
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m2.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$260</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m6.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$100</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m7.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$180</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
-            <div class="grid_1_of_4 images_1_of_4 products-info">
-                <img src="images/m1.jpg">
-                <a href="single.html">Duis aute irure dolor in reprehenderit sed do eiusmod tempor incididunt</a>
-                <h3>$140</h3>
-                <ul>
-                    <li><a  class="cart" href="single.html"> </a></li>
-                    <li><a  class="i" href="single.html"> </a></li>
-                    <li><a  class="Compar" href="single.html"> </a></li>
-                    <li><a  class="Wishlist" href="single.html"> </a></li>
-                </ul>
-            </div>
+            <c:forEach var="i" begin="0" end="3" >
+                <div class="grid_1_of_4 images_1_of_4 products-info">
+                    <img src="${Products[0].imageUrl}">
+                    <a href="Single?id=${Products[0].productId}">${Products[0].name}</a>
+                    <h3>$${Products[0].price}</h3>
+                    <ul>
+                        <li><a  class="cart" href="single.html"> </a></li>
+                        <li><a  class="i" href="single.html"> </a></li>
+                        <li><a  class="Compar" href="single.html"> </a></li>
+                        <li><a  class="Wishlist" href="single.html"> </a></li>
+                    </ul>
+                </div>
+            </c:forEach> 
         </div>
-
     </div>
 </div>

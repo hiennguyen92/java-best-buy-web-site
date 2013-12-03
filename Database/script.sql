@@ -23,7 +23,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart` (
   `CartId` INT NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NULL,
-  `TotalPrice` INT NULL,
+  `TotalPrice` DOUBLE NULL,
   PRIMARY KEY (`CartId`),
   INDEX `FK_Account_idx` (`Username` ASC),
   CONSTRAINT `FK_Account`
@@ -59,9 +59,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bestbuydb`.`Product` (
   `ProductId` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NULL,
-  `Description` VARCHAR(1000) NULL,
-  `Price` INT NULL,
+  `Name` VARCHAR(200) NULL,
+  `Description` VARCHAR(2000) NULL,
+  `Price` DOUBLE NULL,
   `Rating` DOUBLE NULL,
   `ImageUrl` VARCHAR(45) NULL,
   `BrandId` INT NULL,
@@ -107,3 +107,41 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `bestbuydb`.`Brand`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bestbuydb`;
+INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (1, 'Samsung');
+INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (2, 'LG');
+INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (3, 'Sony');
+INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (4, 'Panasonic');
+INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (5, 'Sharp');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `bestbuydb`.`Category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bestbuydb`;
+INSERT INTO `bestbuydb`.`Category` (`CategoryId`, `Name`) VALUES (1, 'All Flat-Panel');
+INSERT INTO `bestbuydb`.`Category` (`CategoryId`, `Name`) VALUES (2, 'LCD');
+INSERT INTO `bestbuydb`.`Category` (`CategoryId`, `Name`) VALUES (3, 'LED');
+INSERT INTO `bestbuydb`.`Category` (`CategoryId`, `Name`) VALUES (4, 'Plasma');
+INSERT INTO `bestbuydb`.`Category` (`CategoryId`, `Name`) VALUES (5, '3D');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `bestbuydb`.`Product`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bestbuydb`;
+INSERT INTO `bestbuydb`.`Product` (`ProductId`, `Name`, `Description`, `Price`, `Rating`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES (1, 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 'images/m1.jpg', 1, 1);
+
+COMMIT;
+

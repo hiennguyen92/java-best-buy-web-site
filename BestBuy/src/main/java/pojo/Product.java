@@ -27,7 +27,7 @@ public class Product implements Serializable {
     @Column(name = "Description", length = 1000)
     private String description;
     @Column(name = "Price")
-    private int price;
+    private double price;
     @Column(name = "Rating")
     private double rating;
     @Column(name = "ImageUrl", length = 45)
@@ -72,11 +72,11 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

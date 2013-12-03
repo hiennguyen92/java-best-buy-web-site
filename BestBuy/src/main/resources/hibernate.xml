@@ -30,4 +30,9 @@
         </property>
     </bean>
     <bean id="accountDAO" class="dao.AccountDAO"/>
+    <bean id="brandDAO" class="dao.BrandDAO"/>
+    <bean id="cartDAO" class="dao.CartDAO"/>
+    <bean id="categoryDAO" class="dao.CategoryDAO"/>
+    <bean id="productDAO" class="dao.ProductDAO"/>
+    <bean id="cartDetailDAO" class="dao.CartDetailDAO"/>
 </beans>

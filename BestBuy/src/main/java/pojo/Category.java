@@ -23,7 +23,7 @@ public class Category implements Serializable{
     @Column(name = "CategoryId")
     private int categoryId;
     @Column(name = "Name", length = 45)
-    private int name;
+    private String name;
     @OneToMany(mappedBy = "category")
     public Set<Product> products = new HashSet<Product>(0);
 
@@ -35,11 +35,11 @@ public class Category implements Serializable{
         this.categoryId = categoryId;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

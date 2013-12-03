@@ -25,7 +25,7 @@ public class Cart implements Serializable {
     @JoinColumn(name="Username")
     private Account account;
     @Column(name = "TotalPrice")
-    private int totalPrice;
+    private double totalPrice;
     @ManyToMany(
             fetch = FetchType.LAZY,
             mappedBy = "carts",
@@ -48,11 +48,11 @@ public class Cart implements Serializable {
         this.account = account;
     }
 
-    public int getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
