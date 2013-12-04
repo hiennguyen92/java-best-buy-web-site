@@ -5,7 +5,7 @@ html, body{
 	outline:0;
 }
 
-#wrap{ width:100%; min-height:900px; top:0px; position:relative; bottom:0px; }
+#wrap{ width:100%; top:0px; position:relative; bottom:0px; }
 #wrap ul{ margin:0px; padding:0px;text-align:center;  }
 
 #wrap .detail-view {

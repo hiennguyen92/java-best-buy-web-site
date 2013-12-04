@@ -17,7 +17,7 @@
                     </c:when>
                     <c:otherwise>
                         <li><a href="MyInfo">Hello ${User.username}</a></li>
-                        <li><a href="Logout">Log out</a></li>
+                        <li><a href="Redirect?logout=true">Log out</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li><a href="#">Cart</a></li>
@@ -32,7 +32,7 @@
     <div class="wrap">
         <!----start-logo---->
         <div class="logo">
-            <a href="index.html"><img src="images/logo.png" title="logo" /></a>
+            <a href="Home"><img src="images/logo.png" title="logo" /></a>
         </div>
         <!----end-logo---->
         <!----start-top-nav---->

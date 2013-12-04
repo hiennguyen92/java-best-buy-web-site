@@ -131,7 +131,16 @@ $(document).ready(function() {
 		$('#cart_wrapper').slideToggle('slow');
 		
 	});
-	
+        
+        $('#sl_view').change(function (){
+           location.href='Store?view=' + $('#sl_view').val(); 
+        });
+	$("#sl_view").val($("#h_view").val());
+        
+        $('#sl_sort').change(function (){
+           location.href='Store?sort=' + $('#sl_sort').val(); 
+        });
+        $("#sl_sort").val($("#h_sort").val());
 });
 
 function include(arr, obj) {

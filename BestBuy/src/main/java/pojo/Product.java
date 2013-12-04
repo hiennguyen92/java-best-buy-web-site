@@ -21,19 +21,19 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ProductId")
-    private int productId;
+    private Integer productId;
     @Column(name = "Name", length = 200)
     private String name;
     @Column(name = "Description", length = 2000)
     private String description;
     @Column(name = "Price")
-    private double price;
+    private Double price;
     @Column(name = "Rating")
-    private double rating;
+    private Double rating;
     @Column(name = "Screen")
-    private int screen;
+    private Integer screen;
     @Column(name = "Warranty")
-    private int warranty;
+    private Integer warranty;
     @Column(name = "ImageUrl", length = 45)
     private String imageUrl;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -52,11 +52,11 @@ public class Product implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "CartId")})
     public Set<Cart> carts = new HashSet<Cart>(0);
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
@@ -76,19 +76,19 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public double getRating() {
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 
@@ -124,19 +124,19 @@ public class Product implements Serializable {
         this.carts = carts;
     }
 
-    public int getScreen() {
+    public Integer getScreen() {
         return screen;
     }
 
-    public void setScreen(int screen) {
+    public void setScreen(Integer screen) {
         this.screen = screen;
     }
 
-    public int getWarranty() {
+    public Integer getWarranty() {
         return warranty;
     }
 
-    public void setWarranty(int warranty) {
+    public void setWarranty(Integer warranty) {
         this.warranty = warranty;
     }
 

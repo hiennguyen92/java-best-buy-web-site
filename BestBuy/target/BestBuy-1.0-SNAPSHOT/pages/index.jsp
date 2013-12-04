@@ -22,15 +22,15 @@
     <div class="content-grids">
         <h4>Latest products</h4>
         <div class="section group">
-            <c:forEach var="dec" begin="${Products.size()-8}" end="${Products.size()-5}" step="1">
-                <c:set var="i" value="${Products.size()-5-dec}"/>
+            <c:forEach var="dec" begin="0" end="3" step="1">
+                <c:set var="i" value="${Products.size()-1-dec}"/>
                 <div class="grid_1_of_4 images_1_of_4 products-info">
                     <img src="${Products[i].imageUrl}">
                     <a href="Info?id=${Products[i].productId}">${Products[i].name}</a>
                     <h3>$${Products[i].price}</h3>
                     <ul>
                         <li><a  class="cart" href="single.html"> </a></li>
-                        <li><a  class="i" href="single.html"> </a></li>
+                        <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
                         <li><a  class="Compar" href="single.html"> </a></li>
                         <li><a  class="Wishlist" href="single.html"> </a></li>
                     </ul>
@@ -38,7 +38,7 @@
             </c:forEach> 
         </div>
         <div class="section group">
-            <c:forEach var="dec" begin="${Products.size()-8}" end="${Products.size()-5}" step="1">
+            <c:forEach var="dec" begin="0" end="3" step="1">
                 <c:set var="i" value="${Products.size()-5-dec}"/>
                 <div class="grid_1_of_4 images_1_of_4 products-info">
                     <img src="${Products[i].imageUrl}">
@@ -46,7 +46,7 @@
                     <h3>$${Products[i].price}</h3>
                     <ul>
                         <li><a  class="cart" href="single.html"> </a></li>
-                        <li><a  class="i" href="single.html"> </a></li>
+                        <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
                         <li><a  class="Compar" href="single.html"> </a></li>
                         <li><a  class="Wishlist" href="single.html"> </a></li>
                     </ul>

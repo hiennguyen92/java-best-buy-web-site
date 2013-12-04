@@ -24,7 +24,7 @@
                     <span><input type="text" value=""></span>
                 </div>
                 <div>
-                    <span><input type="submit" value="Submit"></span>
+                    <span><input type="submit" value="REGISTER"></span>
                 </div>
             </form>
         </div>

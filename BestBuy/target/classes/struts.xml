@@ -28,6 +28,9 @@
             <result name="success" type="redirect">Login</result>
             <result name="error" type="tiles">Register</result>
         </action>
+        <action name="Redirect" class="controller.Redirect">
+            <result name="success" type="redirect">${previous}</result>
+        </action>
     </package>
  
 </struts>

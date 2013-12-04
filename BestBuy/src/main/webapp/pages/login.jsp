@@ -12,7 +12,7 @@
                     <span><input type="password" value="" name="tb_Password"></span>
                 </div>
                 <div>
-                    <span><input type="submit" value="Submit"></span>
+                    <span><input type="submit" value="LOGIN"></span>
                 </div>
             </form>
         </div>
