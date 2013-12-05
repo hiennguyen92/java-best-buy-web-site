@@ -11,17 +11,19 @@
         <div class="header-top-nav">
             <ul>
                 <c:choose>
-                    <c:when test="${User == null}">
+                    <c:when test="${Cart == null}">
                         <li><a href="Register">Register</a></li>
-                        <li><a href="Login">Login</a></li>                        
+                        <li><a href="Login">Login</a></li>
+                        <li><a href="#">Cart</a></li>
+                        <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;0 items</lable></li>                        
                     </c:when>
                     <c:otherwise>
-                        <li><a href="MyInfo">Hello ${User.username}</a></li>
+                        <li><a href="MyInfo">Hello ${Cart.account.username}</a></li>
                         <li><a href="Redirect?logout=true">Log out</a></li>
+                        <li><a href="#">Cart</a></li>
+                        <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>
                     </c:otherwise>
                 </c:choose>
-                <li><a href="#">Cart</a></li>
-                <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;noitems</lable></li>
             </ul>
         </div>
         <div class="clear"> </div>

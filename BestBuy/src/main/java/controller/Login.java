@@ -35,9 +35,9 @@ public class Login implements ServletRequestAware {
             AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
             Account account = accountDAO.get(userName);
             if (account != null && account.getPassword().equals(password)) {
-                session.setAttribute("User", account);
-                Cart _cart = new Cart();
-                session.setAttribute("Cart", _cart);
+                Cart cart = new Cart();
+                cart.setAccount(account);
+                session.setAttribute("Cart", cart);
                 return "success";
             } else {
                 result = "Login failed! Wrong username or password";

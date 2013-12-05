@@ -25,7 +25,7 @@ public class Category implements Serializable{
     @Column(name = "Name", length = 45)
     private String name;
     @OneToMany(mappedBy = "category")
-    public Set<Product> products = new HashSet<Product>(0);
+    private Set<Product> products = new HashSet<Product>(0);
 
     public int getCategoryId() {
         return categoryId;

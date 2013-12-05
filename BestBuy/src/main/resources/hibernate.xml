@@ -35,4 +35,6 @@
     <bean id="categoryDAO" class="dao.CategoryDAO"/>
     <bean id="productDAO" class="dao.ProductDAO"/>
     <bean id="cartDetailDAO" class="dao.CartDetailDAO"/>
+    <bean id="imageDAO" class="dao.ImageDAO"/>
+    <bean id="commentDAO" class="dao.CommentDAO"/>
 </beans>

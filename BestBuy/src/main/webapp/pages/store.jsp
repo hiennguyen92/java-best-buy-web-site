@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link href="css/style1.css" rel="stylesheet" />
 <script type="text/javascript" src="js/jquery.livequery.js"></script>
 <script type="text/javascript" src="js/store.js"></script>
@@ -11,11 +12,32 @@
 
                 <form action="#" id="cart_form" name="cart_form">
 
-                    <div class="cart-info"> </div>
+                    <div class="cart-info">
+                        <c:forEach var="item" items="${Cart.products}">
+                            <div id="each-${item.productId}" class="shopp">
+                                <div class="label">
+                                    <a href="Info?id=${item.productId}">${item.name}</a>
+                                </div>
+                                <div class="shopp-price"> 
+                                    $<em>${item.price}</em>
+                                </div>
+                                <span class="shopp-quantity">${item.quantity}</span>
+                                <img src="images/remove.png" class="remove"/>
+                                <br class="all"/>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    
+                    <div class="cart-total">
+
+                        <b>Estimated Tax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> $<span><fmt:formatNumber type="number" value="${Cart.totalPrice*0.1}" maxFractionDigits="2" minFractionDigits="2"/></span>
+
+                        <input type="hidden" name="total-hidden-charges" id="total-hidden-charges" value="0" />
+                    </div>
 
                     <div class="cart-total">
 
-                        <b>Total Charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> $<span>0</span>
+                        <b>Total Charges:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> $<span><fmt:formatNumber type="number" value="${Cart.totalPrice*1.1}" maxFractionDigits="2" minFractionDigits="2"/></span>
 
                         <input type="hidden" name="total-hidden-charges" id="total-hidden-charges" value="0" />
                     </div>
@@ -23,8 +45,11 @@
                     <button type="submit" id="Submit">CheckOut</button>
 
                 </form>
+                <br clear="all" />
             </div>
-            
+
+            <div align="center"><a id="show_cart" href="javascript:void(0)">View My Cart</a></div>
+
             <input type="hidden" id="h_view" value="${view}"/>
             View: 
             <select id="sl_view" name='sl_view'>
@@ -44,10 +69,8 @@
                 <option value='6'>Price(High->Low)</option>
                 <option value='7'>Price(Low->High)</option>
             </select>
-            
-            <div id="wrap" align="center">
 
-                <a id="show_cart" href="javascript:void(0)">View My Cart</a>
+            <div id="wrap" align="center">
 
                 <ul>
                     <c:forEach var="i" begin="${(page-1)*view}" end="${page*view-4}" step="4">
@@ -90,7 +113,7 @@
 
                                         <br clear="all" />
 
-                                        <button  class="add-to-cart-button">Add to Cart</button>
+                                        <button onclick="location.href='Redirect?add=${product.productId}'" class="add-to-cart-button">Add to Cart</button>
                                         <button class="add-to-cart-button">Add compare</button>
 
                                     </div>
@@ -110,10 +133,10 @@
                         <c:choose>
                             <c:when test="${page == i}">
                                 <li><a href="Store?page=${i}&view=${view}&sort=${sort}" class="selected">${i}</a></li>
-                            </c:when>
-                            <c:otherwise>
+                                </c:when>
+                                <c:otherwise>
                                 <li><a href="Store?page=${i}&view=${view}&sort=${sort}">${i}</a></li>
-                            </c:otherwise>
+                                </c:otherwise>
                             </c:choose>
                         </c:forEach>
                 </ul>

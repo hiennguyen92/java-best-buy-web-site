@@ -5,9 +5,14 @@
  */
 package controller;
 
+import dao.ProductDAO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojo.Cart;
+import pojo.Product;
 
 /**
  *
@@ -32,11 +37,30 @@ public class Redirect implements ServletRequestAware {
     }
 
     public String execute() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
         String temp =  request.getHeader("Referer");
         previous = temp.substring(temp.lastIndexOf('/') + 1);
         HttpSession session = request.getSession();
         if (request.getParameter("logout") != null) {
-            session.invalidate();
+            session.removeAttribute("Cart");
+        }
+        if(request.getParameter("add") != null){
+            int id = Integer.parseInt(request.getParameter("add"));
+            ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
+            Product product = productDAO.get(id);
+            product.setQuantity(1);
+            boolean isExist = false;
+            Cart cart = (Cart) session.getAttribute("Cart");
+            for(Product _product : cart.getProducts()){
+                if(_product.getProductId() == product.getProductId()){
+                    isExist = true;
+                    _product.setQuantity(_product.getQuantity()+1);
+                }
+            }
+            if(!isExist)
+                cart.getProducts().add(product);            
+            cart.setTotalPrice(cart.getTotalPrice() + product.getPrice());
+            session.setAttribute("Cart", cart);
         }
         return "success";
     }

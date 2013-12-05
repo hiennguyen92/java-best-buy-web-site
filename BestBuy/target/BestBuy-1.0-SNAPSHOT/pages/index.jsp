@@ -29,7 +29,7 @@
                     <a href="Info?id=${Products[i].productId}">${Products[i].name}</a>
                     <h3>$${Products[i].price}</h3>
                     <ul>
-                        <li><a  class="cart" href="single.html"> </a></li>
+                        <li><a  class="cart" href="Redirect?add=${Products[i].productId}"> </a></li>
                         <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
                         <li><a  class="Compar" href="single.html"> </a></li>
                         <li><a  class="Wishlist" href="single.html"> </a></li>
@@ -45,7 +45,7 @@
                     <a href="Info?id=${Products[i].productId}">${Products[i].name}</a>
                     <h3>$${Products[i].price}</h3>
                     <ul>
-                        <li><a  class="cart" href="single.html"> </a></li>
+                        <li><a  class="cart" href="Redirect?add=${Products[i].productId}"> </a></li>
                         <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
                         <li><a  class="Compar" href="single.html"> </a></li>
                         <li><a  class="Wishlist" href="single.html"> </a></li>

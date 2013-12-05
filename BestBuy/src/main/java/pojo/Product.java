@@ -34,14 +34,22 @@ public class Product implements Serializable {
     private Integer screen;
     @Column(name = "Warranty")
     private Integer warranty;
+    @Column(name = "Quantity")
+    private Integer quantity;
     @Column(name = "ImageUrl", length = 45)
     private String imageUrl;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "CategoryId")
-    public Category category;
+    private Category category;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "BrandId")
-    public Brand brand;
+    private Brand brand;
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name="Tag")
+    private Product product;
+    @OneToMany(mappedBy = "product")
+    private Set<Product> accessories = new HashSet<Product>(0);
+    
     @ManyToMany(
             fetch = FetchType.LAZY,
             targetEntity = Cart.class,
@@ -92,6 +100,14 @@ public class Product implements Serializable {
         this.rating = rating;
     }
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
@@ -138,6 +154,22 @@ public class Product implements Serializable {
 
     public void setWarranty(Integer warranty) {
         this.warranty = warranty;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Set<Product> getAccessories() {
+        return accessories;
+    }
+
+    public void setAccessories(Set<Product> accessories) {
+        this.accessories = accessories;
     }
 
 }

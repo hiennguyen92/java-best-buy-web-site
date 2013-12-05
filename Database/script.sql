@@ -65,12 +65,15 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Product` (
   `Rating` DOUBLE NULL,
   `Screen` INT NULL,
   `Warranty` INT NULL,
+  `Quantity` INT NULL,
   `ImageUrl` VARCHAR(45) NULL,
   `BrandId` INT NULL,
   `CategoryId` INT NULL,
+  `Tag` INT NULL,
   PRIMARY KEY (`ProductId`),
   INDEX `FK_Brand_idx` (`BrandId` ASC),
   INDEX `FK_Category_idx` (`CategoryId` ASC),
+  INDEX `FK_Product_idx` (`Tag` ASC),
   CONSTRAINT `FK_Brand`
     FOREIGN KEY (`BrandId`)
     REFERENCES `bestbuydb`.`Brand` (`BrandId`)
@@ -79,6 +82,11 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Product` (
   CONSTRAINT `FK_Category`
     FOREIGN KEY (`CategoryId`)
     REFERENCES `bestbuydb`.`Category` (`CategoryId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Product`
+    FOREIGN KEY (`Tag`)
+    REFERENCES `bestbuydb`.`Product` (`ProductId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -93,12 +101,53 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart_Detail` (
   `Quantity` INT NULL,
   PRIMARY KEY (`CartId`, `ProductId`),
   INDEX `FK_Product_idx` (`ProductId` ASC),
-  CONSTRAINT `FK_Cart`
+  CONSTRAINT `FK_CartDT_Cart`
     FOREIGN KEY (`CartId`)
     REFERENCES `bestbuydb`.`Cart` (`CartId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `FK_Product`
+  CONSTRAINT `FK_CartDT_Product`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `bestbuydb`.`Product` (`ProductId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Comment`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Comment` (
+  `CommentId` INT NOT NULL,
+  `Username` VARCHAR(45) NULL,
+  `ProductId` INT NULL,
+  `Content` VARCHAR(2000) NULL,
+  INDEX `FK_Product_idx` (`ProductId` ASC),
+  PRIMARY KEY (`CommentId`),
+  INDEX `FK_Account_idx` (`Username` ASC),
+  CONSTRAINT `FK_Comment_Product`
+    FOREIGN KEY (`ProductId`)
+    REFERENCES `bestbuydb`.`Product` (`ProductId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_Comment_Account`
+    FOREIGN KEY (`Username`)
+    REFERENCES `bestbuydb`.`Account` (`Username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`Image`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`Image` (
+  `ImageId` INT NOT NULL,
+  `Url` VARCHAR(45) NULL,
+  `ProductId` INT NULL,
+  PRIMARY KEY (`ImageId`),
+  INDEX `FK_Product_idx` (`ProductId` ASC),
+  CONSTRAINT `FK_Image_Product`
     FOREIGN KEY (`ProductId`)
     REFERENCES `bestbuydb`.`Product` (`ProductId`)
     ON DELETE NO ACTION
@@ -143,26 +192,26 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bestbuydb`;
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
-INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `ImageUrl`, `BrandId`, `CategoryId`) VALUES ('Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, 'images/m1.jpg', 1, 1);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
+INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
 
 COMMIT;
 
