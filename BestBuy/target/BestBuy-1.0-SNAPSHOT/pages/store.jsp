@@ -22,7 +22,7 @@
                                     $<em>${item.price}</em>
                                 </div>
                                 <span class="shopp-quantity">${item.quantity}</span>
-                                <img src="images/remove.png" class="remove"/>
+                                <img src="images/remove.png" class="remove" onclick="location.href='Redirect?remove=${item.productId}'"/>
                                 <br class="all"/>
                             </div>
                         </c:forEach>

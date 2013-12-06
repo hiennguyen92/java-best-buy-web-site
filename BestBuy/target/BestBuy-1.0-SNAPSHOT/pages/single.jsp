@@ -25,7 +25,7 @@
                         <li>Price:</li>
                         <li><h5>$${product.price}</h5></li>
                         <br />
-                        <li><p>Not rated</p></li>
+                        <li><p>Rating: ${product.rating}</p></li>
                     </ul>
                 </div>
                 <div class="right-value-details">
@@ -37,7 +37,7 @@
             <div class="brand-history">
                 <h3>Description :</h3>
                 <p>${product.description}</p>
-                <a href="#">Addcart</a>
+                <a href="Redirect?add=${product.productId}">Addcart</a>
             </div>
             <div class="share">
                 <ul>
@@ -80,13 +80,50 @@
                     </tr>
                 </table>
             </div>
-            <p class="menu_head">Ratings & Reviews<span class="plusminus">+</span></p>
+            <p class="menu_head">Ratings<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
-                <p>theonlytutorials.com is providing a great varitey of tutorials and scripts to use it immediate on any project!</p>
+                <p>Rate this: </p>
+            </div>
+            <p class="menu_head">Reviews<span class="plusminus">+</span></p>
+            <div class="menu_body" style="display: none;">
+                <c:choose>
+                    <c:when test="${product.comments.size() == 0}">
+                        <p>This product doesn't have any comment</p>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="comment" items="${product.comments}">
+                            <p>${comment.account.username}</p>
+                            <p>${comment.content}</p>
+                        </c:forEach>                        
+                    </c:otherwise>
+                </c:choose>
+                            <c:if test="${User != null}">
+                            <div class="col span_2_of_3">
+                                <form class="contact-form" action="Info" method="post">
+                                    <input type="hidden" name="id" value="${product.productId}"/>
+                                    <textarea name="ta_content"></textarea>
+                                    <input type="submit" value="Send"/> 
+                                </form>
+                            </div>
+                            <br class="clear" />
+                                
+                            </c:if>
+                         
             </div>
             <p class="menu_head">Accessories<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
-                <p>theonlytutorials.com is providing a great varitey of tutorials and scripts to use it immediate on any project!</p>
+                <c:choose>
+                    <c:when test="${product.accessories.size() == 0}">
+                        <p>This product doesn't have any accessories</p>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach var="accessory" items="${product.accessories}">
+                            <p>${accessory.name}</p>
+                            <p>${accessory.price}</p>
+                            <p>${accessory.rating}</p>
+                        </c:forEach>                        
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </div>

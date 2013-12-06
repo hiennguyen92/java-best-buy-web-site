@@ -38,6 +38,7 @@ public class Login implements ServletRequestAware {
                 Cart cart = new Cart();
                 cart.setAccount(account);
                 session.setAttribute("Cart", cart);
+                session.setAttribute("User", account);
                 return "success";
             } else {
                 result = "Login failed! Wrong username or password";

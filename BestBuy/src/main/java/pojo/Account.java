@@ -28,6 +28,8 @@ public class Account implements Serializable {
     private String phone;
     @OneToMany(mappedBy = "account")
     private Set<Cart> carts = new HashSet<Cart>(0);
+    @OneToMany(mappedBy = "account")
+    private Set<Comment> comments = new HashSet<Comment>(0);  
 
     public Account() { }
 
@@ -76,5 +78,13 @@ public class Account implements Serializable {
 
     public void setCarts(Set<Cart> carts) {
         this.carts = carts;
+    }
+
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

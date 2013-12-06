@@ -11,14 +11,14 @@
         <div class="header-top-nav">
             <ul>
                 <c:choose>
-                    <c:when test="${Cart == null}">
+                    <c:when test="${User == null}">
                         <li><a href="Register">Register</a></li>
                         <li><a href="Login">Login</a></li>
                         <li><a href="#">Cart</a></li>
                         <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;0 items</lable></li>                        
                     </c:when>
                     <c:otherwise>
-                        <li><a href="MyInfo">Hello ${Cart.account.username}</a></li>
+                        <li><a href="MyInfo">Hello ${User.username}</a></li>
                         <li><a href="Redirect?logout=true">Log out</a></li>
                         <li><a href="#">Cart</a></li>
                         <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>

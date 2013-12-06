@@ -55,11 +55,25 @@ public class Redirect implements ServletRequestAware {
                 if(_product.getProductId() == product.getProductId()){
                     isExist = true;
                     _product.setQuantity(_product.getQuantity()+1);
+                    break;
                 }
             }
             if(!isExist)
                 cart.getProducts().add(product);            
             cart.setTotalPrice(cart.getTotalPrice() + product.getPrice());
+            session.setAttribute("Cart", cart);
+        }
+        if(request.getParameter("remove") != null){
+            int id = Integer.parseInt(request.getParameter("remove"));
+            ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
+            Product product = productDAO.get(id);
+            Cart cart = (Cart) session.getAttribute("Cart");
+            for(Product _product : cart.getProducts()){
+                if(_product.getProductId() == product.getProductId()){
+                    cart.getProducts().remove(_product);
+                    cart.setTotalPrice(cart.getTotalPrice()-_product.getPrice()*_product.getQuantity());
+                }
+            }
             session.setAttribute("Cart", cart);
         }
         return "success";

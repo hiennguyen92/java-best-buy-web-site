@@ -118,7 +118,7 @@ ENGINE = InnoDB;
 -- Table `bestbuydb`.`Comment`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bestbuydb`.`Comment` (
-  `CommentId` INT NOT NULL,
+  `CommentId` INT NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NULL,
   `ProductId` INT NULL,
   `Content` VARCHAR(2000) NULL,
@@ -142,7 +142,7 @@ ENGINE = InnoDB;
 -- Table `bestbuydb`.`Image`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bestbuydb`.`Image` (
-  `ImageId` INT NOT NULL,
+  `ImageId` INT NOT NULL AUTO_INCREMENT,
   `Url` VARCHAR(45) NULL,
   `ProductId` INT NULL,
   PRIMARY KEY (`ImageId`),
