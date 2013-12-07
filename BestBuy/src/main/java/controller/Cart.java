@@ -23,6 +23,9 @@ public class Cart implements ServletRequestAware {
     }
 
     public String execute() {
+        if(request.getParameter("remove") != null){
+            System.out.println("safs");
+        }
         return "success";
     }
     

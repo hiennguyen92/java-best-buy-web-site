@@ -36,11 +36,10 @@
                         <td><span class="pricedisplay">$${item.price}</span></td>
 
                         <td>
-                            <form action="#">
-                                <input type="hidden" name="h_id" value="${item.productId}"/>
-                                
-                                <input class="img" type="image" src="images/update.png"></input>
-                                <input class="img" type="image" src="images/remove.png"></input>
+                            <form action="Cart" method="get">
+                                <input type="hidden" name="id" value="${item.productId}"/>
+                                <input class="img" type="image" src="images/update.png" name="update"></input>
+                                <input class="img" type="image" src="images/remove.png" name="remove"></input>
                             </form>
                         </td>
 
