@@ -24,4 +24,10 @@
     <definition name="Register" extends="Page">
         <put-attribute name="body" value="/pages/register.jsp"/>    
     </definition>
+    <definition name="Cart" extends="Page">
+        <put-attribute name="body" value="/pages/cart.jsp"/>    
+    </definition>
+    <definition name="Compare" extends="Page">
+        <put-attribute name="body" value="/pages/compare.jsp"/>    
+    </definition>
 </tiles-definitions>

@@ -43,6 +43,7 @@ public class Redirect implements ServletRequestAware {
         HttpSession session = request.getSession();
         if (request.getParameter("logout") != null) {
             session.removeAttribute("Cart");
+            session.removeAttribute("User");
         }
         if(request.getParameter("add") != null){
             int id = Integer.parseInt(request.getParameter("add"));

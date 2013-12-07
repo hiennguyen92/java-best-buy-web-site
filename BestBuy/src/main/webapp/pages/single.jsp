@@ -1,5 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="css/jqzoom.css" type="text/css">
+<link rel="stylesheet" href="css/jquery.rating.css" type="text/css">
+<script src="js/jquery.rating.pack.js" type="text/javascript"></script>
 <script src="js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/single.js"></script>
 <div class="content">
@@ -25,7 +27,21 @@
                         <li>Price:</li>
                         <li><h5>$${product.price}</h5></li>
                         <br />
-                        <li><p>Rating: ${product.rating}</p></li>
+                        <li>
+                            <p><label style="float: left">Rating:</label>
+                            <c:forEach var="i" begin="1" end="10">
+                                <c:choose>
+                                    <c:when test="${product.rating*2==i}">
+                                        <input name="adv1" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
+                                    </c:when>
+                                    <c:otherwise>
+                                        <input name="adv1" type="radio" class="star {split:2}" disabled="disabled"/> 
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                            </p>
+                            
+                        </li>
                     </ul>
                 </div>
                 <div class="right-value-details">
@@ -82,7 +98,19 @@
             </div>
             <p class="menu_head">Ratings<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
-                <p>Rate this: </p>
+                <p>
+                    <label style="float: left">Rate this:</label> 
+                    <input value="0.5" type="radio" class="auto-submit-star required {split:2}"/> 
+                    <input value="1" type="radio" class="auto-submit-star {split:2}"/> 
+                    <input value="1.5" type="radio" class="auto-submit-star {split:2}"/> 
+                    <input value="2" type="radio" class="auto-submit-star {split:2}"/>
+                    <input value="2.5" type="radio" class="auto-submit-star {split:2}"/>
+                    <input value="3" type="radio" class="auto-submit-star {split:2}"/>
+                    <input value="3.5" type="radio" class="auto-submit-star {split:2}"/>
+                    <input value="4" type="radio" class="auto-submit-star {split:2}"/>
+                    <input value="4.5" type="radio" class="auto-submit-star {split:2}"/>
+                    <input value="5" type="radio" class="auto-submit-star {split:2}"/>
+                </p>
             </div>
             <p class="menu_head">Reviews<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
@@ -97,17 +125,17 @@
                         </c:forEach>                        
                     </c:otherwise>
                 </c:choose>
-                            <c:if test="${User != null}">
-                            <div class="col span_2_of_3">
-                                <form class="contact-form" action="Info" method="post">
-                                    <input type="hidden" name="id" value="${product.productId}"/>
-                                    <textarea name="ta_content"></textarea>
-                                    <input type="submit" value="Send"/> 
-                                </form>
-                            </div>
-                            <br class="clear" />
-                                
-                            </c:if>
+                <c:if test="${User != null}">
+                    <div class="col span_2_of_3">
+                        <form class="contact-form" action="Info" method="post">
+                            <input type="hidden" name="id" value="${product.productId}"/>
+                            <textarea name="ta_content"></textarea>
+                            <input type="submit" value="Send"/> 
+                        </form>
+                    </div>
+                    <br class="clear" />
+
+                </c:if>
                          
             </div>
             <p class="menu_head">Accessories<span class="plusminus">+</span></p>

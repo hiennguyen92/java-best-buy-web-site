@@ -953,10 +953,24 @@ body{
 	padding-bottom:5px;
 	font-family: 'Open Sans', sans-serif;
 }
-.contact-form input[type="text"],.contact-form input[type="password"],.contact-form textarea{
+.contact-form input[type="text"],.contact-form input[type="password"],.contact-form textarea, .contact-form select{
 		    padding:8px;
 			display:block;
 			width:98%;
+			background:#fcfcfc;
+			border: none;
+			outline:none;
+			color:#464646;
+			font-size:0.8125em;
+			font-family:Arial, Helvetica, sans-serif;
+			box-shadow: inset 0px 0px 3px rgb(199, 199, 199);
+			-webkit-box-shadow: inset 0px 0px 3px rgb(199, 199, 199);
+			-moz-box-shadow: inset 0px 0px 3px rgb(199, 199, 199);
+			-o-box-shadow:inset 0px 0px 3px rgb(199, 199, 199);
+			-webkit-appearance:none;
+}
+select{
+                        padding:8px;
 			background:#fcfcfc;
 			border: none;
 			outline:none;

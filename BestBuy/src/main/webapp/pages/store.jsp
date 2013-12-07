@@ -75,7 +75,7 @@
                 <ul>
                     <c:forEach var="i" begin="${(page-1)*view}" end="${page*view-4}" step="4">
                         <c:forEach var="product" items="${products}" begin="${i}" end="${i+3}" varStatus="status" >
-                            <c:if test="${status.index<Products.size()}">
+                            <c:if test="${status.index<products.size()}">
                                 <li id="${product.productId}">
                                     <img src="${product.imageUrl}" class="items" alt="" />
 
@@ -85,8 +85,8 @@
                                 </li>                                
                             </c:if>
                         </c:forEach>
-                        <c:forEach var="product" items="${Products}" begin="${i}" end="${i+3}" varStatus="status" >
-                            <c:if test="${status.index<Products.size()}">
+                        <c:forEach var="product" items="${products}" begin="${i}" end="${i+3}" varStatus="status" >
+                            <c:if test="${status.index<products.size()}">
                                 <div class="detail-view" id="detail-${product.productId}">
 
                                     <div class="close" align="right">
@@ -129,16 +129,16 @@
             </div>
             <div class="pagnation">
                 <ul>
-                    <c:forEach var="i" begin="1" end="${(Products.size() - 1) / view + 1}">
+                    <c:forEach var="i" begin="1" end="${(products.size() - 1) / view + 1}">
                         <c:choose>
                             <c:when test="${page == i}">
-                                <li><a href="Store?page=${i}&view=${view}&sort=${sort}" class="selected">${i}</a></li>
-                                </c:when>
-                                <c:otherwise>
-                                <li><a href="Store?page=${i}&view=${view}&sort=${sort}">${i}</a></li>
-                                </c:otherwise>
-                            </c:choose>
-                        </c:forEach>
+                                <li><a href="Store?page=${i}&view=${view}&sort=${sort}${paginate}" class="selected">${i}</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="Store?page=${i}&view=${view}&sort=${sort}${paginate}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                 </ul>
             </div>
 

@@ -17,4 +17,10 @@ $(document).ready(function() {
             $(this).children(".plusminus").text('+');        
         $(this).next(".menu_body").slideToggle(300);
     });
+    
+    $(".auto-submit-star").rating({
+        callback: function(value, link){
+          alert(value);
+        }
+    });
 });
