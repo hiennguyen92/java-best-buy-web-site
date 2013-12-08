@@ -13,9 +13,24 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Account` (
   `Password` VARCHAR(45) NULL,
   `RealName` VARCHAR(45) NULL,
   `Phone` VARCHAR(45) NULL,
+  `Enable` tinyint(1) NOT NULL,
   PRIMARY KEY (`Username`))
 ENGINE = InnoDB;
 
+CREATE TABLE `UserRoles` (
+  `RoleID` INT(10) UNSIGNED NOT NULL auto_increment,
+  `Username` VARCHAR(45) NOT NULL,
+  `Authority` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`RoleID`),
+  KEY `FK_user_roles` (`Username`),
+  CONSTRAINT `FK_user_roles` FOREIGN KEY (`Username`) REFERENCES `Account` (`Username`)
+);
+
+INSERT INTO Account (Username,Password, Enable)
+VALUES ('mkyong', '123456', TRUE);
+ 
+INSERT INTO UserRoles (RoleID, Username,Authority)
+VALUES (1, 'mkyong', 'ROLE_ADMIN');
 
 -- -----------------------------------------------------
 -- Table `bestbuydb`.`Cart`
@@ -213,5 +228,29 @@ INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Sc
 INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
 INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Screen`, `Warranty`, `Quantity`, `ImageUrl`, `BrandId`, `CategoryId`, `Tag`) VALUES ( 'Samsung - 32\" Class (31-1/2\" Diag.) - LED - 720p - 60Hz - HDTV', 'Enjoy a high-quality viewing experience with this Samsung 32\" LED HDTV that features Wide Color Enhancer Plus and Clear Motion Rate (CMR) 60 technologies for colorful, natural-looking visuals and detailed images. Two 5W speakers offer lush audio. ', 229.99, 4.5, 32, 12, NULL, 'images/m1.jpg', 1, 1, NULL);
 
+/*
+CREATE TABLE `users` (
+  `USER_ID` INT(10) UNSIGNED NOT NULL,
+  `USERNAME` VARCHAR(45) NOT NULL,
+  `PASSWORD` VARCHAR(45) NOT NULL,
+  `ENABLED` tinyint(1) NOT NULL,
+  PRIMARY KEY (`USER_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `user_roles` (
+  `USER_ROLE_ID` INT(10) UNSIGNED NOT NULL,
+  `USER_ID` INT(10) UNSIGNED NOT NULL,
+  `AUTHORITY` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`USER_ROLE_ID`),
+  KEY `FK_user_roles` (`USER_ID`),
+  CONSTRAINT `FK_user_roles` FOREIGN KEY (`USER_ID`) REFERENCES `users` (`USER_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO users (USER_ID, USERNAME,PASSWORD, ENABLED)
+VALUES (1, 'admin', 'admin', TRUE);
+ 
+INSERT INTO user_roles (USER_ROLE_ID, USER_ID,AUTHORITY)
+VALUES (1, 1, 'ROLE_ADMIN');
+*/
 COMMIT;
 
