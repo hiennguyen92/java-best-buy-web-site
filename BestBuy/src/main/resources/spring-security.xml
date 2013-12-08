@@ -1,0 +1,31 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+ 
+    <beans:import resource="hibernate.xml"></beans:import>
+    
+    <http auto-config="true">
+        <intercept-url pattern="/Store*" access="ROLE_ADMIN" />
+    </http>
+ 
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="databaseConnect"
+ 
+                               users-by-username-query="
+		      select Username,Password, Enable 
+		      from Account where Username=?" 
+ 
+                               authorities-by-username-query="
+		      select u.Username, ur.Authority from Account u, UserRoles ur 
+		      where u.Username = ur.Username and u.Username =?  " 
+ 
+            />
+        </authentication-provider>
+    </authentication-manager>
+ 
+</beans:beans>
