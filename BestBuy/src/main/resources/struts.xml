@@ -33,6 +33,7 @@
         </action>
         <action name="Compare" class="controller.Compare">
             <result name="success" type="tiles">Compare</result>
+            <result name="error" type="redirect">Store</result>
         </action>
         <action name="Redirect" class="controller.Redirect">
             <result name="success" type="redirect">${previous}</result>

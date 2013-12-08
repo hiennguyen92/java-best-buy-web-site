@@ -12,7 +12,7 @@
             <ul>
                 <li id="${product1.productId}">
                     <div class="close" align="right">
-                        <a href="Compare?close=${product1.productId}">x</a>
+                        <a href="Compare?id1=${product2.productId}&id2=${product3.productId}&id3=${product4.productId}">x</a>
 
                     </div>
                     <img src="${product1.imageUrl}" class="items" alt="">
@@ -20,10 +20,11 @@
                     <br clear="all">
                     <div class="name">${product1.name}</div>
                     <br clear="all">
+                    <div class="name">$${product1.price}</div>
                 </li>
                 <li id="${product2.productId}">
                     <div class="close" align="right">
-                        <a href="Compare?close=${product2.productId}">x</a>
+                        <a href="Compare?id1=${product1.productId}&id2=${product3.productId}&id3=${product4.productId}">x</a>
 
                     </div>
                     <img src="${product2.imageUrl}" class="items" alt="">
@@ -31,10 +32,12 @@
                     <br clear="all">
                     <div class="name">${product2.name}</div>
                     <br clear="all">
+                    <div class="name">$${product2.price}</div>
                 </li>
+                <c:if test="${product3 != null}">
                 <li id="${product3.productId}">
                     <div class="close" align="right">
-                        <a href="Compare?close=${product3.productId}">x</a>
+                        <a href="Compare?id1=${product1.productId}&id2=${product2.productId}&id3=${product4.productId}">x</a>
 
                     </div>
                     <img src="${product3.imageUrl}" class="items" alt="">
@@ -42,10 +45,13 @@
                     <br clear="all">
                     <div class="name">${product3.name}</div>
                     <br clear="all">
+                    <div class="name">$${product3.price}</div>
                 </li>
+                </c:if>
+                <c:if test="${product4 != null}">
                 <li id="${product4.productId}">
                     <div class="close" align="right">
-                        <a href="Compare?close=${product4.productId}">x</a>
+                        <a href="Compare?id1=${product1.productId}&id2=${product2.productId}&id3=${product3.productId}">x</a>
 
                     </div>
                     <img src="${product4.imageUrl}" class="items" alt="">
@@ -53,7 +59,9 @@
                     <br clear="all">
                     <div class="name">${product4.name}</div>
                     <br clear="all">
+                    <div class="name">$${product4.price}</div>
                 </li>
+                </c:if>
             </ul>
 
             <br clear="all"/>
@@ -63,10 +71,10 @@
                 <tbody>
                     <tr class="firstrow">
                         <td class="firstcol" style="width: 160px">REVIEWS</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td style="width: 20.5%"></td>
+                        <td style="width: 20.5%"></td>
+                        <td style="width: 20.5%"></td>
+                        <td style="width: 20.5%"></td>
                     </tr>
                     <tr class="product_row">
 
@@ -154,8 +162,12 @@
                         <td class="firstcol">Screen size</td>
                         <td>${product1.screen}"</td>
                         <td>${product2.screen}"</td>
+                        <c:if test="${product3 != null}">
                         <td>${product3.screen}"</td>
+                        </c:if>
+                        <c:if test="${product4 != null}">
                         <td>${product4.screen}"</td>
+                        </c:if>
                     </tr>
                     
                     <tr class="product_row">
@@ -163,8 +175,12 @@
                         <td class="firstcol">Warranty Terms</td>
                         <td>${product1.warranty} months</td>
                         <td>${product2.warranty} months</td>
+                        <c:if test="${product3 != null}">
                         <td>${product3.warranty} months</td>
+                        </c:if>
+                        <c:if test="${product4 != null}">
                         <td>${product4.warranty} months</td>
+                        </c:if>
                     </tr>
 
                     <tr class="product_row">
@@ -172,10 +188,52 @@
                         <td class="firstcol">Vertical Resolution</td>
                         <td>720p </td>
                         <td>720p </td>
+                        <c:if test="${product3 != null}">
                         <td>720p</td>
+                        </c:if>
+                        <c:if test="${product4 != null}">
                         <td>720p </td>
+                        </c:if>
                     </tr>
 
+                    <tr class="product_row">
+
+                        <td class="firstcol">Aspect Ratio</td>
+                        <td>16:9 </td>
+                        <td>16:9 </td>
+                        <c:if test="${product3 != null}">
+                        <td>16:9 </td>
+                        </c:if>
+                        <c:if test="${product4 != null}">
+                        <td>16:9 </td>
+                        </c:if>
+                    </tr>
+                    
+                    <tr class="product_row">
+
+                        <td class="firstcol">Maximum Resolution</td>
+                        <td>1366 x 768 </td>
+                        <td>1366 x 768 </td>
+                        <c:if test="${product3 != null}">
+                        <td>1366 x 768 </td>
+                        </c:if>
+                        <c:if test="${product4 != null}">
+                        <td>1366 x 768 </td>
+                        </c:if>
+                    </tr>
+                    
+                    <tr class="product_row">
+
+                        <td class="firstcol">HDMI Inputs</td>
+                        <td>2 </td>
+                        <td>2 </td>
+                        <c:if test="${product3 != null}">
+                        <td>3</td>
+                        </c:if>
+                        <c:if test="${product4 != null}">
+                        <td>2 </td>
+                        </c:if>
+                    </tr>
                 </tbody>
             </table>
         </div>

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import dao.ProductDAO;
@@ -26,24 +25,24 @@ public class Compare implements ServletRequestAware {
 
     public String execute() {
         ProductDAO productDAO = (ProductDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("productDAO");
-        
+
         String id1 = request.getParameter("id1");
         String id2 = request.getParameter("id2");
         String id3 = request.getParameter("id3");
         String id4 = request.getParameter("id4");
-        String closeId = request.getParameter("close");
-        
+
+        if(id2.equals(""))
+            return "error";
         request.setAttribute("product1", productDAO.get(Integer.parseInt(id1)));
         request.setAttribute("product2", productDAO.get(Integer.parseInt(id2)));
-        if(id3 != null)
+        if (id3 != null && !id3.equals("")) {
             request.setAttribute("product3", productDAO.get(Integer.parseInt(id3)));
-        if(id4 != null)
-            request.setAttribute("product4", productDAO.get(Integer.parseInt(id4)));
-        
-        if(closeId != null){
-            
         }
+        if (id4 != null && !id4.equals("")) {
+            request.setAttribute("product4", productDAO.get(Integer.parseInt(id4)));
+        }
+
         return "success";
     }
-    
+
 }

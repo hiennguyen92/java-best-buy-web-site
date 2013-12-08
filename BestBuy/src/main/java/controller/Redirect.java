@@ -38,44 +38,82 @@ public class Redirect implements ServletRequestAware {
 
     public String execute() {
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
-        String temp =  request.getHeader("Referer");
+        String temp = request.getHeader("Referer");
         previous = temp.substring(temp.lastIndexOf('/') + 1);
         HttpSession session = request.getSession();
+        ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
         if (request.getParameter("logout") != null) {
             session.removeAttribute("Cart");
             session.removeAttribute("User");
         }
-        if(request.getParameter("add") != null){
+        if (request.getParameter("add") != null) {
             int id = Integer.parseInt(request.getParameter("add"));
-            ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
             Product product = productDAO.get(id);
             product.setQuantity(1);
             boolean isExist = false;
             Cart cart = (Cart) session.getAttribute("Cart");
-            for(Product _product : cart.getProducts()){
-                if(_product.getProductId() == product.getProductId()){
+            for (Product _product : cart.getProducts()) {
+                if (_product.getProductId() == product.getProductId()) {
                     isExist = true;
-                    _product.setQuantity(_product.getQuantity()+1);
+                    _product.setQuantity(_product.getQuantity() + 1);
                     break;
                 }
             }
-            if(!isExist)
-                cart.getProducts().add(product);            
+            if (!isExist) {
+                cart.getProducts().add(product);
+            }
             cart.setTotalPrice(cart.getTotalPrice() + product.getPrice());
             session.setAttribute("Cart", cart);
         }
-        if(request.getParameter("remove") != null){
+        if (request.getParameter("remove") != null) {
             int id = Integer.parseInt(request.getParameter("remove"));
-            ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
             Product product = productDAO.get(id);
             Cart cart = (Cart) session.getAttribute("Cart");
-            for(Product _product : cart.getProducts()){
-                if(_product.getProductId() == product.getProductId()){
+            for (Product _product : cart.getProducts()) {
+                if (_product.getProductId() == product.getProductId()) {
                     cart.getProducts().remove(_product);
-                    cart.setTotalPrice(cart.getTotalPrice()-_product.getPrice()*_product.getQuantity());
+                    cart.setTotalPrice(cart.getTotalPrice() - _product.getPrice() * _product.getQuantity());
                 }
             }
             session.setAttribute("Cart", cart);
+        }
+        if (request.getParameter("compare") != null) {
+            int id = Integer.parseInt(request.getParameter("compare"));
+            Product product = productDAO.get(id);
+            if (session.getAttribute("compare1") == null) {
+                session.setAttribute("compare1", product);
+            } else if (session.getAttribute("compare2") == null) {
+                Product product1 = (Product) session.getAttribute("compare1");
+                if(product.getProductId() != product1.getProductId())
+                    session.setAttribute("compare2", product);
+            } else if (session.getAttribute("compare3") == null) {
+                Product product1 = (Product) session.getAttribute("compare1");
+                Product product2 = (Product) session.getAttribute("compare2");
+                if(product.getProductId() != product1.getProductId() &&
+                        product.getProductId() != product2.getProductId())
+                    session.setAttribute("compare3", product);
+            } else if (session.getAttribute("compare4") == null) {
+                Product product1 = (Product) session.getAttribute("compare1");
+                Product product2 = (Product) session.getAttribute("compare2");
+                Product product3 = (Product) session.getAttribute("compare3");
+                if(product.getProductId() != product1.getProductId() &&
+                        product.getProductId() != product2.getProductId() &&
+                        product.getProductId() != product3.getProductId())
+                    session.setAttribute("compare4", product);
+            }
+        }
+        if(request.getParameter("remove_compare") != null){
+            int id = Integer.parseInt(request.getParameter("remove_compare"));
+            session.setAttribute("compare"+id, session.getAttribute("compare"+(id+1)));
+            
+            if(id == 1){
+                session.setAttribute("compare2", session.getAttribute("compare3"));
+                session.setAttribute("compare3", session.getAttribute("compare4"));
+            }
+            else if(id == 2){
+                session.setAttribute("compare3", session.getAttribute("compare4"));
+            }
+            session.removeAttribute("compare4");
         }
         return "success";
     }

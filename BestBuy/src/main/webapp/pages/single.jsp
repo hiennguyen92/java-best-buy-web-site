@@ -94,6 +94,22 @@
                         <td>Brand</td>
                         <td>${product.brand.name}</td>
                     </tr>
+                    <tr class="color">
+                        <td>Vertical Resolution</td>
+                        <td>720p </td>
+                    </tr>
+                    <tr>
+                        <td>Aspect Ratio</td>
+                        <td>16:9 </td>
+                    </tr>
+                    <tr class="color">
+                        <td>Maximum Resolution</td>
+                        <td>1366 x 768</td>
+                    </tr>
+                    <tr>
+                        <td>HDMI Inputs</td>
+                        <td>2</td>
+                    </tr>
                 </table>
             </div>
             <p class="menu_head">Ratings<span class="plusminus">+</span></p>
@@ -111,6 +127,7 @@
                     <input value="4.5" type="radio" class="auto-submit-star {split:2}"/>
                     <input value="5" type="radio" class="auto-submit-star {split:2}"/>
                 </p>
+                <br class="clear" />
             </div>
             <p class="menu_head">Reviews<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">

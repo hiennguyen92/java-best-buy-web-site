@@ -1,0 +1,35 @@
+.compare li {
+    border: 1px solid rgb(154, 155, 155);
+    display: block;
+    float: left;
+    height: 26px;
+    margin: 0px 7px 0px 0px;
+    position: relative;
+    text-align: center;
+    width: 26px;
+}
+.compare img{
+    padding-top: 4px;
+    height: 22px;
+    width: 26px;
+    cursor: pointer;
+}
+.compare .remove {
+    background: url("../images/compare-item-remove.png") no-repeat scroll 0px 0px transparent;
+    display: block;
+    height: 13px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    width: 13px;
+    cursor: pointer;
+}
+.compare button{
+    float: left;
+    width: 85px; 
+    height: 30px;
+    padding: 0px 0px 0px 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
