@@ -8,6 +8,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link href="css/cart.css" rel="stylesheet" />
 <link href="css/style1.css" rel="stylesheet" />
+<script type="text/javascript" src="js/cart.js"></script>
 <div class="content">
     <div class="content-grids">
         <h4>Cart</h4>
@@ -36,8 +37,9 @@
                         <td><span class="pricedisplay">$${item.price}</span></td>
 
                         <td>
-                            <form action="Cart" method="get">
-                                <input type="hidden" name="id" value="${item.productId}"/>
+                            <form id="f_cart" action="Cart" method="post">
+                                <input type="hidden" name="h_id" value="${item.productId}"/>
+                                <input id="h_quantity" type="hidden" name="h_quantity" />
                                 <input class="img" type="image" src="images/update.png" name="update"></input>
                                 <input class="img" type="image" src="images/remove.png" name="remove"></input>
                             </form>
@@ -68,7 +70,8 @@
 
             </tbody>
         </table>
-                    
-                    <button type="submit" id="Submit" style="float: right">Check Out</button>
+                    <form action="Cart" method="post">
+                        <button type="submit" name="checkout" style="float: right">Check Out</button>
+                    </form>
     </div>
 </div>

@@ -28,7 +28,7 @@
             <result name="success" type="redirect">Login</result>
             <result name="error" type="tiles">Register</result>
         </action>
-        <action name="Cart" class="controller.Cart">
+        <action name="Cart" class="controller.MyCart">
             <result name="success" type="tiles">Cart</result>
         </action>
         <action name="Compare" class="controller.Compare">

@@ -65,7 +65,6 @@ public class Redirect implements ServletRequestAware {
             session.setAttribute("Cart", cart);
         }
         if(request.getParameter("remove") != null){
-            System.out.print(request.getParameter("remove"));
             int id = Integer.parseInt(request.getParameter("remove"));
             ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
             Product product = productDAO.get(id);

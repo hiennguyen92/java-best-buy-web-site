@@ -44,7 +44,7 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="Store">Store</a></li>
                 <li><a href="store.html">Featured</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="Compare?id1=1&id2=2&id3=3&id4=4">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
