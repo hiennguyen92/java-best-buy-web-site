@@ -3,7 +3,7 @@
     <h4>Categories</h4>
     <ul>
         <c:forEach var="category" items="${Categories}">
-            <li><a href="#">${category.name}</a></li>
+            <li><a href="Store?Type=${category.categoryId}">${category.name}</a></li>
         </c:forEach>
     </ul>
     <h4>Search</h4>

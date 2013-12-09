@@ -25,7 +25,7 @@
                 <c:forEach var="item" items="${Cart.products}">
                     <tr class="product_row">
 
-                        <td class="firstcol"><img style="width: 50px; height: 50px" src="${item.imageUrl}" alt="Mp3 Player" title="Mp3 Player" height="48" width="48"></td>
+                        <td class="firstcol"><img width="60px" height="60px" src="${item.imageUrl}" alt="" title='${item.name}' height="48" width="48"></td>
                         <td><a href="Info?id=${item.productId}">${item.name}</a></td>
 
                         <td>

@@ -13,7 +13,7 @@ html, body{
     border: 1px solid #E2E2E2;
     border-top: 1px solid #E2E2E2;
     left: 0;
-	height: 534px;
+	height: 434px;
 	width: 97.5%;
     overflow: hidden;
 	clear:both;
@@ -26,8 +26,9 @@ html, body{
 
 #wrap .detail-view .close{ text-align:right; width:98%; margin:5px; }
 #wrap .close a{ padding:6px; height:10px; width:20px; color:#525049; }
-#wrap .detail-view .detail_images{ float:left;
-margin: 4% 0px 0px 14%;}
+#wrap .detail-view .detail_images{ float: left;
+margin: 0px 0px 0px 4%;
+height: 350px;}
 
 #wrap .detail-view .detail_info{ 
 	float:right;

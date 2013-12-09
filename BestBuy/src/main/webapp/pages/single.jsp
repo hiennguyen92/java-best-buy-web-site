@@ -4,6 +4,7 @@
 <script src="js/jquery.rating.pack.js" type="text/javascript"></script>
 <script src="js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/single.js"></script>
+<link href="css/cart.css" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
         <div class="details-page">
@@ -16,7 +17,7 @@
             </div>
         </div>
         <div class="detalis-image">
-            <div id="content"> <a href="${product.imageUrl}" class="jqzoom" style="" title="Product-Name"> <img src="images/m1.jpg"  title="Product-Name" style="border: 1px solid #e5e5e5;"> </a>
+            <div id="content"> <a href="${product.imageUrl}" class="jqzoom" style="" title="Product-Name"> <img src="${product.imageUrl}"  title="Product-Name" style="border: 1px solid #e5e5e5;"> </a>
             </div>
         </div>
         <div class="detalis-image-details">
@@ -82,6 +83,7 @@
                         <td>Warranty Term</td>
                         <td>${product.warranty} months</td>
                     </tr>
+                    <c:if test="${product.product == null}">
                     <tr>
                         <td>Screen Size</td>
                         <td>${product.screen} inch</td>
@@ -110,6 +112,7 @@
                         <td>HDMI Inputs</td>
                         <td>2</td>
                     </tr>
+                    </c:if>
                 </table>
             </div>
             <p class="menu_head">Ratings<span class="plusminus">+</span></p>
@@ -162,11 +165,40 @@
                         <p>This product doesn't have any accessories</p>
                     </c:when>
                     <c:otherwise>
-                        <c:forEach var="accessory" items="${product.accessories}">
-                            <p>${accessory.name}</p>
-                            <p>${accessory.price}</p>
-                            <p>${accessory.rating}</p>
-                        </c:forEach>                        
+                        <table class="productcart"><!--************************ begin productcart ************************-->
+
+                            <tbody style="font-size: small">
+                                <c:forEach var="accessory" items="${product.accessories}">
+                                    <tr class="product_row">
+                                        <td style="width: 20%">
+                                            <img height="120px" src="${accessory.imageUrl}"/>
+                                        </td>
+                                        <td style="width: 60%">
+                                            <p><a href="Info?id=${accessory.productId}">${accessory.name}</a></p>
+                                            <label style="float: left; margin-right: 4px">Rating:</label>
+                                            <div style="margin-top: 3px;">
+                                            <c:forEach var="i" begin="1" end="10">
+                                                <c:choose>
+                                                    <c:when test="${accessory.rating*2==i}">
+                                                        <input name="adv_${accessory.productId}" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <input name="adv_${accessory.productId}" type="radio" class="star {split:2}" disabled="disabled"/> 
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                             </div>
+                                        </td>
+                                        <td>
+                                            <div class="brand-history">
+                                                <a href="Redirect?add=${accessory.productId}">ADD TO CART</a>   
+                                                <p style="font-size: medium">$${accessory.price}</p> 
+                                            </div>                                
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                            </tbody>
+                        </table>
                     </c:otherwise>
                 </c:choose>
             </div>

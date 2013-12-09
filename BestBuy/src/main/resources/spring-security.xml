@@ -9,7 +9,7 @@
     <beans:import resource="hibernate.xml"></beans:import>
     
     <http auto-config="true">
-        <intercept-url pattern="/Store*" access="ROLE_ADMIN" />
+        <intercept-url pattern="/About*" access="ROLE_ADMIN" />
     </http>
  
     <authentication-manager>
