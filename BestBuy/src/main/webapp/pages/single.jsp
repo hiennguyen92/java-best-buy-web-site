@@ -4,8 +4,10 @@
 <script src="js/jquery.rating.pack.js" type="text/javascript"></script>
 <script src="js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/single.js"></script>
+<script type="text/javascript" src="js/slide.js"></script>
 <link href="css/single.css" rel="stylesheet" />
 <link href="css/style1.css" rel="stylesheet" />
+<link href="css/slide.css" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
         <div class="details-page">
@@ -71,7 +73,39 @@
         <div class="menu_container">
             <p class="menu_head">Overview<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <div id="container" class="col span_2_of_3">
+                   <div id="products_example">
+                           <div id="products">
+                                <div class="slides_container">
+                                    <a href="#" target="_blank"><img src="${product.imageUrl}" alt=" " /></a>
+                                    <c:forEach var="image" items="${product.images}">
+                                        <a href="#" target="_blank"><img src="${image.url}" alt=" " /></a>                                      
+                                    </c:forEach>
+                                </div>
+                                <ul class="pagination">
+                                    <li><a href="#"><img src="${product.imageUrl}" alt=" " /></a></li> 
+                                    <c:forEach var="image" items="${product.images}">
+                                        <li><a href="#"><img src="${image.url}" alt=" " /></a></li>                                  
+                                    </c:forEach>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
+                <div class="col span_1_of_3">
+                    <c:if test="${product.product == null}">
+                        <h4>Product Features</h4>
+                        <h1>31-1/2" screen (measured diagonally from corner to corner)</h1>
+                        <h1>LED displays are at their best in well-lit rooms</h1>
+                        <h1>60Hz refresh rate</h1>
+                        <h1>Looks great, even when viewed at an angle</h1>
+                        <h1>Two 5W speakers</h1>
+                        <h4>What's Included</h4>
+                        <h1>Stand/base</h1>
+                        <h1>Remote with 2 AAA batteries</h1>
+                        <h1>Quick-start guide</h1>
+                    </c:if>
+                </div>
+                <div class="clear"> </div>
             </div>
             <p class="menu_head">Specifications<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
@@ -131,7 +165,7 @@
                     <input value="4.5" type="radio" class="auto-submit-star {split:2}"/>
                     <input value="5" type="radio" class="auto-submit-star {split:2}"/>
                 </p>
-                <br class="clear" />
+                <div class="clear"> </div>
             </div>
             <p class="menu_head">Reviews<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
@@ -166,7 +200,7 @@
                             <input type="submit" value="Send"/> 
                         </form>
                     </div>
-                    <br class="clear" />
+                   <div class="clear"> </div>
 
                 </c:if>
                          

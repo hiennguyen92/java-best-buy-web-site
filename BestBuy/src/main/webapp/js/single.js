@@ -23,4 +23,14 @@ $(document).ready(function() {
           alert(value);
         }
     });
+    
+    $('#products').slides({
+            preload: true,
+            preloadImage: 'images/delele.gif',
+            effect: 'slide, fade',
+            crossfade: true,
+            slideSpeed: 350,
+            fadeSpeed: 500,
+            generatePagination: false
+    });
 });

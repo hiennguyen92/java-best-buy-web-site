@@ -50,7 +50,9 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product")
     private Set<Product> accessories = new HashSet<Product>(0);
     @OneToMany(mappedBy = "product")
-    private Set<Comment> comments = new HashSet<Comment>(0);    
+    private Set<Comment> comments = new HashSet<Comment>(0);  
+    @OneToMany(mappedBy = "product")
+    private Set<Image> images = new HashSet<Image>(0); 
     @ManyToMany(
             fetch = FetchType.LAZY,
             targetEntity = Cart.class,
@@ -179,6 +181,14 @@ public class Product implements Serializable {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
     }
 
 }
