@@ -230,6 +230,9 @@ INSERT INTO `bestbuydb`.`Product` (`Name`, `Description`, `Price`, `Rating`, `Sc
 INSERT INTO `bestbuydb`.`product` (`Name`, `Description`, `Price`, `Rating`, `Warranty`, `ImageUrl`, `Tag`) VALUES ('Monster - TV Screen Cleaning Kit', 'Keep your big screen in pristine condition with this complete monitor cleaning kit. The advanced formula removes dust and fingerprints without streaks or stains. The reusable MicroFiber cloth won\'t scratch your screen. ', '19.99', '3.5', '12', 'images/m2.jpg', '1');
 INSERT INTO `bestbuydb`.`product` (`Name`, `Description`, `Price`, `Rating`, `Warranty`, `ImageUrl`, `Tag`) VALUES ('Monster - TV Screen Cleaning Kit', 'Keep your big screen in pristine condition with this complete monitor cleaning kit. The advanced formula removes dust and fingerprints without streaks or stains. The reusable MicroFiber cloth won\'t scratch your screen. ', '19.99', '3.5', '12', 'images/m2.jpg', '1');
 INSERT INTO `bestbuydb`.`product` (`Name`, `Description`, `Price`, `Rating`, `Warranty`, `ImageUrl`, `Tag`) VALUES ('Monster - TV Screen Cleaning Kit', 'Keep your big screen in pristine condition with this complete monitor cleaning kit. The advanced formula removes dust and fingerprints without streaks or stains. The reusable MicroFiber cloth won\'t scratch your screen. ', '19.99', '3.5', '12', 'images/m2.jpg', '1');
+INSERT INTO `bestbuydb`.`image` (`ImageId`, `Url`, `ProductId`) VALUES ('1', 'images/m4.jpg', '1');
+INSERT INTO `bestbuydb`.`image` (`ImageId`, `Url`, `ProductId`) VALUES ('2', 'images/m5.jpg', '1');
+INSERT INTO `bestbuydb`.`image` (`ImageId`, `Url`, `ProductId`) VALUES ('3', 'images/m6.jpg', '1');
 
 /*
 CREATE TABLE `users` (
