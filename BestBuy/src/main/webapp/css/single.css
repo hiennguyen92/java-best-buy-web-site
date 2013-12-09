@@ -1,0 +1,30 @@
+.menu_table{
+    width: 100%;
+    border-top: 1px solid rgb(200, 200, 200);
+    border-left: 1px solid rgb(200, 200, 200);
+    border-right: 1px solid rgb(200, 200, 200);
+    margin-bottom: 20px;
+}
+.menu_table input.img {
+    width: 27px;
+    height: 27px;
+}
+.menu_table tr {
+    border-bottom: 1px solid rgb(200, 200, 200);
+    height: 50px;
+}
+.menu_table a {
+    font-family: 'Open Sans',sans-serif;
+    color: rgb(148, 203, 50);
+}
+.menu_table .firstrow{
+    background-color: rgb(87, 87, 87);
+    height: 50px;
+    font-size: 1.3em;
+    color: rgb(255, 255, 255);
+}
+.menu_table td {
+    padding: 10px;
+    margin-bottom: 10px;
+    vertical-align: top;
+}

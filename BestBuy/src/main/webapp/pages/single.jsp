@@ -4,7 +4,8 @@
 <script src="js/jquery.rating.pack.js" type="text/javascript"></script>
 <script src="js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/single.js"></script>
-<link href="css/cart.css" rel="stylesheet" />
+<link href="css/single.css" rel="stylesheet" />
+<link href="css/style1.css" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
         <div class="details-page">
@@ -17,7 +18,7 @@
             </div>
         </div>
         <div class="detalis-image">
-            <div id="content"> <a href="${product.imageUrl}" class="jqzoom" style="" title="Product-Name"> <img src="${product.imageUrl}"  title="Product-Name" style="border: 1px solid #e5e5e5;"> </a>
+            <div id="content"> <a href="${product.imageUrl}" class="jqzoom" style="" title="Product-Name"> <img src="${product.imageUrl}"  title='${product.name}' style="border: 1px solid #e5e5e5;"> </a>
             </div>
         </div>
         <div class="detalis-image-details">
@@ -47,7 +48,7 @@
                 </div>
                 <div class="right-value-details">
                     <a href="#">Instock</a>
-                    <p>No reviews</p>
+                    <p>${product.comments.size()} reviews</p>
                 </div>
                 <div class="clear"> </div>
             </div>
@@ -140,13 +141,25 @@
                     </c:when>
                     <c:otherwise>
                         <c:forEach var="comment" items="${product.comments}">
-                            <p>${comment.account.username}</p>
-                            <p>${comment.content}</p>
+                            <table class="menu_table"><!--************************ begin productcart ************************-->
+
+                                <tbody style="font-size: small">
+                                    <tr class="product_row">
+                                        <td style="width: 20%">
+                                            <img height="120px" src="images/avatar.jpg"/>
+                                        </td>
+                                        <td>
+                                            <p><a href="#">${comment.account.username}</a></p>
+                                            <p>${comment.content}</p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </c:forEach>                        
                     </c:otherwise>
                 </c:choose>
                 <c:if test="${User != null}">
-                    <div class="col span_2_of_3">
+                    <div class="col span_2_of_3" style="font-size: medium">
                         <form class="contact-form" action="Info" method="post">
                             <input type="hidden" name="id" value="${product.productId}"/>
                             <textarea name="ta_content"></textarea>
@@ -165,7 +178,7 @@
                         <p>This product doesn't have any accessories</p>
                     </c:when>
                     <c:otherwise>
-                        <table class="productcart"><!--************************ begin productcart ************************-->
+                        <table class="menu_table"><!--************************ begin productcart ************************-->
 
                             <tbody style="font-size: small">
                                 <c:forEach var="accessory" items="${product.accessories}">
@@ -190,10 +203,8 @@
                                              </div>
                                         </td>
                                         <td>
-                                            <div class="brand-history">
-                                                <a href="Redirect?add=${accessory.productId}">ADD TO CART</a>   
-                                                <p style="font-size: medium">$${accessory.price}</p> 
-                                            </div>                                
+                                            <button onclick="location.href="Redirect?add=${accessory.productId}">ADD TO CART</button>   
+                                                <p style="font-size: medium; margin-left: 20px">$${accessory.price}</p>
                                         </td>
                                     </tr>
                                 </c:forEach>
