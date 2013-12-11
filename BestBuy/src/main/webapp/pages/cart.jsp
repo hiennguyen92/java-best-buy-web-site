@@ -37,7 +37,7 @@
                         <td><span class="pricedisplay">$${item.price}</span></td>
 
                         <td>
-                            <form id="f_cart" action="Cart" method="post">
+                            <form id="f_cart" class="f_cart" action="Cart" method="post">
                                 <input type="hidden" name="h_id" value="${item.productId}"/>
                                 <input id="h_quantity" type="hidden" name="h_quantity" />
                                 <input class="img" type="image" src="images/update.png" name="update"></input>

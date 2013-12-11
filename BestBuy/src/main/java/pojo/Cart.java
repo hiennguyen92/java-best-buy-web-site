@@ -6,6 +6,7 @@
 package pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
@@ -26,6 +27,8 @@ public class Cart implements Serializable {
     private Account account;
     @Column(name = "TotalPrice")
     private double totalPrice;
+    @Column(name = "Date")
+    private Date date = new Date();
     @ManyToMany(
             fetch = FetchType.EAGER,
             cascade = {CascadeType.ALL},
@@ -58,6 +61,14 @@ public class Cart implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public Set<Product> getProducts() {

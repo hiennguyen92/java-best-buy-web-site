@@ -25,6 +25,15 @@ public class CartDetail implements Serializable {
     @Column(name = "Quantity")
     private Integer quantity;
 
+    public CartDetail() {
+    }
+
+    public CartDetail(Integer cartId, Integer productId, Integer quantity) {
+        this.cartId = cartId;
+        this.productId = productId;
+        this.quantity = quantity;
+    }
+
     public Integer getCartId() {
         return cartId;
     }

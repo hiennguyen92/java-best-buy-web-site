@@ -7,6 +7,7 @@ package controller;
 
 import dao.AccountDAO;
 import dao.CartDAO;
+import dao.CartDetailDAO;
 import dao.ProductDAO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.Account;
 import pojo.Cart;
+import pojo.CartDetail;
 import pojo.Product;
 
 /**
@@ -44,12 +46,19 @@ public class Redirect implements ServletRequestAware {
         String temp = request.getHeader("Referer");
         previous = temp.substring(temp.lastIndexOf('/') + 1);
         HttpSession session = request.getSession();
+        Account currentUser = (Account) session.getAttribute("User");
         ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
         if (request.getParameter("logout") != null) {
             session.removeAttribute("Cart");
             session.removeAttribute("User");
+            if(previous.equals("WishList") ||
+                    previous.equals("OrderHistory") ||
+                    previous.equals("Cart"))
+                previous = "Home";
         }
         if (request.getParameter("add") != null) {
+            if(currentUser == null)
+                return "error";
             int id = Integer.parseInt(request.getParameter("add"));
             Product product = productDAO.get(id);
             product.setQuantity(1);
@@ -69,25 +78,26 @@ public class Redirect implements ServletRequestAware {
             session.setAttribute("Cart", cart);
         }
         if (request.getParameter("add_wish") != null) {
+            if(currentUser == null)
+                return "error";
             int id = Integer.parseInt(request.getParameter("add_wish"));
             Product product = productDAO.get(id);
             product.setQuantity(1);
             boolean isExist = false;
-            Account currentUser = (Account) session.getAttribute("User");
+            CartDetailDAO cartDetailDAO = (CartDetailDAO) context.getBean("cartDetailDAO");            
             Cart wishList = currentUser.getWishList();
-            for (Product _product : wishList.getProducts()) {
-                if (_product.getProductId() == product.getProductId()) {
-                    isExist = true;
-                    _product.setQuantity(_product.getQuantity() + 1);
-                    break;
-                }
+            CartDetail cd = cartDetailDAO.get(wishList.getCartId(), product.getProductId());
+            if(cd != null){
+                cd.setQuantity(cd.getQuantity() + 1);
             }
-            if (!isExist) {
+            else {
                 wishList.getProducts().add(product);
+                cd = new CartDetail(wishList.getCartId(), product.getProductId(), 1);
             }
             wishList.setTotalPrice(wishList.getTotalPrice() + product.getPrice());
             CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
             cartDAO.update(wishList);
+            cartDetailDAO.update(cd);
         }
         if (request.getParameter("remove") != null) {
             int id = Integer.parseInt(request.getParameter("remove"));
