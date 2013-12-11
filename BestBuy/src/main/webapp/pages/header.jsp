@@ -1,4 +1,11 @@
+<%@page import="org.springframework.security.authentication.AnonymousAuthenticationToken"%>
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="pojo.Account"%>
+<%@page import="dao.AccountDAO"%>
+<%@page import="org.springframework.context.support.ClassPathXmlApplicationContext"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder" %>
 <div class="wrap">
     <!----start-Header---->
     <div class="header">
@@ -10,20 +17,30 @@
         <div class="clear"> </div>
         <div class="header-top-nav">
             <ul>
+                <%
+                    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+                    if (!(auth instanceof AnonymousAuthenticationToken)) {
+                        String userName = auth.getName();
+
+                        AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
+                        Account account = accountDAO.get(userName);
+                        session.setAttribute("User", account);
+                    }
+                %>
                 <c:choose>
                     <c:when test="${User == null}">
                         <li><a href="Register">Register</a></li>
                         <li><a href="Login">Login</a></li>
                         <li><a href="Wish">Wish List</a></li>
                         <li><a href="#"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;0 items</lable></li>                        
-                    </c:when>
-                    <c:otherwise>
+                        </c:when>
+                        <c:otherwise>
                         <li><a href="MyInfo">Hello ${User.username}</a></li>
-                        <li><a href="Redirect?logout=true">Log out</a></li>
+                        <li><a href="<c:url value="j_spring_security_logout" />" > Logout</a></li>
                         <li><a href="Login">Wish List</a></li>
                         <li><a href="Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>
-                    </c:otherwise>
-                </c:choose>
+                        </c:otherwise>
+                    </c:choose>
             </ul>
         </div>
         <div class="clear"> </div>

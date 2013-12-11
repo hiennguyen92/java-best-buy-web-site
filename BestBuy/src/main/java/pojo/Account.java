@@ -17,6 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Account")
 public class Account implements Serializable {
+
     @Id
     @Column(name = "Username", length = 45)
     private String username;
@@ -29,15 +30,27 @@ public class Account implements Serializable {
     @OneToMany(mappedBy = "account")
     private Set<Cart> carts = new HashSet<Cart>(0);
     @OneToMany(mappedBy = "account")
-    private Set<Comment> comments = new HashSet<Comment>(0);  
+    private Set<Comment> comments = new HashSet<Comment>(0);
+    @Column(name = "Enable")
+    private boolean Enable;
 
-    public Account() { }
+    public boolean isEnable() {
+        return Enable;
+    }
+
+    public void setEnable(boolean Enable) {
+        this.Enable = Enable;
+    }
+
+    public Account() {
+    }
 
     public Account(String username, String password, String realName, String phone) {
         this.username = username;
         this.password = password;
         this.realName = realName;
         this.phone = phone;
+        this.Enable = true;
     }
 
     public String getUsername() {
