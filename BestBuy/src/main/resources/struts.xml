@@ -19,6 +19,7 @@
         </action>
         <action name="Info" class="controller.Info">
             <result name="success" type="tiles">Info</result>
+            <result name="ajax_comment">/pages/ajax_comment.jsp</result>
         </action>
         <action name="Login" class="controller.Login">
             <result name="success" type="redirect">Home</result>
@@ -37,6 +38,16 @@
         </action>
         <action name="Redirect" class="controller.Redirect">
             <result name="success" type="redirect">${previous}</result>
+            <result name="ajax_compare">/pages/ajax_compare.jsp</result>
+        </action>
+        <action name="PostComment" class="controller.PostComment">
+            <result name="success">/pages/ajax_comment.jsp</result>
+        </action>
+        <action name="OrderHistory" class="controller.OrderHistory">
+            <result name="success" type="tiles">OrderHistory</result>
+        </action>
+        <action name="WishList" class="controller.WishList">
+            <result name="success" type="tiles">WishList</result>
         </action>
     </package>
  

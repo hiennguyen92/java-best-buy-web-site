@@ -5,12 +5,15 @@
  */
 package controller;
 
+import dao.AccountDAO;
+import dao.CartDAO;
 import dao.ProductDAO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojo.Account;
 import pojo.Cart;
 import pojo.Product;
 
@@ -65,6 +68,27 @@ public class Redirect implements ServletRequestAware {
             cart.setTotalPrice(cart.getTotalPrice() + product.getPrice());
             session.setAttribute("Cart", cart);
         }
+        if (request.getParameter("add_wish") != null) {
+            int id = Integer.parseInt(request.getParameter("add_wish"));
+            Product product = productDAO.get(id);
+            product.setQuantity(1);
+            boolean isExist = false;
+            Account currentUser = (Account) session.getAttribute("User");
+            Cart wishList = currentUser.getWishList();
+            for (Product _product : wishList.getProducts()) {
+                if (_product.getProductId() == product.getProductId()) {
+                    isExist = true;
+                    _product.setQuantity(_product.getQuantity() + 1);
+                    break;
+                }
+            }
+            if (!isExist) {
+                wishList.getProducts().add(product);
+            }
+            wishList.setTotalPrice(wishList.getTotalPrice() + product.getPrice());
+            CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
+            cartDAO.update(wishList);
+        }
         if (request.getParameter("remove") != null) {
             int id = Integer.parseInt(request.getParameter("remove"));
             Product product = productDAO.get(id);
@@ -101,6 +125,7 @@ public class Redirect implements ServletRequestAware {
                         product.getProductId() != product3.getProductId())
                     session.setAttribute("compare4", product);
             }
+            return "ajax_compare";
         }
         if(request.getParameter("remove_compare") != null){
             int id = Integer.parseInt(request.getParameter("remove_compare"));
@@ -114,6 +139,7 @@ public class Redirect implements ServletRequestAware {
                 session.setAttribute("compare3", session.getAttribute("compare4"));
             }
             session.removeAttribute("compare4");
+            return "ajax_compare";
         }
         return "success";
     }

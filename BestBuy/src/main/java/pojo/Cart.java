@@ -27,9 +27,13 @@ public class Cart implements Serializable {
     @Column(name = "TotalPrice")
     private double totalPrice;
     @ManyToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "carts",
+            fetch = FetchType.EAGER,
+            cascade = {CascadeType.ALL},
             targetEntity = Product.class)
+    @JoinTable(
+            name = "Cart_Detail",
+            joinColumns = {@JoinColumn(name = "CartId")},
+            inverseJoinColumns = {@JoinColumn(name = "ProductId")})
     private Set<Product> products = new HashSet<Product>(0);
 
     public int getCartId() {

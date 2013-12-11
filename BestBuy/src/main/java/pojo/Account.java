@@ -26,6 +26,11 @@ public class Account implements Serializable {
     private String realName;
     @Column(name = "Phone", length = 45)
     private String phone;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "WishID")
+    private Cart wishList = new Cart();
+    @Column(name = "Enable")
+    private Integer enable;
     @OneToMany(mappedBy = "account")
     private Set<Cart> carts = new HashSet<Cart>(0);
     @OneToMany(mappedBy = "account")
@@ -33,11 +38,12 @@ public class Account implements Serializable {
 
     public Account() { }
 
-    public Account(String username, String password, String realName, String phone) {
+    public Account(String username, String password, String realName, String phone, int enable) {
         this.username = username;
         this.password = password;
         this.realName = realName;
         this.phone = phone;
+        this.enable = enable;
     }
 
     public String getUsername() {
@@ -70,6 +76,22 @@ public class Account implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public Cart getWishList() {
+        return wishList;
+    }
+
+    public void setWishList(Cart wishList) {
+        this.wishList = wishList;
+    }
+
+    public Integer getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Integer enable) {
+        this.enable = enable;
     }
 
     public Set<Cart> getCarts() {

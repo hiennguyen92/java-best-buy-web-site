@@ -74,8 +74,8 @@
                     <ul>
                         <li><a  class="cart" href="Redirect?add=${Products[i].productId}"> </a></li>
                         <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
-                        <li><a  class="Compar" href="Redirect?compare=${Products[i].productId}"> </a></li>
-                        <li><a  class="Wishlist" href="single.html"> </a></li>
+                        <li><a  class="Compar" href="javascript:void(0)" onclick="addCompare(${Products[i].productId});"> </a></li>
+                        <li><a  class="Wishlist" href="Redirect?add_wish=${Products[i].productId}"> </a></li>
                     </ul>
                 </div>
             </c:forEach> 
@@ -90,8 +90,8 @@
                     <ul>
                         <li><a  class="cart" href="Redirect?add=${Products[i].productId}"> </a></li>
                         <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
-                        <li><a  class="Compar" href="Redirect?compare=${Products[i].productId}"> </a></li>
-                        <li><a  class="Wishlist" href="single.html"> </a></li>
+                        <li><a  class="Compar" href="javascript:void(0)" onclick="addCompare(${Products[i].productId});"> </a></li>
+                        <li><a  class="Wishlist" href="Redirect?add_wish=${Products[i].productId}"> </a></li>
                     </ul>
                 </div>
             </c:forEach> 

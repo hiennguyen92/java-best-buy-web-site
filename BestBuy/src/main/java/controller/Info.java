@@ -45,6 +45,7 @@ public class Info implements ServletRequestAware {
             comment.setProduct(product);
             comment.setContent(content);
             commentDAO.add(comment);
+            return "ajax_comment";
         }
         return "success";
     }

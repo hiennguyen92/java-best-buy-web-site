@@ -157,7 +157,7 @@
                                         <br clear="all" />
 
                                         <button onclick="location.href='Redirect?add=${product.productId}'" class="add-to-cart-button">Add to Cart</button>
-                                        <button onclick="location.href='Redirect?compare=${product.productId}'" class="compare-button">Add compare</button>
+                                        <button onclick="addCompare(${product.productId})" class="compare-button">Add compare</button>
 
                                     </div>
 

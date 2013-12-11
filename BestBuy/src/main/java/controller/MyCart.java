@@ -6,6 +6,7 @@
 package controller;
 
 import dao.CartDAO;
+import dao.CartDetailDAO;
 import dao.ProductDAO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.Cart;
+import pojo.CartDetail;
 import pojo.Product;
 
 /**
@@ -62,6 +64,16 @@ public class MyCart implements ServletRequestAware {
         if(request.getParameter("checkout") != null){
             CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
             cartDAO.add(cart);
+            CartDetailDAO cartDetailDAO = (CartDetailDAO) context.getBean("cartDetailDAO");
+            Cart lastCart = cartDAO.getLast();
+            CartDetail cd = null;
+            for (Product item : cart.getProducts()) {
+                int cartID = lastCart.getCartId();
+                int itemID = item.getProductId();
+                cd = cartDetailDAO.get(cartID, itemID);
+                cd.setQuantity(item.getQuantity());
+                cartDetailDAO.update(cd);
+            }
             cart.getProducts().clear();
             cart.setTotalPrice(0);
         }

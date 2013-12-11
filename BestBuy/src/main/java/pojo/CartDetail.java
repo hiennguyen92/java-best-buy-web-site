@@ -18,33 +18,34 @@ import javax.persistence.*;
 public class CartDetail implements Serializable {
     @Id
     @Column(name = "CartId")
-    private int cartId;
+    private Integer cartId;
+    @Id
     @Column(name = "ProductId")
-    private int productId;
+    private Integer productId;
     @Column(name = "Quantity")
-    private int quantity;
+    private Integer quantity;
 
-    public int getCartId() {
+    public Integer getCartId() {
         return cartId;
     }
 
-    public void setCartId(int cartId) {
+    public void setCartId(Integer cartId) {
         this.cartId = cartId;
     }
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
     

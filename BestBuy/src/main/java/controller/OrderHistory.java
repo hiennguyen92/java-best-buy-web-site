@@ -6,20 +6,19 @@
 
 package controller;
 
-import dao.BrandDAO;
-import dao.CategoryDAO;
-import dao.ProductDAO;
+import dao.CartDAO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojo.Account;
 
 /**
  *
  * @author HOANG
  */
-public class Home implements ServletRequestAware {
+public class OrderHistory implements ServletRequestAware {
 
     private HttpServletRequest request;
 
@@ -30,13 +29,11 @@ public class Home implements ServletRequestAware {
 
     public String execute() {
         HttpSession session = request.getSession();
+        Account currentUser = (Account) session.getAttribute("User");
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
-        BrandDAO brandDAO = (BrandDAO) context.getBean("brandDAO");
-        CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
-        ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
-        session.setAttribute("Brands", brandDAO.getList());
-        session.setAttribute("Categories", categoryDAO.getList());
-        session.setAttribute("Products", productDAO.getList());
+        CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
+        request.setAttribute("oders", cartDAO.getList(currentUser.getUsername()));
         return "success";
     }
+    
 }

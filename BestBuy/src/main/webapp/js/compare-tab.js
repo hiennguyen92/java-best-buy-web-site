@@ -2,7 +2,10 @@ $(document).ready(function() {
         
         $(".compare li").click(function (){
             var id = $(this).attr("id").replace("item_","");
-            location.href="Redirect?remove_compare="+id;
+            var ajax = $.ajax("Redirect?remove_compare="+id);
+            ajax.done(function(msg) {
+                $(".compare").html(msg);
+            });
         });
         
         $("#f_compare").submit(function (){
@@ -20,22 +23,9 @@ $(document).ready(function() {
         });
 });
 
-function remove(id){
-    $("#item_"+id).html($("#item_"+(parseInt(id)+1)).html());
-    $("#item_"+id).attr("class", $("#item_"+(parseInt(id)+1)).attr("class"));
-    if(id == 1){
-        $("#item_2").html($("#item_3").html());
-        $("#item_2").attr("class", $("#item_3").attr("class"));
-        $("#item_3").html($("#item_4").html());
-        $("#item_3").attr("class", $("#item_4").attr("class"));
-    }
-    else if(id == 2){
-        $("#item_3").html($("#item_4").html());
-        $("#item_3").attr("class", $("#item_4").attr("class"));
-    }
-    $("#item_4").html("");
-    $("#item_4").attr("class", "");
-    
-    $("#remove_"+id).removeAttr("style");
-    $("#remove_"+id).removeAttr("id");
+function addCompare(id) {
+    var ajax = $.ajax("Redirect?compare="+id);
+    ajax.done(function(msg) {
+        $(".compare").html(msg);
+    });
 }

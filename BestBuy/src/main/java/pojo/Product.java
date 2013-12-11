@@ -30,6 +30,8 @@ public class Product implements Serializable {
     private Double price;
     @Column(name = "Rating")
     private Double rating;
+    @Column(name = "RateAmount")
+    private Integer RateAmount;
     @Column(name = "Screen")
     private Integer screen;
     @Column(name = "Warranty")
@@ -54,13 +56,9 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product")
     private Set<Image> images = new HashSet<Image>(0); 
     @ManyToMany(
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             targetEntity = Cart.class,
-            cascade = {CascadeType.ALL})
-    @JoinTable(
-            name = "Cart_Detail",
-            joinColumns = {@JoinColumn(name = "ProductId")},
-            inverseJoinColumns = {@JoinColumn(name = "CartId")})
+            mappedBy = "products")
     public Set<Cart> carts = new HashSet<Cart>(0);
 
     public Integer getProductId() {
@@ -101,6 +99,14 @@ public class Product implements Serializable {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public Integer getRateAmount() {
+        return RateAmount;
+    }
+
+    public void setRateAmount(Integer RateAmount) {
+        this.RateAmount = RateAmount;
     }
 
     public Integer getQuantity() {

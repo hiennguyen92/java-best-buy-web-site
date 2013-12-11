@@ -33,4 +33,14 @@ $(document).ready(function() {
             fadeSpeed: 500,
             generatePagination: false
     });
+    
+    $(".contact-form").submit(function (){
+        var id = $("#product_id").val();
+        var content = $("#ta_content").val();
+        var ajax = $.ajax("PostComment?id="+id+"&ta_content="+content);
+        ajax.done(function(msg){
+            $("#comment_section").html(msg);
+        });
+        return false;
+    });
 });

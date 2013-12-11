@@ -174,6 +174,7 @@
                         <p>This product doesn't have any comment</p>
                     </c:when>
                     <c:otherwise>
+                        <div id="comment_section">
                         <c:forEach var="comment" items="${product.comments}">
                             <table class="menu_table"><!--************************ begin productcart ************************-->
 
@@ -189,14 +190,15 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </c:forEach>                        
+                        </c:forEach>
+                        </div>
                     </c:otherwise>
                 </c:choose>
                 <c:if test="${User != null}">
                     <div class="col span_2_of_3" style="font-size: medium">
                         <form class="contact-form" action="Info" method="post">
-                            <input type="hidden" name="id" value="${product.productId}"/>
-                            <textarea name="ta_content"></textarea>
+                            <input type="hidden" id="product_id" value="${product.productId}"/>
+                            <textarea id="ta_content"></textarea>
                             <input type="submit" value="Send"/> 
                         </form>
                     </div>

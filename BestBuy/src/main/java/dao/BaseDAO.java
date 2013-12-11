@@ -36,7 +36,7 @@ public class BaseDAO<T> {
         T temp = null;
         Session session = currentSession();
         try {
-            temp = (T) currentSession().get(cls, id);
+            temp = (T) session.get(cls, id);
         } catch (Exception ex) {
             //Log the exception
             System.out.println(ex);
@@ -50,7 +50,7 @@ public class BaseDAO<T> {
         T temp = null;
         Session session = currentSession();
         try {
-            temp = (T) currentSession().get(cls, id);
+            temp = (T) session.get(cls, id);
         } catch (Exception ex) {
             //Log the exception
             System.out.println(ex);

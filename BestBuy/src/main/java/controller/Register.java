@@ -31,7 +31,7 @@ public class Register implements ServletRequestAware {
             Account account = null;
             String realName = request.getParameter("tb_RealName");
             String phone = request.getParameter("tb_Phone");
-            account = new Account(userName, password, realName, phone);
+            account = new Account(userName, password, realName, phone, 1);
             AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
             if (accountDAO.add(account)) {
                 result = "Registration successful";
