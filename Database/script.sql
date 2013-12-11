@@ -13,8 +13,10 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Account` (
   `Password` VARCHAR(45) NULL,
   `RealName` VARCHAR(45) NULL,
   `Phone` VARCHAR(45) NULL,
+  `WishId` INT(10) NULL,
   `Enable` tinyint(1) NOT NULL,
-  PRIMARY KEY (`Username`))
+  PRIMARY KEY (`Username`),
+  CONSTRAINT `FK_account_cart` FOREIGN KEY (`WishId`) REFERENCES `Cart` (`CartId`))
 ENGINE = InnoDB;
 
 CREATE TABLE `UserRoles` (
@@ -39,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart` (
   `CartId` INT NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NULL,
   `TotalPrice` DOUBLE NULL,
+  `Date` DATE NULL,
   PRIMARY KEY (`CartId`),
   INDEX `FK_Account_idx` (`Username` ASC),
   CONSTRAINT `FK_Account`
@@ -78,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Product` (
   `Description` VARCHAR(2000) NULL,
   `Price` DOUBLE NULL,
   `Rating` DOUBLE NULL,
+  `RateAmount` INT NULL,
   `Screen` INT NULL,
   `Warranty` INT NULL,
   `Quantity` INT NULL,
