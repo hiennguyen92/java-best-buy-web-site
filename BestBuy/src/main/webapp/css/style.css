@@ -987,7 +987,7 @@ select{
 		resize:none;
 		height:120px;		
 }
-.contact-form input[type="submit"]{
+.contact-form input[type="submit"], .contact-form input[type="button"]{
 	font-size:1em;
 	font-family: 'Open Sans', sans-serif;
 	background-color: #f7f7f7;
@@ -1012,13 +1012,13 @@ select{
 	-webkit-transition: 0.5s ease;
 	cursor:pointer;
 }
-.contact-form input[type="submit"]:hover{
+.contact-form input[type="submit"]:hover, .contact-form input[type="button"]:hover{
 	border: 1px solid #575757;
 	background:#575757;
 	text-decoration: none;
 	color: #94CB32;
 }
-.contact-form input[type="submit"]:active{
+.contact-form input[type="submit"]:active, .contact-form input[type="button"]:active{
 	background-color:#F7503D;  
 }
 .company_address{

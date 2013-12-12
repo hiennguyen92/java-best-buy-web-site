@@ -36,4 +36,7 @@
     <definition name="WishList" extends="Page">
         <put-attribute name="body" value="/pages/wish_list.jsp"/>    
     </definition>
+    <definition name="Order" extends="Page">
+        <put-attribute name="body" value="/pages/order.jsp"/>    
+    </definition>
 </tiles-definitions>

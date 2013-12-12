@@ -13,15 +13,19 @@
                 </div>
                 <div>
                     <span><label>RE-ENTER THE PASSWORD</label></span>
-                    <span><input type="password" value=""></span>
+                    <span><input type="password" value="" name="tb_repassword"></span>
                 </div>
                 <div>
                     <span><label>YOUR NAME</label></span>
-                    <span><input type="text" value=""></span>
+                    <span><input type="text" value="" name="tb_RealName"></span>
                 </div>
                 <div>
                     <span><label>PHONE NUMBER</label></span>
-                    <span><input type="text" value=""></span>
+                    <span><input type="text" value="" name="tb_Phone"></span>
+                </div>
+                <div>
+                    <span><label>ADDRESS</label></span>
+                    <span><textarea type="text" value="" name="tb_Address"></textarea></span>
                 </div>
                 <div>
                     <span><input type="submit" value="REGISTER"></span>

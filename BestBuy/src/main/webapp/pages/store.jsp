@@ -12,7 +12,7 @@
 
             <div id="cart_wrapper" align="center">
 
-                <form action="#" id="cart_form" name="cart_form">
+                <form action="Order" id="cart_form" name="cart_form">
 
                     <div class="cart-info">
                         <c:forEach var="item" items="${Cart.products}">

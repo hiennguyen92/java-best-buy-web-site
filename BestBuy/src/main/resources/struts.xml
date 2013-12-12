@@ -48,6 +48,10 @@
         <action name="WishList" class="controller.WishList">
             <result name="success" type="tiles">WishList</result>
         </action>
+        <action name="Order" class="controller.Order">
+            <result name="success" type="tiles">Order</result>
+            <result name="complete" type="redirect">Store</result>
+        </action>
     </package>
  
 </struts>

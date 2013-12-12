@@ -60,23 +60,6 @@ public class MyCart implements ServletRequestAware {
             }
             session.setAttribute("Cart", cart);
         }
-        
-        if(request.getParameter("checkout") != null){
-            CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
-            cartDAO.add(cart);
-            CartDetailDAO cartDetailDAO = (CartDetailDAO) context.getBean("cartDetailDAO");
-            Cart lastCart = cartDAO.getLast();
-            CartDetail cd = null;
-            for (Product item : cart.getProducts()) {
-                int cartID = lastCart.getCartId();
-                int itemID = item.getProductId();
-                cd = cartDetailDAO.get(cartID, itemID);
-                cd.setQuantity(item.getQuantity());
-                cartDetailDAO.update(cd);
-            }
-            cart.getProducts().clear();
-            cart.setTotalPrice(0);
-        }
         return "success";
     }
 
