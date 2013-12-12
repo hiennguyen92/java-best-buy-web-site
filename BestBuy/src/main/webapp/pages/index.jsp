@@ -8,16 +8,16 @@
     <div class="top-3-grids">
         <div class="section group">
             <div class="grid_1_of_3 images_1_of_3">
-                <a href="single.html"><img src="images/grid-img1.jpg"></a>
-                <h3>Lorem Ipsum is simply dummy text </h3>
+                <a href="Store?Brand=1"><img src="images/1_ch.jpg"></a>
+                <h3>SAMSUNG </h3>
             </div>
             <div class="grid_1_of_3 images_1_of_3 second">
-                <a href="single.html"><img src="images/grid-img2.jpg"></a>
-                <h3>Lorem Ipsum is simply dummy text </h3>
+                <a href="Store?Brand=2"><img src="images/6_ch.jpg"></a>
+                <h3>LG </h3>
             </div>
             <div class="grid_1_of_3 images_1_of_3 theree">
-                <a href="single.html"><img src="images/grid-img3.jpg"></a>
-                <h3>Lorem Ipsum is simply dummy text </h3>
+                <a href="Store?Brand=3"><img src="images/7_ch.jpg"></a>
+                <h3>Sony </h3>
             </div>
         </div>
     </div>
@@ -66,32 +66,32 @@
             </div>
         <div class="section group">
             <c:forEach var="dec" begin="0" end="3" step="1">
-                <c:set var="i" value="${Products.size()-1-dec}"/>
+                <c:set var="i" value="${products.size()-1-dec}"/>
                 <div class="grid_1_of_4 images_1_of_4 products-info">
-                    <img src="${Products[i].imageUrl}">
-                    <a href="Info?id=${Products[i].productId}">${Products[i].name}</a>
-                    <h3>$${Products[i].price}</h3>
+                    <img src="${products[i].imageUrl}">
+                    <a href="Info?id=${products[i].productId}">${products[i].name}</a>
+                    <h3>$${products[i].price}</h3>
                     <ul>
-                        <li><a  class="cart" href="Redirect?add=${Products[i].productId}"> </a></li>
-                        <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
-                        <li><a  class="Compar" href="javascript:void(0)" onclick="addCompare(${Products[i].productId});"> </a></li>
-                        <li><a  class="Wishlist" href="Redirect?add_wish=${Products[i].productId}"> </a></li>
+                        <li><a  class="cart" href="Redirect?add=${products[i].productId}"> </a></li>
+                        <li><a  class="i" href="Info?id=${products[i].productId}"> </a></li>
+                        <li><a  class="Compar" href="javascript:void(0)" onclick="addCompare(${products[i].productId});"> </a></li>
+                        <li><a  class="Wishlist" href="Redirect?add_wish=${products[i].productId}"> </a></li>
                     </ul>
                 </div>
             </c:forEach> 
         </div>
         <div class="section group">
             <c:forEach var="dec" begin="0" end="3" step="1">
-                <c:set var="i" value="${Products.size()-5-dec}"/>
+                <c:set var="i" value="${products.size()-5-dec}"/>
                 <div class="grid_1_of_4 images_1_of_4 products-info">
-                    <img src="${Products[i].imageUrl}">
-                    <a href="Info?id=${Products[i].productId}">${Products[i].name}</a>
-                    <h3>$${Products[i].price}</h3>
+                    <img src="${products[i].imageUrl}">
+                    <a href="Info?id=${products[i].productId}">${products[i].name}</a>
+                    <h3>$${products[i].price}</h3>
                     <ul>
-                        <li><a  class="cart" href="Redirect?add=${Products[i].productId}"> </a></li>
-                        <li><a  class="i" href="Info?id=${Products[i].productId}"> </a></li>
-                        <li><a  class="Compar" href="javascript:void(0)" onclick="addCompare(${Products[i].productId});"> </a></li>
-                        <li><a  class="Wishlist" href="Redirect?add_wish=${Products[i].productId}"> </a></li>
+                        <li><a  class="cart" href="Redirect?add=${products[i].productId}"> </a></li>
+                        <li><a  class="i" href="Info?id=${products[i].productId}"> </a></li>
+                        <li><a  class="Compar" href="javascript:void(0)" onclick="addCompare(${products[i].productId});"> </a></li>
+                        <li><a  class="Wishlist" href="Redirect?add_wish=${products[i].productId}"> </a></li>
                     </ul>
                 </div>
             </c:forEach> 

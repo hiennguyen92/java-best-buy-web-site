@@ -242,7 +242,7 @@
                                              </div>
                                         </td>
                                         <td>
-                                            <button onclick="location.href="Redirect?add=${accessory.productId}">ADD TO CART</button>   
+                                            <button onclick="location.href='Redirect?add=${accessory.productId}'">ADD TO CART</button>   
                                                 <p style="font-size: medium; margin-left: 20px">$${accessory.price}</p>
                                         </td>
                                     </tr>

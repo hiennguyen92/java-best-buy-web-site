@@ -9,11 +9,13 @@ package controller;
 import dao.BrandDAO;
 import dao.CategoryDAO;
 import dao.ProductDAO;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojo.Product;
 
 /**
  *
@@ -37,6 +39,14 @@ public class Home implements ServletRequestAware {
         session.setAttribute("Brands", brandDAO.getList());
         session.setAttribute("Categories", categoryDAO.getList());
         session.setAttribute("Products", productDAO.getList());
+        List<Product> products = productDAO.getList();
+        for(int i = 0; i < products.size();){
+            if(products.get(i).getProduct() != null)
+                products.remove(products.get(i));
+            else
+                i++;
+        }
+        request.setAttribute("products", products);
         return "success";
     }
 }
