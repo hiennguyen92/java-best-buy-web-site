@@ -20,6 +20,7 @@
         <action name="Info" class="controller.Info">
             <result name="success" type="tiles">Info</result>
             <result name="ajax_comment">/pages/ajax_comment.jsp</result>
+            <result name="ajax_rating">/pages/ajax_rating.jsp</result>
         </action>
         <action name="Login" class="controller.Login">
             <result name="success" type="redirect">Home</result>

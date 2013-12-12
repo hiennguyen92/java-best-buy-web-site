@@ -32,7 +32,7 @@
                         <li><h5>$${product.price}</h5></li>
                         <br />
                         <li>
-                            <p><label style="float: left">Rating:</label>
+                            <p id="rating"><label style="float: left">Rating:</label>
                             <c:forEach var="i" begin="1" end="10">
                                 <c:choose>
                                     <c:when test="${product.rating*2==i}">
@@ -43,6 +43,7 @@
                                     </c:otherwise>
                                 </c:choose>
                             </c:forEach>
+                             (${product.rateAmount} rates)           
                             </p>
                             
                         </li>

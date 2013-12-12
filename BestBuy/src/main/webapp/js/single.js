@@ -20,7 +20,11 @@ $(document).ready(function() {
     
     $(".auto-submit-star").rating({
         callback: function(value, link){
-          alert(value);
+          var ajax = $.ajax("Info?rating="+value);
+          ajax.done(function(msg) {
+                $("#rating").html(msg);
+                alert("thanks for rating");
+            });
         }
     });
     

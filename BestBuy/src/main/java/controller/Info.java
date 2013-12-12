@@ -8,6 +8,8 @@ package controller;
 
 import dao.CommentDAO;
 import dao.ProductDAO;
+import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -33,19 +35,26 @@ public class Info implements ServletRequestAware {
     public String execute() {
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
         ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
+        CommentDAO commentDAO = (CommentDAO) context.getBean("commentDAO");
         int id = Integer.parseInt(request.getParameter("id"));
         Product product = productDAO.get(id);
         request.setAttribute("product", product);
         if(request.getParameter("ta_content") != null){
             HttpSession session = request.getSession();
             String content = request.getParameter("ta_content");
-            CommentDAO commentDAO = (CommentDAO) context.getBean("commentDAO");
             Comment comment = new Comment();
             comment.setAccount((Account)session.getAttribute("User"));
             comment.setProduct(product);
             comment.setContent(content);
             commentDAO.add(comment);
             return "ajax_comment";
+        }
+        if(request.getParameter("rating") != null){
+            double rating = Double.valueOf(request.getParameter("rating"));
+            product.setRateAmount(product.getRateAmount() + 1);
+            product.setRating((product.getRating() + rating) / product.getRateAmount());
+            productDAO.update(product);
+            return "ajax_rating";
         }
         return "success";
     }
