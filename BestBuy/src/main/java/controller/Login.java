@@ -44,7 +44,7 @@ public class Login implements ServletRequestAware {
                 result = "Login failed! Wrong username or password";
             }
         }
-        request.setAttribute("Result", result);
+        request.setAttribute("result", result);
         return "error";
     }
 }

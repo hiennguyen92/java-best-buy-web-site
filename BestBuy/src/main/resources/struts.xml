@@ -52,6 +52,9 @@
             <result name="success" type="tiles">Order</result>
             <result name="complete" type="redirect">Store</result>
         </action>
+        <action name="Contact" class="controller.Contact">
+            <result name="success" type="tiles">Contact</result>
+        </action>
     </package>
  
 </struts>

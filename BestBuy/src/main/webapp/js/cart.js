@@ -6,4 +6,11 @@ $(document).ready(function() {
             return true;
         });
     });
+    $("#f_checkout").submit(function (){
+       if($(".f_cart").length == 0){
+           alert("you must choose at least 1 item");
+           return false;
+       }
+       return false;
+    });
 });

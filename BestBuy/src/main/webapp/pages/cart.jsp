@@ -70,7 +70,7 @@
 
             </tbody>
         </table>
-                    <form action="Order" method="post">
+                    <form id="f_checkout" action="Order" method="post">
                         <button type="submit" name="checkout" style="float: right">Check Out</button>
                     </form>
     </div>

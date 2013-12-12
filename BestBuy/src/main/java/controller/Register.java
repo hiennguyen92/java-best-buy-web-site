@@ -41,6 +41,7 @@ public class Register implements ServletRequestAware {
                 result = "Register failed! Your username is existed";
             }
         }
+        request.setAttribute("result", result);
         return "error";
     }
 

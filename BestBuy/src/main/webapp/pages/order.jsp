@@ -1,8 +1,10 @@
+<script type="text/javascript" src="js/order.js"></script>
+<input id="result" type="hidden" value="${result}"/>
 <div class="content">
     <div class="col span_1_of_3">
         <div class="contact-form">
             <h2>Order</h2>
-            <form action="Order" method="post">
+            <form id="f_order" action="Order" method="post">
                 <div>
                     <span><label>Name</label></span>
                     <span><input type="text" value="${User.realName}" name="tb_RealName"></span>
