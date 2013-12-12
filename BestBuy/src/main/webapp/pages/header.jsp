@@ -34,7 +34,7 @@
     <div class="wrap">
         <!----start-logo---->
         <div class="logo">
-            <a href="Home"><img src="images/logo.png" title="logo" /></a>
+            <a href="Home"><img height="35" width="280" src="images/logo.png" title="logo" /></a>
         </div>
         <!----end-logo---->
         <!----start-top-nav---->
