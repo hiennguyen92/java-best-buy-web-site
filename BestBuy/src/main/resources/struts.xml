@@ -39,11 +39,8 @@
         </action>
         <action name="Redirect" class="controller.Redirect">
             <result name="success" type="redirect">${previous}</result>
-            <result name="error" type="redirect">Home</result>
+            <result name="error" type="redirect">Login</result>
             <result name="ajax_compare">/pages/ajax_compare.jsp</result>
-        </action>
-        <action name="PostComment" class="controller.PostComment">
-            <result name="success">/pages/ajax_comment.jsp</result>
         </action>
         <action name="OrderHistory" class="controller.OrderHistory">
             <result name="success" type="tiles">OrderHistory</result>

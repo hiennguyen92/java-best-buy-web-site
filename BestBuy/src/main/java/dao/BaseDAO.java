@@ -29,7 +29,14 @@ public class BaseDAO<T> {
     }
 
     protected final Session currentSession() {
-        return sessionFactory.openSession();
+        Session session = null;
+        try{
+            session = sessionFactory.getCurrentSession();
+        }
+        catch(Exception ex){
+            session = sessionFactory.openSession();
+        }
+        return session;
     }
 
     public T get(int id) {

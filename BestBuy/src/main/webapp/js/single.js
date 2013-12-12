@@ -20,7 +20,7 @@ $(document).ready(function() {
     
     $(".auto-submit-star").rating({
         callback: function(value, link){
-          var ajax = $.ajax("Info?rating="+value);
+          var ajax = $.ajax("Info?id="+ $("#productId").val() +"&rating="+value);
           ajax.done(function(msg) {
                 $("#rating").html(msg);
                 alert("thanks for rating");
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $(".contact-form").submit(function (){
         var id = $("#product_id").val();
         var content = $("#ta_content").val();
-        var ajax = $.ajax("PostComment?id="+id+"&ta_content="+content);
+        var ajax = $.ajax("Info?id="+id+"&ta_content="+content);
         ajax.done(function(msg){
             $("#comment_section").html(msg);
         });

@@ -43,16 +43,18 @@ public class Info implements ServletRequestAware {
             HttpSession session = request.getSession();
             String content = request.getParameter("ta_content");
             Comment comment = new Comment();
-            comment.setAccount((Account)session.getAttribute("User"));
             comment.setProduct(product);
+            comment.setAccount((Account)session.getAttribute("User"));
             comment.setContent(content);
             commentDAO.add(comment);
+            product = productDAO.get(id);
+            request.setAttribute("product", product);
             return "ajax_comment";
         }
         if(request.getParameter("rating") != null){
             double rating = Double.valueOf(request.getParameter("rating"));
             product.setRateAmount(product.getRateAmount() + 1);
-            product.setRating((product.getRating() + rating) / product.getRateAmount());
+            product.setRating((product.getRating()*(product.getRateAmount()-1) + rating) / product.getRateAmount());
             productDAO.update(product);
             return "ajax_rating";
         }

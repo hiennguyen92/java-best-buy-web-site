@@ -9,6 +9,7 @@
 <link href="css/style1.css" rel="stylesheet" />
 <link href="css/slide.css" rel="stylesheet" />
 <div class="content">
+    <input type="hidden" id="productId" value="${product.productId}"/>
     <div class="content-grids">
         <div class="details-page">
             <div class="back-links">
@@ -35,7 +36,7 @@
                             <p id="rating"><label style="float: left">Rating:</label>
                             <c:forEach var="i" begin="1" end="10">
                                 <c:choose>
-                                    <c:when test="${product.rating*2==i}">
+                                    <c:when test="${product.rating*2>=i&&product.rating*2<i+1}">
                                         <input name="adv1" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
                                     </c:when>
                                     <c:otherwise>
@@ -58,7 +59,8 @@
             <div class="brand-history">
                 <h3>Description :</h3>
                 <p>${product.description}</p>
-                <a href="Redirect?add=${product.productId}">Addcart</a>
+                <a href="Redirect?add=${product.productId}">add to cart</a>
+                <a href="Redirect?add_wish=${product.productId}">add wish list</a>
             </div>
             <div class="share">
                 <ul>
@@ -170,12 +172,12 @@
             </div>
             <p class="menu_head">Reviews<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
+                <div id="comment_section">
                 <c:choose>
                     <c:when test="${product.comments.size() == 0}">
                         <p>This product doesn't have any comment</p>
                     </c:when>
                     <c:otherwise>
-                        <div id="comment_section">
                         <c:forEach var="comment" items="${product.comments}">
                             <table class="menu_table"><!--************************ begin productcart ************************-->
 
@@ -192,9 +194,9 @@
                                 </tbody>
                             </table>
                         </c:forEach>
-                        </div>
                     </c:otherwise>
                 </c:choose>
+                 </div>
                 <c:if test="${User != null}">
                     <div class="col span_2_of_3" style="font-size: medium">
                         <form class="contact-form" action="Info" method="post">
