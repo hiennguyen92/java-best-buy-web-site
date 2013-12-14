@@ -55,6 +55,18 @@
         <action name="Contact" class="controller.Contact">
             <result name="success" type="tiles">Contact</result>
         </action>
+        <action name="ManageAccount" class="controller.ManageAccount">
+            <result name="success" type="tiles">ManageAccount</result>
+        </action>
+    </package>
+    
+    <package name="Admin" namespace="/Admin" extends="struts-default">
+        <result-types>
+            <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
+        </result-types>
+        <action name="ManageAccount" class="controller.ManageAccount">
+            <result name="success" type="tiles">ManageAccount</result>
+        </action>
     </package>
  
 </struts>

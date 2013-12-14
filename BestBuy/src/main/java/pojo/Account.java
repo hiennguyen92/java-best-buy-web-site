@@ -37,7 +37,9 @@ public class Account implements Serializable {
     private Set<Cart> carts = new HashSet<Cart>(0);
     @OneToMany(mappedBy = "account")
     private Set<Comment> comments = new HashSet<Comment>(0);  
-
+    @OneToMany(mappedBy = "account")
+    private Set<UserRole> roles = new HashSet<UserRole>(0);  
+    
     public Account() { }
 
     public Account(String username, String password, String realName, String phone, String address, int enable) {
@@ -119,5 +121,13 @@ public class Account implements Serializable {
 
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
+    }
+
+    public Set<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
     }
 }

@@ -2,7 +2,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
  <%@taglib uri="/WEB-INF/functions" prefix="f" %>
 <link href="css/cart.css" rel="stylesheet" />
-<script type="text/javascript" src="js/cart.js"></script>
 <div class="content">
     <div class="content-grids">
         <h4>Orders history</h4>

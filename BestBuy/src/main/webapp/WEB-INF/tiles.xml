@@ -42,4 +42,7 @@
     <definition name="Contact" extends="Page">
         <put-attribute name="body" value="/pages/contact.jsp"/>    
     </definition>
+    <definition name="ManageAccount" extends="Page">
+        <put-attribute name="body" value="/pages/manage_account.jsp"/>    
+    </definition>
 </tiles-definitions>
