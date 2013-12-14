@@ -6,6 +6,7 @@
 
 package controller;
 
+import dao.AccountDAO;
 import dao.BrandDAO;
 import dao.CategoryDAO;
 import dao.ProductDAO;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import pojo.Account;
+import pojo.Cart;
 import pojo.Product;
 
 /**

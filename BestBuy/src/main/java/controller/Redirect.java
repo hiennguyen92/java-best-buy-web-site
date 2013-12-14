@@ -51,10 +51,7 @@ public class Redirect implements ServletRequestAware {
         if (request.getParameter("logout") != null) {
             session.removeAttribute("Cart");
             session.removeAttribute("User");
-            if(previous.equals("WishList") ||
-                    previous.equals("OrderHistory") ||
-                    previous.equals("Cart"))
-                previous = "Home";
+            previous = "j_spring_security_logout";
         }
         if (request.getParameter("add") != null) {
             if(currentUser == null)

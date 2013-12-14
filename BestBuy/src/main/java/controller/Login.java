@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import pojo.Account;
 import pojo.Cart;
 
@@ -29,22 +31,17 @@ public class Login implements ServletRequestAware {
     public String execute() {
         String result = "";
         HttpSession session = request.getSession();
-        String userName = request.getParameter("tb_Username");
-        String password = request.getParameter("tb_Password");
-        if (userName != null && password != null) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof User) {
+            String userName = ((User)principal).getUsername();
             AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
             Account account = accountDAO.get(userName);
-            if (account != null && account.getPassword().equals(password)) {
                 Cart cart = new Cart();
                 cart.setAccount(account);
                 session.setAttribute("Cart", cart);
                 session.setAttribute("User", account);
                 return "success";
-            } else {
-                result = "Login failed! Wrong username or password";
-            }
         }
-        request.setAttribute("result", result);
         return "error";
     }
 }

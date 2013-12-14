@@ -9,9 +9,9 @@
     <beans:import resource="hibernate.xml"></beans:import>
     
     <http auto-config="true">
-        <intercept-url pattern="/Z*" access="ROLE_ADMIN" />
-        <form-login login-page="/Login" default-target-url="/Home"
-                    authentication-failure-url="/Loginfailed" />
+        <intercept-url pattern="/Contact*" access="ROLE_ADMIN" />
+        <form-login login-page="/Login" default-target-url="/Login" always-use-default-target="true"
+                    authentication-failure-url="/Login" />
         <logout logout-success-url="/Home" />
     </http>
  
