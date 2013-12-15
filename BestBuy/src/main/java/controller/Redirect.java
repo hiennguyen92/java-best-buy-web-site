@@ -48,11 +48,6 @@ public class Redirect implements ServletRequestAware {
         HttpSession session = request.getSession();
         Account currentUser = (Account) session.getAttribute("User");
         ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
-        if (request.getParameter("logout") != null) {
-            session.removeAttribute("Cart");
-            session.removeAttribute("User");
-            previous = "j_spring_security_logout";
-        }
         if (request.getParameter("add") != null) {
             if(currentUser == null)
                 return "error";

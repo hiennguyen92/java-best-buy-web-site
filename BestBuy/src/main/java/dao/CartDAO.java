@@ -32,7 +32,8 @@ public class CartDAO extends BaseDAO<Cart>{
             list = query.list();
         } catch (HibernateException ex) {
             //Log the exception
-            System.err.println(ex);
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
         } finally {
             session.close();
         }
@@ -51,7 +52,8 @@ public class CartDAO extends BaseDAO<Cart>{
             cart = (Cart) query.uniqueResult();
         } catch (HibernateException ex) {
             //Log the exception
-            System.err.println(ex);
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
         } finally {
             session.close();
         }

@@ -6,6 +6,7 @@
 
 package dao;
 
+import org.hibernate.Session;
 import pojo.Account;
 
 /**
@@ -15,5 +16,22 @@ import pojo.Account;
 public class AccountDAO extends BaseDAO<Account>{
     public AccountDAO(){
         setCls(Account.class);
+    }
+    
+    @Override
+    public Account get(String id) {
+        Account temp = null;
+        Session session = currentSession();
+        try {
+            temp = (Account) session.get(Account.class, id);
+            temp.getComments().size();
+            temp.getRoles().size();
+        } catch (Exception ex) {
+            //Log the exception
+            logger.error(ex.getMessage());
+        } finally {
+            session.close();
+        }
+        return temp;
     }
 }

@@ -18,7 +18,7 @@
                     </c:when>
                     <c:otherwise>
                         <li><a href="#">Hello ${User.username}</a></li>
-                        <li><a href="Redirect?logout=true">Log out</a></li>
+                        <li><a href="j_spring_security_logout">Log out</a></li>
                         <li><a href="WishList">Wish List</a></li>
                         <li><a href="OrderHistory">Orders History</a></li>
                         <li><a href="Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>

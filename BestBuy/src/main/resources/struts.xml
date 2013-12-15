@@ -57,6 +57,7 @@
         </action>
         <action name="ManageAccount" class="controller.ManageAccount">
             <result name="success" type="tiles">ManageAccount</result>
+            <result name="action" type="tiles">ActionAccount</result>
         </action>
     </package>
     
@@ -66,6 +67,7 @@
         </result-types>
         <action name="ManageAccount" class="controller.ManageAccount">
             <result name="success" type="tiles">ManageAccount</result>
+            <result name="action" type="tiles">ActionAccount</result>
         </action>
     </package>
  

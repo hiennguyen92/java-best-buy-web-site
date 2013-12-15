@@ -39,4 +39,5 @@
     <bean id="cartDetailDAO" class="dao.CartDetailDAO"/>
     <bean id="imageDAO" class="dao.ImageDAO"/>
     <bean id="commentDAO" class="dao.CommentDAO"/>
+    <bean id="roleDAO" class="dao.RoleDAO"/>
 </beans>

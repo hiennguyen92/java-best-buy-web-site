@@ -20,11 +20,19 @@ public class UserRole implements Serializable{
     @GeneratedValue
     @Column(name = "RoleID")
     private int roleId;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="Username")
     private Account account;
     @Column(name = "Authority")
     private String authority;
+
+    public UserRole() {
+    }
+
+    public UserRole(Account account, String authority) {
+        this.account = account;
+        this.authority = authority;
+    }
 
     public int getRoleId() {
         return roleId;

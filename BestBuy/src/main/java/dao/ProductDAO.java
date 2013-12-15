@@ -30,7 +30,7 @@ public class ProductDAO extends BaseDAO<Product>{
             temp.getImages().size();
         } catch (Exception ex) {
             //Log the exception
-            System.out.println(ex);
+            logger.error(ex.getMessage());
         } finally {
             session.close();
         }

@@ -16,7 +16,7 @@ $(document).ready(function() {
             alert("you haven't entered password!");
             return false;
        }       
-       else if(password != repassword){
+       else if(repassword != null && password != repassword){
             alert("password and re-password aren't the same!");
             return false;
        }

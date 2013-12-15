@@ -6,10 +6,12 @@
 package controller;
 
 import dao.AccountDAO;
+import dao.RoleDAO;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.Account;
+import pojo.UserRole;
 
 /**
  *
@@ -35,6 +37,9 @@ public class Register implements ServletRequestAware {
             account = new Account(userName, password, realName, phone, address, 1);
             AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
             if (accountDAO.add(account)) {
+                UserRole role = new UserRole(account, "ROLE_USER");
+                RoleDAO roleDAO = (RoleDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("roleDAO");
+                roleDAO.add(role);
                 result = "Registration successful";
                 return "success";
             } else {

@@ -1,6 +1,7 @@
 package dao;
 
 import java.util.List;
+import org.apache.log4j.Logger;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,6 +16,8 @@ public class BaseDAO<T> {
 
     @Autowired
     private SessionFactory sessionFactory;
+    
+    protected static final Logger logger = Logger.getLogger(BaseDAO.class);
 
     public void setCls(Class<T> cls) {
         this.cls = cls;
@@ -46,7 +49,8 @@ public class BaseDAO<T> {
             temp = (T) session.get(cls, id);
         } catch (Exception ex) {
             //Log the exception
-            System.out.println(ex);
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
         } finally {
             session.close();
         }
@@ -60,7 +64,8 @@ public class BaseDAO<T> {
             temp = (T) session.get(cls, id);
         } catch (Exception ex) {
             //Log the exception
-            System.out.println(ex);
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
         } finally {
             session.close();
         }
@@ -75,7 +80,8 @@ public class BaseDAO<T> {
             list = session.createQuery("from " + cls.getSimpleName()).list();
         } catch (Exception ex) {
             //Log the exception
-            System.out.println(ex);
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
         } finally {
             session.close();
         }
@@ -89,7 +95,9 @@ public class BaseDAO<T> {
             transaction = session.beginTransaction();
             session.save(temp);
             transaction.commit();
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
             transaction.rollback();
             return false;
         } finally{
@@ -105,7 +113,9 @@ public class BaseDAO<T> {
             transaction = session.beginTransaction();
             session.update(temp);
             transaction.commit();
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
             transaction.rollback();
             return false;
         } finally{
@@ -121,7 +131,9 @@ public class BaseDAO<T> {
             transaction = session.beginTransaction();
             session.delete(temp);
             transaction.commit();
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
             transaction.rollback();
             return false;
         } finally{

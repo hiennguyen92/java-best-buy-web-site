@@ -45,4 +45,7 @@
     <definition name="ManageAccount" extends="Page">
         <put-attribute name="body" value="/pages/manage_account.jsp"/>    
     </definition>
+    <definition name="ActionAccount" extends="Page">
+        <put-attribute name="body" value="/pages/form_account.jsp"/>    
+    </definition>
 </tiles-definitions>
