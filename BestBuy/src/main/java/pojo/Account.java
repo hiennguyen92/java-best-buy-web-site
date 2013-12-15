@@ -33,9 +33,9 @@ public class Account implements Serializable {
     private Cart wishList = new Cart();
     @Column(name = "Enable")
     private Integer enable;
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = {CascadeType.ALL})
     private Set<Cart> carts = new HashSet<Cart>(0);
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", cascade = {CascadeType.ALL})
     private Set<Comment> comments = new HashSet<Comment>(0);  
     @OneToMany(mappedBy = "account", cascade = {CascadeType.ALL})
     private Set<UserRole> roles = new HashSet<UserRole>(0);  

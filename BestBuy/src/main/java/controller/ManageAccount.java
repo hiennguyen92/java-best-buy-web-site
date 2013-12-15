@@ -36,8 +36,6 @@ public class ManageAccount implements ServletRequestAware {
     public String execute() {
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
         AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");
-        if(request.getParameter("add") != null)
-            return "action";
         if(request.getParameter("add_account") != null || request.getParameter("edit_account") != null){
             String userName = request.getParameter("tb_Username");
             String password = request.getParameter("tb_Password");
@@ -56,6 +54,8 @@ public class ManageAccount implements ServletRequestAware {
                     AddRoles(context, account);
             }
         }
+        if(request.getParameter("add") != null)
+            return "action";
         if(request.getParameter("edit.x") != null){
             String username = request.getParameter("h_username");
             Account account = accountDAO.get(username);
@@ -67,8 +67,7 @@ public class ManageAccount implements ServletRequestAware {
             Account account = accountDAO.get(username);
             accountDAO.delete(account);
         }
-        List<Account> accounts = accountDAO.getList();
-        request.setAttribute("accounts", accounts);
+        request.setAttribute("accounts", accountDAO.getList());
         request.setAttribute("accountDAO", accountDAO);
         return "success";
     }

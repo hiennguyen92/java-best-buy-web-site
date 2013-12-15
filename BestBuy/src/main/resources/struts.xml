@@ -59,6 +59,10 @@
             <result name="success" type="tiles">ManageAccount</result>
             <result name="action" type="tiles">ActionAccount</result>
         </action>
+        <action name="ManageProduct" class="controller.ManageProduct">
+            <result name="success" type="tiles">ManageProduct</result>
+            <result name="action" type="tiles">ActionProduct</result>
+        </action>
     </package>
     
     <package name="Admin" namespace="/Admin" extends="struts-default">

@@ -1,6 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript" src="js/register.js"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
@@ -57,14 +55,17 @@
                     </span>
                 </div>
                 <div>
-                    <c:choose>
-                        <c:when test="${account == null}">
-                            <span><input type="submit" value="ADD" name="add_account"></span>
-                        </c:when>
-                        <c:otherwise>
-                            <span><input type="submit" value="EDIT" name="edit_account"></span>
-                        </c:otherwise>
-                    </c:choose>
+                    <span>
+                        <c:choose>
+                            <c:when test="${account == null}">
+                                <input type="submit" value="ADD" name="add_account">
+                            </c:when>
+                            <c:otherwise>
+                               <input type="submit" value="EDIT" name="edit_account">
+                            </c:otherwise>
+                        </c:choose>
+                        <input type="submit" value="CANCEL" name="cancel">
+                    </span>
                 </div>
             </form>
         </div>

@@ -49,11 +49,11 @@ public class Product implements Serializable {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name="Tag")
     private Product product;
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     private Set<Product> accessories = new HashSet<Product>(0);
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     private Set<Comment> comments = new HashSet<Comment>(0);  
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     private Set<Image> images = new HashSet<Image>(0); 
     @ManyToMany(
             fetch = FetchType.EAGER,
