@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Account` (
   `Address` VARCHAR(1000) NULL,
   `WishId` INT(10) NULL,
   `Enable` tinyint(1) NOT NULL,
+  `AvatarUrl` VARCHAR(45) NULL,
   PRIMARY KEY (`Username`),
   CONSTRAINT `FK_account_cart` FOREIGN KEY (`WishId`) REFERENCES `Cart` (`CartId`))
 ENGINE = InnoDB;
@@ -28,12 +29,6 @@ CREATE TABLE `UserRoles` (
   KEY `FK_user_roles` (`Username`),
   CONSTRAINT `FK_user_roles` FOREIGN KEY (`Username`) REFERENCES `Account` (`Username`)
 );
-
-INSERT INTO Account (Username,Password, Enable)
-VALUES ('admin', 'admin', TRUE);
- 
-INSERT INTO UserRoles (RoleID, Username,Authority)
-VALUES (1, 'admin', 'ROLE_ADMIN');
 
 -- -----------------------------------------------------
 -- Table `bestbuydb`.`Cart`
@@ -175,6 +170,19 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Image` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `bestbuydb`.`sale_off`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`sale_off` (
+  `SaleoffId` INT NOT NULL,
+  `Name` VARCHAR(1000) NULL,
+  `Description` VARCHAR(2000) NULL,
+  `Percent` INT NULL,
+  `From` DATE NULL,
+  `To` DATE NULL,
+  PRIMARY KEY (`SaleoffId`))
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -192,6 +200,13 @@ INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (5, 'Sharp');
 
 COMMIT;
 
+
+
+INSERT INTO Account (Username,Password, Enable)
+VALUES ('admin', 'admin', TRUE);
+ 
+INSERT INTO UserRoles (RoleID, Username,Authority)
+VALUES (1, 'admin', 'ROLE_ADMIN');
 
 -- -----------------------------------------------------
 -- Data for table `bestbuydb`.`Category`
