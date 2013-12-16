@@ -40,4 +40,5 @@
     <bean id="imageDAO" class="dao.ImageDAO"/>
     <bean id="commentDAO" class="dao.CommentDAO"/>
     <bean id="roleDAO" class="dao.RoleDAO"/>
+    <bean id="saleOffDAO" class="dao.SaleOffDAO"/>
 </beans>

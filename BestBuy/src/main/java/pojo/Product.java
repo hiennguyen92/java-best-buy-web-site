@@ -17,7 +17,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Product")
 public class Product implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ProductId")

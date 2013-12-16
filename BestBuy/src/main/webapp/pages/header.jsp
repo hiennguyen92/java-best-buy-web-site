@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <div class="wrap">
     <!----start-Header---->
     <div class="header">
@@ -43,6 +44,9 @@
                 <li><a href="Home">Home</a></li>
                 <li><a href="Store">Store</a></li>
                 <li><a href="Contact">Contact</a></li>
+                <sec:authorize ifAnyGranted="ROLE_ADMIN">
+                <li><a href="Statistics">Manager</a></li>
+                </sec:authorize>
             </ul>
         </div>
         <div class="clear"> </div>

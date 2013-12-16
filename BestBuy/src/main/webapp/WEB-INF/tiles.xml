@@ -8,6 +8,9 @@
         <put-attribute name="sidebar" value="/pages/sidebar.jsp" />
         <put-attribute name="footer" value="/pages/footer.jsp" />
     </definition>
+    <definition name="AdminPage" extends="Page">
+        <put-attribute name="sidebar" value="/pages/admin_sidebar.jsp" />
+    </definition>
     <definition name="Home" extends="Page">
         <put-attribute name="slider" value="/pages/slider.jsp"/>
         <put-attribute name="body" value="/pages/index.jsp"/>    
@@ -42,16 +45,20 @@
     <definition name="Contact" extends="Page">
         <put-attribute name="body" value="/pages/contact.jsp"/>    
     </definition>
-    <definition name="ManageAccount" extends="Page">
-        <put-attribute name="body" value="/pages/manage_account.jsp"/>    
+    
+    <definition name="Statistics" extends="AdminPage">
+        <put-attribute name="body" value="/pages/statistics.jsp"/> 
     </definition>
-    <definition name="ActionAccount" extends="Page">
-        <put-attribute name="body" value="/pages/form_account.jsp"/>    
+    <definition name="ManageAccount" extends="AdminPage">
+        <put-attribute name="body" value="/pages/manage_account.jsp"/>
     </definition>
-    <definition name="ManageProduct" extends="Page">
-        <put-attribute name="body" value="/pages/manage_product.jsp"/>    
+    <definition name="ActionAccount" extends="AdminPage">
+        <put-attribute name="body" value="/pages/form_account.jsp"/>  
     </definition>
-    <definition name="ActionProduct" extends="Page">
+    <definition name="ManageProduct" extends="AdminPage">
+        <put-attribute name="body" value="/pages/manage_product.jsp"/>   
+    </definition>
+    <definition name="ActionProduct" extends="AdminPage">
         <put-attribute name="body" value="/pages/form_product.jsp"/>    
     </definition>
 </tiles-definitions>

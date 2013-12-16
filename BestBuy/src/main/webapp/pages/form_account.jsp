@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <script type="text/javascript" src="js/register.js"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
-    <div class="col span_1_of_3">
-        <div class="contact-form">
+        <div class="span_2_of_3">
             <c:choose>
                 <c:when test="${account == null}">
                     <h2>Add Account</h2>
@@ -12,7 +12,10 @@
                     <h2>Edit Account</h2>
                 </c:otherwise>
             </c:choose>
-            <form id="f_register" method="post" action="ManageAccount">
+        </div>
+    <div class="col span_1_of_3">
+        <div class="contact-form">
+            <form id="f_register" method="post" action="ActionAccount">
                 <div>
                     <span><label>USERNAME</label></span>
                     <span><input type="text" value="${account.username}" name="tb_Username"></span>
@@ -70,4 +73,17 @@
             </form>
         </div>
     </div>
+                <div class="col span_1_of_3">
+                    <div class="contact-form">
+                        <span><label>AVATAR</label></span>
+                        <img src="<s:property value='uploadFileName'/>" />
+                        <s:form action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="h_id" value="${account.username}"/>
+                            <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
+
+                            <s:submit value="submit" name="submit" />
+
+                        </s:form>
+                    </div>
+                </div>
 </div>

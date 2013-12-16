@@ -55,14 +55,29 @@
         <action name="Contact" class="controller.Contact">
             <result name="success" type="tiles">Contact</result>
         </action>
+        <action name="Statistics" class="controller.Statistics">
+            <result name="success" type="tiles">Statistics</result>
+        </action>
         <action name="ManageAccount" class="controller.ManageAccount">
             <result name="success" type="tiles">ManageAccount</result>
-            <result name="action" type="tiles">ActionAccount</result>
+            <result name="action" type="redirect">ActionAccount?User=${username}</result>
+        </action>
+        <action name="ActionAccount" class="controller.ActionAccount">
+            <result name="success" type="redirect">ManageAccount</result>
+            <result name="error" type="tiles">ActionAccount</result>
         </action>
         <action name="ManageProduct" class="controller.ManageProduct">
             <result name="success" type="tiles">ManageProduct</result>
-            <result name="action" type="tiles">ActionProduct</result>
+            <result name="action" type="redirect">ActionProduct</result>
         </action>
+        <action name="UploadImage" class="controller.UploadImage">
+            <interceptor-ref name="fileUpload">
+       		<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+            </interceptor-ref>
+	    <interceptor-ref name="basicStack"/>
+ 
+	    <result name="success" type="tiles">ActionAccount</result> 
+	</action>
     </package>
     
     <package name="Admin" namespace="/Admin" extends="struts-default">
@@ -71,7 +86,7 @@
         </result-types>
         <action name="ManageAccount" class="controller.ManageAccount">
             <result name="success" type="tiles">ManageAccount</result>
-            <result name="action" type="tiles">ActionAccount</result>
+            <result name="action" type="redirect">${previous}</result>
         </action>
     </package>
  

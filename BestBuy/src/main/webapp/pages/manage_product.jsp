@@ -24,8 +24,15 @@
                     <tr class="product_row">
 
                         <td class="firstcol"><img width="60px" height="60px" src="${product.imageUrl}" alt="" title='${product.name}' height="48" width="48"></td>
-                        <td><a href="#">${product.name}</a></td>
-                        <td>${product.description.substring(0, 100)}...</td>
+                        <td><a href="Info?id=${product.productId}">${product.name}</a></td>
+                        <c:choose>
+                            <c:when test="${product.description.length() > 100}">
+                                <td>${product.description.substring(0, 100)}...</td>                            
+                            </c:when>
+                            <c:otherwise>
+                                <td>${product.description}</td>       
+                            </c:otherwise>
+                        </c:choose>
                         
                         <td>$${product.price}</td>
 
