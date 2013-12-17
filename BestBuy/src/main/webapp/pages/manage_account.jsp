@@ -24,7 +24,7 @@
                     <c:set var="account" value="${accountDAO.get(user.username)}"/>
                     <tr class="product_row">
 
-                        <td class="firstcol"><img width="60px" height="60px" src="images/avatar.jpg" alt="" title='${account.username}' height="48" width="48"></td>
+                        <td class="firstcol"><img width="60px" height="60px" src="${account.avatar}" alt="" title='${account.username}' height="48" width="48"></td>
                         <td><a href="#">${account.username}</a></td>
                         <td>${account.password}</td>
                         

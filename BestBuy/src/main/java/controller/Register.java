@@ -34,7 +34,8 @@ public class Register implements ServletRequestAware {
             String realName = request.getParameter("tb_RealName");
             String phone = request.getParameter("tb_Phone");
             String address = request.getParameter("tb_Address");
-            account = new Account(userName, password, realName, phone, address, 1);
+            String avatar = "images/avatar.jpg";
+            account = new Account(userName, password, realName, phone, address, avatar, 1);
             AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
             if (accountDAO.add(account)) {
                 UserRole role = new UserRole(account, "ROLE_USER");

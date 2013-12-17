@@ -63,19 +63,13 @@ public class UploadImage implements ServletRequestAware {
         this.previous = previous;
     }
 
-    public String execute() {
+    public String execute() throws IOException {
         String temp = request.getHeader("Referer");
         previous = temp.substring(temp.lastIndexOf('/') + 1);
-        String username = request.getParameter("h_id");
-        String name = "avatar_" + username + uploadFileName.substring(uploadFileName.lastIndexOf('.'));
+        String name = "temp" + uploadFileName.substring(uploadFileName.lastIndexOf('.'));
         String filePath = request.getServletContext().getRealPath("/") + "images\\" + name;
         File newFile = new File(filePath);
-        try {
-            FileUtils.copyFile(upload, newFile);
-        } catch (IOException ex) {
-            Logger.getLogger(UploadImage.class.getName()).log(Level.SEVERE, null, ex);
-            return "error";
-        }
+        FileUtils.copyFile(upload, newFile);
         setUploadFileName("images/" + name);
         return "success";
     }

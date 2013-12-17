@@ -1,22 +1,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/account.js"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
-        <div class="span_2_of_3">
-            <c:choose>
-                <c:when test="${account == null}">
-                    <h2>Add Account</h2>
-                </c:when>
-                <c:otherwise>
-                    <h2>Edit Account</h2>
-                </c:otherwise>
-            </c:choose>
-        </div>
+    <div class="span_2_of_3">
+        <c:choose>
+            <c:when test="${account == null}">
+                <h2>Add Account</h2>
+            </c:when>
+            <c:otherwise>
+                <h2>Edit Account</h2>
+            </c:otherwise>
+        </c:choose>
+    </div>
     <div class="col span_1_of_3">
         <div class="contact-form">
-            <form id="f_register" method="post" action="ManageAccount">
+            <form id="f_manage" method="post" action="ManageAccount">
                 <div>
                     <span><label>USERNAME</label></span>
                     <span><input type="text" value="${account.username}" name="tb_Username"></span>
@@ -60,6 +60,7 @@
                 </div>
                 <div>
                     <span>
+                        <input type="hidden" name="h_url" />
                         <c:choose>
                             <c:when test="${account == null}">
                                 <input type="submit" value="ADD" name="add_account">
@@ -77,9 +78,8 @@
                 <div class="col span_1_of_3">
                     <div class="contact-form">
                         <span><label>AVATAR</label></span>
-                        <div id="uploaded_image"><img src="<s:property value='uploadFileName'/>" /></div>
+                        <div id="uploaded_image"><img id="imgUpload" src="<s:property value='uploadFileName'/>" /></div>
                         <s:form id="upload_image" action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="h_id" value="${account.username}"/>
                             <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
 
                             <sj:submit value="Submit" targets="uploaded_image"/>

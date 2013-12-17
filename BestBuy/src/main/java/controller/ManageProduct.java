@@ -21,10 +21,19 @@ import pojo.Product;
 public class ManageProduct implements ServletRequestAware {
 
     private HttpServletRequest request;
+    private String uploadFileName;
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         request = hsr;
+    }
+
+    public String getUploadFileName() {
+        return uploadFileName;
+    }
+
+    public void setUploadFileName(String uploadFileName) {
+        this.uploadFileName = uploadFileName;
     }
 
     public String execute() {
@@ -36,6 +45,7 @@ public class ManageProduct implements ServletRequestAware {
         if(request.getParameter("edit.x") != null){
             int id = Integer.parseInt(request.getParameter("h_id"));
             Product product = productDAO.get(id);
+            uploadFileName = product.getImageUrl();
             request.setAttribute("product", product);
             return "action";
         }

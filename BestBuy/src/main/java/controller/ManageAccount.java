@@ -8,7 +8,10 @@ package controller;
 
 import dao.AccountDAO;
 import dao.RoleDAO;
+import java.io.File;
+import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.io.FileUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -38,7 +41,7 @@ public class ManageAccount implements ServletRequestAware {
         this.uploadFileName = uploadFileName;
     }
 
-    public String execute() {
+    public String execute() throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
         AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");      
         if(request.getParameter("add_account") != null || request.getParameter("edit_account") != null){
@@ -48,7 +51,17 @@ public class ManageAccount implements ServletRequestAware {
             String phone = request.getParameter("tb_Phone");
             String address = request.getParameter("tb_Address");
             String status = request.getParameter("r_status");
-            Account account = new Account(userName, password, realName, phone, address, Integer.parseInt(status));
+            String url = request.getParameter("h_url");
+            if(url.equals(""))
+                url = "images/avatar.jpg";
+            else if(!url.equals("images/avatar.jpg")){
+                String extention = url.substring(url.indexOf('.'));
+                File src = new File(request.getServletContext().getRealPath("/") + "images\\temp" + extention);
+                File dest = new File(request.getServletContext().getRealPath("/") + "images\\avatar_" + userName + extention);
+                FileUtils.copyFile(src, dest);
+                url = "images/avatar_" + userName + extention;
+            }
+            Account account = new Account(userName, password, realName, phone, address, url, Integer.parseInt(status));
             if(request.getParameter("add_account") != null){
                 if (accountDAO.add(account))
                     AddRoles(context, account);
@@ -63,8 +76,9 @@ public class ManageAccount implements ServletRequestAware {
             return "action";
         if(request.getParameter("edit.x") != null){
             String username = request.getParameter("h_username");
-            uploadFileName = "images/avatar.jpg";
-            request.setAttribute("account", accountDAO.get(username));
+            Account account = accountDAO.get(username);
+            request.setAttribute("account", account);
+            uploadFileName = account.getAvatar();
             return "action";
         }
         if (request.getParameter("remove.x") != null) {

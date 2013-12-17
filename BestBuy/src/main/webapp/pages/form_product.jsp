@@ -1,17 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <script type="text/javascript" src="js/register.js"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
+    <div class="span_2_of_3">
+    <c:choose>
+        <c:when test="${product == null}">
+            <h2>Add Product</h2>
+        </c:when>
+        <c:otherwise>
+            <h2>Edit Product</h2>
+        </c:otherwise>
+    </c:choose>
+    </div>
     <div class="col span_1_of_3">
         <div class="contact-form">
-            <c:choose>
-                <c:when test="${product == null}">
-                    <h2>Add Product</h2>
-                </c:when>
-                <c:otherwise>
-                    <h2>Edit Product</h2>
-                </c:otherwise>
-            </c:choose>
             <form id="f_register" method="post" action="ManageProduct">
                 <div>
                     <span><label>PRODUCT NAME</label></span>
@@ -51,4 +55,15 @@
             </form>
         </div>
     </div>
+                <div class="col span_1_of_3">
+                    <div class="contact-form">
+                        <span><label>IMAGE</label></span>
+                        <div id="uploaded_image"><img src="<s:property value='uploadFileName'/>" /></div>
+                        <s:form id="upload_image" action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
+                            <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
+
+                            <sj:submit value="Submit" targets="uploaded_image"/>
+                        </s:form>
+                    </div>
+                </div>
 </div>

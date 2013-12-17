@@ -28,6 +28,8 @@ public class Account implements Serializable {
     private String phone;
     @Column(name = "Address", length = 1000)
     private String address;
+    @Column(name = "AvatarUrl", length = 45)
+    private String avatar;
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "WishID")
     private Cart wishList = new Cart();
@@ -42,13 +44,14 @@ public class Account implements Serializable {
     
     public Account() { }
 
-    public Account(String username, String password, String realName, String phone, String address, int enable) {
+    public Account(String username, String password, String realName, String phone, String address, String avatar, Integer enable) {
         this.username = username;
         this.password = password;
         this.realName = realName;
         this.phone = phone;
-        this.enable = enable;
         this.address = address;
+        this.avatar = avatar;
+        this.enable = enable;
     }
 
     public String getUsername() {
@@ -89,6 +92,14 @@ public class Account implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public Cart getWishList() {

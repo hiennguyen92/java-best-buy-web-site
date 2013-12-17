@@ -1,2 +1,2 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<img src="<s:property value='uploadFileName'/>" />
+<img id="imgUpload" src="<s:property value='uploadFileName'/>" />
