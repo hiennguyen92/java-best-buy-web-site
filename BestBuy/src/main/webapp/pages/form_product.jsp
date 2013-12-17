@@ -25,7 +25,7 @@
                     <span><label>PRICE(DOLLAR)</label></span>
                     <span><input type="text" value="${product.price}" name="tb_Price"></span>
                 </div>
-                <c:if test="${product.tag == null}">
+                <c:if test="${product.product == null}">
                     <div>
                         <span><label>SCREEN SIZE</label></span>
                         <span><input type="text" value="${product.screen}" name="tb_Phone"></span>
@@ -45,7 +45,7 @@
                                <input type="submit" value="EDIT" name="edit_product">
                             </c:otherwise>
                         </c:choose>
-                        <input type="submit" value="CANCEL" name="cancel">
+                        <input type="button" onclick="location.href='ManageProduct'" value="CANCEL" name="cancel">
                     </span>
                 </div>
             </form>

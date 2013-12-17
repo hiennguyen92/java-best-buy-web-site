@@ -1,41 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- <%@taglib uri="/WEB-INF/functions" prefix="f" %>
+<%@taglib uri="/WEB-INF/functions" prefix="f" %>
 <link href="css/cart.css" rel="stylesheet" />
+<link href="css/style1.css" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
-        <h4>Statistics</h4>
-        <table class="productcart">
-            <tbody>
-                <tr class="firstrow">
-                    <td style="width: 50%">MEMBERS</td>
-                    <td></td>
-                </tr>
-                <tr class="product_row">
-                    <td><p>Current members: ${accounts.size()}</p></td>
-                </tr>
-                <tr class="product_row">
-                    <td><p>Active members: ${active}</p></td>
-                    <td><p>Non-active members: ${nonActive}</p></td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="productcart">
-            <tbody>
-                <tr class="firstrow">
-                    <td style="width: 50%">PRODUCTS</td>
-                    <td></td>
-                </tr>
-                <tr class="product_row">
-                    <td>Current products: ${Products.size()}</td>
-                    <td></td>
-                </tr>
-                <tr class="product_row">
-                    <td><p>Current brands: ${Brands.size()}</p></td>
-                    <td><p>Current categories: ${Categories.size()}</p></td>
-                </tr>
-            </tbody>
-        </table>
+        <h4>Manage Sale Off</h4>
         <table class="productcart">
             <tbody>
                 <tr class="firstrow">
@@ -56,7 +26,7 @@
                         <tr class="product_row">
                             <td>From: <fmt:formatDate value="${sale.from}"/></td>
                             <td>To: <fmt:formatDate value="${sale.to}"/></td>
-                        </tr>                        
+                        </tr>                           
                     </c:when>
                     <c:otherwise>
                         <tr class="product_row">
@@ -65,6 +35,19 @@
                     </c:otherwise>
                 </c:choose>
             </tbody>
-        </table>        
+        </table>
+        <c:choose>
+            <c:when test="${sale != null}">
+                <form id="f_checkout" action="ManageSale" method="post">
+                    <button type="submit" name="delete" style="float: right">delete event</button>
+                    <button type="submit" name="edit" style="float: right">edit event</button>
+                </form>
+            </c:when>
+            <c:otherwise>
+                <form id="f_checkout" action="ManageSale" method="post">
+                    <button type="submit" name="create" style="float: right">create event</button>
+                </form>                
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>

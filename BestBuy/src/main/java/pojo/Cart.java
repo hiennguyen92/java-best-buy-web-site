@@ -27,7 +27,7 @@ public class Cart implements Serializable {
     private Account account;
     @Column(name = "TotalPrice")
     private double totalPrice;
-    @Column(name = "Date")
+    @Column(name = "CartDate")
     private Date date = new Date();
     @ManyToMany(
             fetch = FetchType.EAGER,

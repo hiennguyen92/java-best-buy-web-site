@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <link rel="stylesheet" href="css/jqzoom.css" type="text/css">
 <link rel="stylesheet" href="css/jquery.rating.css" type="text/css">
 <script src="js/jquery.rating.pack.js" type="text/javascript"></script>
@@ -30,7 +31,15 @@
                 <div class="left-value-details">
                     <ul>
                         <li>Price:</li>
-                        <li><h5>$${product.price}</h5></li>
+                        <c:choose>
+                            <c:when test="${Sale != null}">
+                                <li><span>$<fmt:formatNumber type="number" value="${product.price}" maxFractionDigits="2" minFractionDigits="2"/></span></li>
+                                <li><h5>$<fmt:formatNumber type="number" value="${product.price*(1+Sale.percent/100)}" maxFractionDigits="2" minFractionDigits="2"/></h5></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><h5>$<fmt:formatNumber type="number" value="${product.price}" maxFractionDigits="2" minFractionDigits="2"/></h5></li>                                
+                            </c:otherwise>
+                        </c:choose>
                         <br />
                         <li>
                             <p id="rating"><label style="float: left">Rating:</label>

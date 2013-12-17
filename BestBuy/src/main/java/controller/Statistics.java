@@ -53,7 +53,7 @@ public class Statistics implements ServletRequestAware {
         request.setAttribute("Products", productDAO.getList());
         request.setAttribute("Brands", brandDAO.getList());
         request.setAttribute("Categories", categoryDAO.getList());
-        //request.setAttribute("sale", saleOffDAO.getList());
+        request.setAttribute("sale", saleOffDAO.getLast());
         return "success";
     }
     

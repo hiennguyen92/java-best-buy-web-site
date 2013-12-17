@@ -6,6 +6,9 @@
 
 package dao;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import pojo.SaleOff;
 
 /**
@@ -18,4 +21,23 @@ public class SaleOffDAO extends BaseDAO<SaleOff>{
         setCls(SaleOff.class);
     }
     
+    public SaleOff getLast(){
+        SaleOff sale = null;
+        Session session = currentSession();
+        
+        try {
+            String hql = "select a from SaleOff a"
+                    + " order by a.saleOffId desc";
+            Query query = session.createQuery(hql);
+            query.setMaxResults(1);
+            sale = (SaleOff) query.uniqueResult();
+        } catch (HibernateException ex) {
+            //Log the exception
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
+        } finally {
+            session.close();
+        }
+        return sale;
+    }
 }

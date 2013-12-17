@@ -5,7 +5,7 @@
 <link href="css/style1.css" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
-        <h4>Manage product</h4>
+        <h4>Manage Product</h4>
         <form id="f_checkout" action="ManageProduct" method="post">
             <button type="submit" name="add" style="float: right">Add product</button>
         </form>

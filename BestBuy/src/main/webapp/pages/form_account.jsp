@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <script type="text/javascript" src="js/register.js"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
@@ -15,7 +16,7 @@
         </div>
     <div class="col span_1_of_3">
         <div class="contact-form">
-            <form id="f_register" method="post" action="ActionAccount">
+            <form id="f_register" method="post" action="ManageAccount">
                 <div>
                     <span><label>USERNAME</label></span>
                     <span><input type="text" value="${account.username}" name="tb_Username"></span>
@@ -67,7 +68,7 @@
                                <input type="submit" value="EDIT" name="edit_account">
                             </c:otherwise>
                         </c:choose>
-                        <input type="submit" value="CANCEL" name="cancel">
+                               <input type="button" onclick="location.href='ManageAccount'" value="CANCEL" name="cancel">
                     </span>
                 </div>
             </form>
@@ -76,13 +77,12 @@
                 <div class="col span_1_of_3">
                     <div class="contact-form">
                         <span><label>AVATAR</label></span>
-                        <img src="<s:property value='uploadFileName'/>" />
-                        <s:form action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
+                        <div id="uploaded_image"><img src="<s:property value='uploadFileName'/>" /></div>
+                        <s:form id="upload_image" action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="h_id" value="${account.username}"/>
                             <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
 
-                            <s:submit value="submit" name="submit" />
-
+                            <sj:submit value="Submit" targets="uploaded_image"/>
                         </s:form>
                     </div>
                 </div>

@@ -6,20 +6,16 @@
 
 package controller;
 
-import dao.AccountDAO;
 import dao.BrandDAO;
 import dao.CategoryDAO;
 import dao.ProductDAO;
+import dao.SaleOffDAO;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import pojo.Account;
-import pojo.Cart;
 import pojo.Product;
 
 /**
@@ -41,9 +37,11 @@ public class Home implements ServletRequestAware {
         BrandDAO brandDAO = (BrandDAO) context.getBean("brandDAO");
         CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
         ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
+        SaleOffDAO saleOffDAO = (SaleOffDAO) context.getBean("saleOffDAO");
         session.setAttribute("Brands", brandDAO.getList());
         session.setAttribute("Categories", categoryDAO.getList());
         session.setAttribute("Products", productDAO.getList());
+        session.setAttribute("Sale", saleOffDAO.getLast());
         List<Product> products = productDAO.getList();
         for(int i = 0; i < products.size();){
             if(products.get(i).getProduct() != null)

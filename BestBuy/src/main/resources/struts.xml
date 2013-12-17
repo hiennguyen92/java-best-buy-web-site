@@ -60,15 +60,15 @@
         </action>
         <action name="ManageAccount" class="controller.ManageAccount">
             <result name="success" type="tiles">ManageAccount</result>
-            <result name="action" type="redirect">ActionAccount?User=${username}</result>
-        </action>
-        <action name="ActionAccount" class="controller.ActionAccount">
-            <result name="success" type="redirect">ManageAccount</result>
-            <result name="error" type="tiles">ActionAccount</result>
+            <result name="action" type="tiles">ActionAccount</result>
         </action>
         <action name="ManageProduct" class="controller.ManageProduct">
             <result name="success" type="tiles">ManageProduct</result>
-            <result name="action" type="redirect">ActionProduct</result>
+            <result name="action" type="tiles">ActionProduct</result>
+        </action>
+        <action name="ManageSale" class="controller.ManageSale">
+            <result name="success" type="tiles">ManageSale</result>
+            <result name="action" type="tiles">ActionSale</result>
         </action>
         <action name="UploadImage" class="controller.UploadImage">
             <interceptor-ref name="fileUpload">
@@ -76,7 +76,7 @@
             </interceptor-ref>
 	    <interceptor-ref name="basicStack"/>
  
-	    <result name="success" type="tiles">ActionAccount</result> 
+	    <result name="success">/pages/ajax_upload_image.jsp</result> 
 	</action>
     </package>
     

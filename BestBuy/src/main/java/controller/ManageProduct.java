@@ -26,8 +26,6 @@ public class ManageProduct implements ServletRequestAware {
     public void setServletRequest(HttpServletRequest hsr) {
         request = hsr;
     }
-    
-    
 
     public String execute() {
         HttpSession session = request.getSession();

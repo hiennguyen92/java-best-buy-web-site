@@ -6,6 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="tiles"  uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -15,6 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
         <script src="js/jquery.js"></script>
         <script src="js/jquery.MetaData.js"></script>
+        <sj:head/>
     </head>
     <body>
         <!----start-Header---->

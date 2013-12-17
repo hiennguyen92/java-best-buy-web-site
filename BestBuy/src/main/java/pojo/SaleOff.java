@@ -27,10 +27,21 @@ public class SaleOff implements Serializable {
     private String description;
     @Column(name = "Percent")
     private Integer percent;
-    @Column(name = "From")
+    @Column(name = "FromDate")
     private Date from;
-    @Column(name = "To")
+    @Column(name = "ToDate")
     private Date to;
+
+    public SaleOff() {
+    }
+
+    public SaleOff(String name, String description, Integer percent, Date from, Date to) {
+        this.name = name;
+        this.description = description;
+        this.percent = percent;
+        this.from = from;
+        this.to = to;
+    }
 
     public Integer getSaleOffId() {
         return saleOffId;
