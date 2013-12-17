@@ -66,7 +66,7 @@ public class Redirect implements ServletRequestAware {
             if (!isExist) {
                 cart.getProducts().add(product);
             }
-            cart.setTotalPrice(cart.getTotalPrice() + product.getPrice());
+            cart.setTotalPrice(cart.getTotalPrice() + product.getSalePrice());
             session.setAttribute("Cart", cart);
         }
         if (request.getParameter("add_wish") != null) {
@@ -86,7 +86,7 @@ public class Redirect implements ServletRequestAware {
                 wishList.getProducts().add(product);
                 cd = new CartDetail(wishList.getCartId(), product.getProductId(), 1);
             }
-            wishList.setTotalPrice(wishList.getTotalPrice() + product.getPrice());
+            wishList.setTotalPrice(wishList.getTotalPrice() + product.getSalePrice());
             CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
             cartDAO.update(wishList);
             cartDetailDAO.update(cd);
@@ -98,7 +98,8 @@ public class Redirect implements ServletRequestAware {
             for (Product _product : cart.getProducts()) {
                 if (_product.getProductId() == product.getProductId()) {
                     cart.getProducts().remove(_product);
-                    cart.setTotalPrice(cart.getTotalPrice() - _product.getPrice() * _product.getQuantity());
+                    cart.setTotalPrice(cart.getTotalPrice() - _product.getSalePrice() * _product.getQuantity());
+                    break;
                 }
             }
             session.setAttribute("Cart", cart);

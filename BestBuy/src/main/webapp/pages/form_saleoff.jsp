@@ -14,7 +14,7 @@
                     <h2>Edit Event</h2>
                 </c:otherwise>
             </c:choose>
-            <form id="f_register" method="post" action="ManageSale">
+            <form id="f_sale" method="post" action="ManageSale">
                 <div>
                     <span><label>EVENT NAME</label></span>
                     <span><input type="text" value='${sale.name}' name="tb_Name"></span>
@@ -29,11 +29,11 @@
                 </div>
                 <div>
                     <span><label>FROM DATE</label></span>
-                    <span><input type="text" value="<fmt:formatDate value="${sale.from}" pattern="dd/MM/yyyy"/>" name="tb_From" id="fromdate"></span>
+                    <span><input type="text" readonly="true" value="<fmt:formatDate value="${sale.from}" pattern="dd/MM/yyyy"/>" name="tb_From" id="fromdate"></span>
                 </div>
                 <div>
                     <span><label>TO DATE</label></span>
-                    <span><input type="text" value="<fmt:formatDate value="${sale.to}" pattern="dd/MM/yyyy"/>" name="tb_To" id="todate"></span>
+                    <span><input type="text" readonly="true" value="<fmt:formatDate value="${sale.to}" pattern="dd/MM/yyyy"/>" name="tb_To" id="todate"></span>
                 </div>
                 <div>
                     <span>

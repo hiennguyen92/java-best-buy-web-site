@@ -36,7 +36,7 @@
                             </form>
                         </td>
 
-                        <td><span class="pricedisplay">$${item.price}</span></td>
+                        <td><span class="pricedisplay">$<fmt:formatNumber type="number" value="${item.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></span></td>
 
                         <td>
                             <form id="f_cart" class="f_cart" action="WishList" method="post">
@@ -73,7 +73,7 @@
             </tbody>
         </table>
                     <form id="f_checkout" action="WishList" method="post">
-                        <button type="submit" name="checkout" style="float: right">Check Out</button>
+                        <button type="submit" name="checkout" style="float: right">Purchase</button>
                     </form>
     </div>
 </div>

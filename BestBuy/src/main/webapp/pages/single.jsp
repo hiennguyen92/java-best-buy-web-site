@@ -34,7 +34,7 @@
                         <c:choose>
                             <c:when test="${Sale != null}">
                                 <li><span>$<fmt:formatNumber type="number" value="${product.price}" maxFractionDigits="2" minFractionDigits="2"/></span></li>
-                                <li><h5>$<fmt:formatNumber type="number" value="${product.price*(1+Sale.percent/100)}" maxFractionDigits="2" minFractionDigits="2"/></h5></li>
+                                <li><h5>$<fmt:formatNumber type="number" value="${product.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></h5></li>
                             </c:when>
                             <c:otherwise>
                                 <li><h5>$<fmt:formatNumber type="number" value="${product.price}" maxFractionDigits="2" minFractionDigits="2"/></h5></li>                                

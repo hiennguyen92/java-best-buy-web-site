@@ -34,7 +34,7 @@
                             </form>
                         </td>
 
-                        <td><span class="pricedisplay">$${item.price}</span></td>
+                        <td><span class="pricedisplay">$<fmt:formatNumber type="number" value="${item.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></span></td>
 
                         <td>
                             <form id="f_cart" class="f_cart" action="Cart" method="post">

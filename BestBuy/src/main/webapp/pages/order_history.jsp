@@ -6,6 +6,7 @@
     <div class="content-grids">
         <h4>Orders history</h4>
         <c:forEach var="order" items="${oders}">
+            <div class="span_2_of_3"><p>Date: <fmt:formatDate value="${order.date}"/><p></div>
         <table class="productcart"><!--************************ begin productcart ************************-->
 
             <tbody>
@@ -27,7 +28,7 @@
                                 <p>${cd.quantity}</p>
                         </td>
 
-                        <td><span class="pricedisplay">$${item.price}</span></td>
+                        <td><span class="pricedisplay">$<fmt:formatNumber type="number" value="${item.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></span></td>
 
                         <td>
                         </td>

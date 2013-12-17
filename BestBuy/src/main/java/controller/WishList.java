@@ -45,7 +45,7 @@ public class WishList implements ServletRequestAware {
             int id = Integer.parseInt(request.getParameter("h_id"));
             Product product = productDAO.get(id);
             CartDetail cd = cartDetailDAO.get(wishList.getCartId(), id);
-            wishList.setTotalPrice(wishList.getTotalPrice() - cd.getQuantity() * product.getPrice());
+            wishList.setTotalPrice(wishList.getTotalPrice() - cd.getQuantity() * product.getSalePrice());
             cartDAO.update(wishList);
             cartDetailDAO.delete(cd);
             for(Product _product : wishList.getProducts())
@@ -59,9 +59,9 @@ public class WishList implements ServletRequestAware {
             int id = Integer.parseInt(request.getParameter("h_id"));
             Product product = productDAO.get(id);
             CartDetail cd = cartDetailDAO.get(wishList.getCartId(), id);
-            wishList.setTotalPrice(wishList.getTotalPrice() - cd.getQuantity() * product.getPrice());
+            wishList.setTotalPrice(wishList.getTotalPrice() - cd.getQuantity() * product.getSalePrice());
             cd.setQuantity(quantity);
-            wishList.setTotalPrice(wishList.getTotalPrice() + quantity * product.getPrice());
+            wishList.setTotalPrice(wishList.getTotalPrice() + quantity * product.getSalePrice());
             cartDAO.update(wishList);
             cartDetailDAO.update(cd);
         }

@@ -21,7 +21,7 @@
                                     <a href="Info?id=${item.productId}">${item.name}</a>
                                 </div>
                                 <div class="shopp-price"> 
-                                    $<em>${item.price}</em>
+                                    $<em>${item.salePrice}</em>
                                 </div>
                                 <span class="shopp-quantity">${item.quantity}</span>
                                 <img src="images/remove.png" class="remove" onclick="location.href='Redirect?remove=${item.productId}'"/>

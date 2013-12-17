@@ -28,6 +28,8 @@ public class ProductDAO extends BaseDAO<Product>{
             temp.getAccessories().size();
             temp.getComments().size();
             temp.getImages().size();
+            if(temp.getSalePrice() == null)
+                temp.setSalePrice(temp.getPrice());
         } catch (Exception ex) {
             //Log the exception
             logger.error(ex.getMessage());

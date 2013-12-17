@@ -39,6 +39,8 @@ public class Product implements Serializable {
     private Integer quantity;
     @Column(name = "ImageUrl", length = 45)
     private String imageUrl;
+    @Column(name = "SalePrice")
+    private Double salePrice;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "CategoryId")
     private Category category;
@@ -122,6 +124,14 @@ public class Product implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Double getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(Double salePrice) {
+        this.salePrice = salePrice;
     }
 
     public Category getCategory() {

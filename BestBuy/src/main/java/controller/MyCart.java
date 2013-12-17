@@ -42,7 +42,8 @@ public class MyCart implements ServletRequestAware {
             for (Product _product : cart.getProducts()) {
                 if (_product.getProductId() == product.getProductId()) {
                     cart.getProducts().remove(_product);
-                    cart.setTotalPrice(cart.getTotalPrice() - _product.getPrice() * _product.getQuantity());
+                    cart.setTotalPrice(cart.getTotalPrice() - _product.getSalePrice() * _product.getQuantity());
+                    break;
                 }
             }
             session.setAttribute("Cart", cart);
@@ -53,9 +54,9 @@ public class MyCart implements ServletRequestAware {
             Product product = productDAO.get(id);
             for (Product _product : cart.getProducts()) {
                 if (_product.getProductId() == product.getProductId()) {
-                    cart.setTotalPrice(cart.getTotalPrice() - _product.getPrice() * _product.getQuantity());
+                    cart.setTotalPrice(cart.getTotalPrice() - _product.getSalePrice() * _product.getQuantity());
                     _product.setQuantity(quantity);
-                    cart.setTotalPrice(cart.getTotalPrice() + _product.getPrice() * quantity);
+                    cart.setTotalPrice(cart.getTotalPrice() + _product.getSalePrice() * quantity);
                 }
             }
             session.setAttribute("Cart", cart);

@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/compare-tab.js"></script>
@@ -70,7 +71,7 @@
                 <div class="grid_1_of_4 images_1_of_4 products-info">
                     <img src="${products[i].imageUrl}">
                     <a href="Info?id=${products[i].productId}">${products[i].name}</a>
-                    <h3>$${products[i].price}</h3>
+                    <h3>$<fmt:formatNumber type="number" value="${products[i].salePrice}" maxFractionDigits="2" minFractionDigits="2"/></h3>
                     <ul>
                         <li><a  class="cart" href="Redirect?add=${products[i].productId}"> </a></li>
                         <li><a  class="i" href="Info?id=${products[i].productId}"> </a></li>
@@ -86,7 +87,7 @@
                 <div class="grid_1_of_4 images_1_of_4 products-info">
                     <img src="${products[i].imageUrl}">
                     <a href="Info?id=${products[i].productId}">${products[i].name}</a>
-                    <h3>$${products[i].price}</h3>
+                    <h3>$<fmt:formatNumber type="number" value="${products[i].salePrice}" maxFractionDigits="2" minFractionDigits="2"/></h3>
                     <ul>
                         <li><a  class="cart" href="Redirect?add=${products[i].productId}"> </a></li>
                         <li><a  class="i" href="Info?id=${products[i].productId}"> </a></li>

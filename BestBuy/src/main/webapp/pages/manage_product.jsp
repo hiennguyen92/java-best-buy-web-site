@@ -34,7 +34,7 @@
                             </c:otherwise>
                         </c:choose>
                         
-                        <td>$${product.price}</td>
+                        <td>$<fmt:formatNumber type="number" value="${product.price}" maxFractionDigits="2" minFractionDigits="2"/></td>
 
                         <td>
                             <form id="f_mgn_account" class="f_cart" action="ManageProduct" method="post">

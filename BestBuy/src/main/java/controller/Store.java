@@ -85,14 +85,14 @@ public class Store implements ServletRequestAware {
                 Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product o1, Product o2) {
-                    return o2.getPrice().compareTo(o1.getPrice());
+                    return o2.getSalePrice().compareTo(o1.getSalePrice());
                 }
             });
             else if(sort == 7)
                 Collections.sort(products, new Comparator<Product>() {
                 @Override
                 public int compare(Product o1, Product o2) {
-                    return o1.getPrice().compareTo(o2.getPrice());
+                    return o1.getSalePrice().compareTo(o2.getSalePrice());
                 }
             });
         }
@@ -105,7 +105,7 @@ public class Store implements ServletRequestAware {
             paginate += "&Price=" + param;
             option = Integer.parseInt(param);
             for(int i = 0; i < products.size();){
-                double price = products.get(i).getPrice();
+                double price = products.get(i).getSalePrice();
                 if((option == 1 && price >= 150)
                         ||(option == 2 && price < 150 && price >= 250)
                         ||(option == 3 && price < 250 && price >= 350)

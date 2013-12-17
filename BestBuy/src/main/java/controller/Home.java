@@ -17,6 +17,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.Product;
+import pojo.SaleOff;
 
 /**
  *
@@ -40,9 +41,9 @@ public class Home implements ServletRequestAware {
         SaleOffDAO saleOffDAO = (SaleOffDAO) context.getBean("saleOffDAO");
         session.setAttribute("Brands", brandDAO.getList());
         session.setAttribute("Categories", categoryDAO.getList());
-        session.setAttribute("Products", productDAO.getList());
-        session.setAttribute("Sale", saleOffDAO.getLast());
         List<Product> products = productDAO.getList();
+        session.setAttribute("Sale", saleOffDAO.getLast());
+        session.setAttribute("Products", products);
         for(int i = 0; i < products.size();){
             if(products.get(i).getProduct() != null)
                 products.remove(products.get(i));

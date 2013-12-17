@@ -20,7 +20,7 @@
                     <br clear="all">
                     <div class="name">${product1.name}</div>
                     <br clear="all">
-                    <div class="name">$${product1.price}</div>
+                    <div class="name">$<fmt:formatNumber type="number" value="${product1.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></div>
                 </li>
                 <li id="${product2.productId}">
                     <div class="close" align="right">
@@ -32,7 +32,7 @@
                     <br clear="all">
                     <div class="name">${product2.name}</div>
                     <br clear="all">
-                    <div class="name">$${product2.price}</div>
+                    <div class="name">$<fmt:formatNumber type="number" value="${product2.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></div>
                 </li>
                 <c:if test="${product3 != null}">
                 <li id="${product3.productId}">
@@ -45,7 +45,7 @@
                     <br clear="all">
                     <div class="name">${product3.name}</div>
                     <br clear="all">
-                    <div class="name">$${product3.price}</div>
+                    <div class="name">$<fmt:formatNumber type="number" value="${product3.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></div>
                 </li>
                 </c:if>
                 <c:if test="${product4 != null}">
@@ -59,7 +59,7 @@
                     <br clear="all">
                     <div class="name">${product4.name}</div>
                     <br clear="all">
-                    <div class="name">$${product4.price}</div>
+                    <div class="name">$<fmt:formatNumber type="number" value="${product4.salePrice}" maxFractionDigits="2" minFractionDigits="2"/></div>
                 </li>
                 </c:if>
             </ul>

@@ -11,6 +11,6 @@ $(document).ready(function() {
            alert("you must choose at least 1 item");
            return false;
        }
-       return false;
+       return true;
     });
 });
