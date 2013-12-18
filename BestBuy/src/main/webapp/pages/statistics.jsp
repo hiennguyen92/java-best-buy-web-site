@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- <%@taglib uri="/WEB-INF/functions" prefix="f" %>
-<link href="css/cart.css" rel="stylesheet" />
+<%@taglib prefix="s" uri="/struts-tags" %>
+<link href="<s:url value="/css/cart.css"/>" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
         <h4>Statistics</h4>

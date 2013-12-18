@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<script type="text/javascript" src="js/product.js"></script>
+<script type="text/javascript" src="<s:url value="/js/product.js"/>"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
     <div class="span_2_of_3">
@@ -84,7 +84,7 @@
                 <div class="col span_1_of_3">
                     <div class="contact-form">
                         <span><label>IMAGE</label></span>
-                        <div id="uploaded_image"><%@include file="ajax_upload_image.jsp" %></div>
+                        <div id="uploaded_image"><s:include value="/pages/ajax_upload_image.jsp" /></div>
                         <s:form id="upload_image" action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
                             <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
 

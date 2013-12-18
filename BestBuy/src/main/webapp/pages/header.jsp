@@ -13,18 +13,17 @@
             <ul>
                 <c:choose>
                     <c:when test="${User == null}">
-                        <li><a href="Register">Register</a></li>
-                        <li><a href="Login">Login</a></li>
-                        <li><a href="Login"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;0 items</lable></li>                        
+                        <li><a href="${pageContext.request.contextPath}/Register">Register</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Login">Login</a></li>                
                     </c:when>
                     <c:otherwise>
                         <li><a href="#">Hello ${User.username}</a></li>
-                        <li><a href="j_spring_security_logout">Log out</a></li>
-                        <li><a href="WishList">Wish List</a></li>
-                        <li><a href="OrderHistory">Orders History</a></li>
-                        <li><a href="Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>
+                        <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Log out</a></li>
+                        <li><a href="${pageContext.request.contextPath}/WishList">Wish List</a></li>
+                        <li><a href="${pageContext.request.contextPath}/OrderHistory">Orders History</a></li>
                     </c:otherwise>
                 </c:choose>
+                <li><a href="${pageContext.request.contextPath}/Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>
             </ul>
         </div>
         <div class="clear"> </div>
@@ -41,11 +40,11 @@
         <!----start-top-nav---->
         <div class="top-nav">
             <ul>
-                <li><a href="Home">Home</a></li>
-                <li><a href="Store">Store</a></li>
-                <li><a href="Contact">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/Home">Home</a></li>
+                <li><a href="${pageContext.request.contextPath}/Store">Store</a></li>
+                <li><a href="${pageContext.request.contextPath}/Contact">Contact</a></li>
                 <sec:authorize ifAnyGranted="ROLE_ADMIN">
-                <li><a href="Statistics">Manager</a></li>
+                <li><a href="${pageContext.request.contextPath}/Admin/Statistics">Manager</a></li>
                 </sec:authorize>
             </ul>
         </div>

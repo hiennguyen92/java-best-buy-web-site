@@ -36,7 +36,7 @@ public class Login implements ServletRequestAware {
             String userName = ((User)principal).getUsername();
             AccountDAO accountDAO = (AccountDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("accountDAO");
             Account account = accountDAO.get(userName);
-            Cart cart = new Cart();
+            Cart cart = (Cart) session.getAttribute("Cart");
             cart.setAccount(account);
             session.setAttribute("Cart", cart);
             session.setAttribute("User", account);

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojo.Cart;
 import pojo.Product;
 import pojo.SaleOff;
 
@@ -42,6 +43,10 @@ public class Home implements ServletRequestAware {
         session.setAttribute("Brands", brandDAO.getList());
         session.setAttribute("Categories", categoryDAO.getList());
         List<Product> products = productDAO.getList();
+        for(Product product : products){
+            if(product.getSalePrice() == null)
+                product.setSalePrice(product.getPrice());
+        }
         session.setAttribute("Sale", saleOffDAO.getLast());
         session.setAttribute("Products", products);
         for(int i = 0; i < products.size();){
@@ -51,6 +56,9 @@ public class Home implements ServletRequestAware {
                 i++;
         }
         request.setAttribute("products", products);
+        Cart cart = (Cart) session.getAttribute("Cart");
+        if(cart == null)
+            session.setAttribute("Cart", new Cart());
         return "success";
     }
 }

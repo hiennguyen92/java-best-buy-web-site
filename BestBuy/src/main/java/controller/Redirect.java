@@ -49,8 +49,6 @@ public class Redirect implements ServletRequestAware {
         Account currentUser = (Account) session.getAttribute("User");
         ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
         if (request.getParameter("add") != null) {
-            if(currentUser == null)
-                return "error";
             int id = Integer.parseInt(request.getParameter("add"));
             Product product = productDAO.get(id);
             product.setQuantity(1);

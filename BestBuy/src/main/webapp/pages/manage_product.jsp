@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
- <%@taglib uri="/WEB-INF/functions" prefix="f" %>
-<link href="css/cart.css" rel="stylesheet" />
-<link href="css/style1.css" rel="stylesheet" />
+<%@taglib prefix="s" uri="/struts-tags" %>
+<link href="<s:url value="/css/cart.css"/>" rel="stylesheet" />
+<link href="<s:url value="/css/style1.css"/>" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
         <h4>Manage Product</h4>
@@ -23,7 +23,7 @@
                     <c:set var="product" value="${productDAO.get(item.productId)}"/>
                     <tr class="product_row">
 
-                        <td class="firstcol"><img width="60px" height="60px" src="${product.imageUrl}" alt="" title='${product.name}' height="48" width="48"></td>
+                        <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${product.imageUrl}" alt="" title='${product.name}' height="48" width="48"></td>
                         <td><a href="Info?id=${product.productId}">${product.name}</a></td>
                         <c:choose>
                             <c:when test="${product.description.length() > 100}">
@@ -39,8 +39,8 @@
                         <td>
                             <form id="f_mgn_account" class="f_cart" action="ManageProduct" method="post">
                                 <input type="hidden" name="h_id" value="${product.productId}"/>
-                                <input class="img" type="image" src="images/edit.png" name="edit"></input>
-                                <input class="img" type="image" src="images/remove.png" name="remove"></input>
+                                <input class="img" type="image" src="${pageContext.request.contextPath}/images/edit.png" name="edit"></input>
+                                <input class="img" type="image" src="${pageContext.request.contextPath}/images/remove.png" name="remove"></input>
                             </form>
                         </td>
 

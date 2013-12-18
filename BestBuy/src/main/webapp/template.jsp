@@ -6,16 +6,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="tiles"  uri="http://tiles.apache.org/tags-tiles"%>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<%@taglib prefix="sj" uri="/struts-jquery-tags"%>
 <!DOCTYPE HTML>
 <html>
     <head>
         <sj:head/>
         <title>Best Buy</title>
-        <link href="css/style.css" rel="stylesheet" type="text/css"  media="all" />
+        <link href="<s:url value="/css/style.css"/>" rel="stylesheet" type="text/css"  media="all" />
         <meta name="keywords" content="Mobilestore iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
         <link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
-        <script src="js/jquery.MetaData.js"></script>
+        <script src="<s:url value="/js/jquery.MetaData.js"/>"></script>
     </head>
     <body>
         <!----start-Header---->
