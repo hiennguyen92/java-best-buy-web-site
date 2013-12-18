@@ -28,9 +28,9 @@ public class Product implements Serializable {
     @Column(name = "Price")
     private Double price;
     @Column(name = "Rating")
-    private Double rating;
+    private Double rating = 0.0;
     @Column(name = "RateAmount")
-    private Integer RateAmount;
+    private Integer RateAmount = 0;
     @Column(name = "Screen")
     private Integer screen;
     @Column(name = "Warranty")

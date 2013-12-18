@@ -82,7 +82,7 @@
                         <s:form id="upload_image" action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
                             <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
 
-                            <sj:submit value="Submit" targets="uploaded_image"/>
+                            <sj:submit cssStyle="height:30px;width:100px;padding:0px" value="Submit" targets="uploaded_image"/>
                         </s:form>
                     </div>
                 </div>

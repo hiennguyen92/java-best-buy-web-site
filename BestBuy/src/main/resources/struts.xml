@@ -16,6 +16,7 @@
         </action>
         <action name="Store" class="controller.Store">
             <result name="success" type="tiles">Store</result>
+            <result name="ajax_products">/pages/ajax_products.jsp</result>
         </action>
         <action name="Info" class="controller.Info">
             <result name="success" type="tiles">Info</result>
