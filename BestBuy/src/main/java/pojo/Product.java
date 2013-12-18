@@ -62,6 +62,22 @@ public class Product implements Serializable {
             mappedBy = "products")
     public Set<Cart> carts = new HashSet<Cart>(0);
 
+    public Product() {
+    }
+
+    public Product(Integer productId, String name, String description, Double price, Integer screen, Integer warranty, String imageUrl, Category category, Brand brand) {
+        this.productId = productId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.screen = screen;
+        this.warranty = warranty;
+        this.imageUrl = imageUrl;
+        this.category = category;
+        this.brand = brand;
+    }
+
+
     public Integer getProductId() {
         return productId;
     }

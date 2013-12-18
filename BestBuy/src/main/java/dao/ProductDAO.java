@@ -6,7 +6,8 @@
 
 package dao;
 
-import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import pojo.Product;
 
@@ -37,5 +38,25 @@ public class ProductDAO extends BaseDAO<Product>{
             session.close();
         }
         return temp;
+    }
+    
+    public Product getLast(){
+        Product product = null;
+        Session session = currentSession();
+        
+        try {
+            String hql = "select a from Product a"
+                    + " order by a.productId desc";
+            Query query = session.createQuery(hql);
+            query.setMaxResults(1);
+            product = (Product) query.uniqueResult();
+        } catch (HibernateException ex) {
+            //Log the exception
+            logger.error(ex.getMessage());
+            logger.error(ex.getCause());
+        } finally {
+            session.close();
+        }
+        return product;
     }
 }

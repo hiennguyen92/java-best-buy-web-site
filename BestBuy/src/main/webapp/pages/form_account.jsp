@@ -78,7 +78,7 @@
                 <div class="col span_1_of_3">
                     <div class="contact-form">
                         <span><label>AVATAR</label></span>
-                        <div id="uploaded_image"><img id="imgUpload" src="<s:property value='uploadFileName'/>" /></div>
+                        <div id="uploaded_image"><%@include file="ajax_upload_image.jsp" %></div>
                         <s:form id="upload_image" action="UploadImage" namespace="/" method="POST" enctype="multipart/form-data">
                             <s:file name="upload" accept="image/png,image/gif,image/jpeg"/>
 

@@ -48,9 +48,6 @@
                             <td colspan="2">Name: ${sale.name}</td>
                         </tr>
                         <tr class="product_row">
-                            <td colspan="2">Description: ${sale.description}</td>
-                        </tr>
-                        <tr class="product_row">
                             <td colspan="2">Sale: ${sale.percent}%</td>
                         </tr>
                         <tr class="product_row">
