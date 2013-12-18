@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart` (
   `CartId` INT NOT NULL AUTO_INCREMENT,
   `Username` VARCHAR(45) NULL,
   `TotalPrice` DOUBLE NULL,
-  `Date` DATE NULL,
+  `CartDate` DATE NULL,
   PRIMARY KEY (`CartId`),
   INDEX `FK_Account_idx` (`Username` ASC),
   CONSTRAINT `FK_Account`
@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Product` (
   `Name` VARCHAR(200) NULL,
   `Description` VARCHAR(2000) NULL,
   `Price` DOUBLE NULL,
+  `SalePrice` DOUBLE NULL,
   `Rating` DOUBLE NULL DEFAULT 0.0,
   `RateAmount` INT NULL DEFAULT 0,
   `Screen` INT NULL,
@@ -174,12 +175,12 @@ ENGINE = InnoDB;
 -- Table `bestbuydb`.`sale_off`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bestbuydb`.`sale_off` (
-  `SaleoffId` INT NOT NULL,
+  `SaleoffId` INT NOT NULL AUTO_INCREMENT,
   `Name` VARCHAR(1000) NULL,
   `Description` VARCHAR(2000) NULL,
   `Percent` INT NULL,
-  `From` DATE NULL,
-  `To` DATE NULL,
+  `FromDate` DATE NULL,
+  `ToDate` DATE NULL,
   PRIMARY KEY (`SaleoffId`))
 ENGINE = InnoDB;
 
@@ -200,10 +201,10 @@ INSERT INTO `bestbuydb`.`Brand` (`BrandId`, `Name`) VALUES (5, 'Sharp');
 
 COMMIT;
 
+iNSERT INTO cart (TotalPrice) VALUES (0);
 
-
-INSERT INTO Account (Username,Password, Enable)
-VALUES ('admin', 'admin', TRUE);
+INSERT INTO Account (Username,Password, Enable, AvatarUrl, WishId)
+VALUES ('admin', 'admin', TRUE, 'images/avatar.jpg', 1);
  
 INSERT INTO UserRoles (RoleID, Username,Authority)
 VALUES (1, 'admin', 'ROLE_ADMIN');
