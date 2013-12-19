@@ -1,11 +1,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <script type="text/javascript" src="js/store.js"></script>
 <div id="wrap" align="center">
 
     <ul>
         <c:forEach var="i" begin="${(page-1)*view}" end="${page*view-4}" step="4">
             <c:forEach var="product" items="${products}" begin="${i}" end="${i+3}" varStatus="status" >
-                <c:if test="${status.index<products.size()}">
+                <c:if test="${status.index<fn:length(products)}">
                     <li id="${product.productId}">
                         <img src="${product.imageUrl}" class="items" alt="" />
 
@@ -16,7 +17,7 @@
                 </c:if>
             </c:forEach>
             <c:forEach var="product" items="${products}" begin="${i}" end="${i+3}" varStatus="status" >
-                <c:if test="${status.index<products.size()}">
+                <c:if test="${status.index<fn:length(products)}">
                     <div class="detail-view" id="detail-${product.productId}">
 
                         <div class="close" align="right">
@@ -59,7 +60,7 @@
 </div>
 <div class="pagnation">
     <ul>
-        <c:forEach var="i" begin="1" end="${(products.size() - 1) / view + 1}">
+        <c:forEach var="i" begin="1" end="${(fn:length(products) - 1) / view + 1}">
             <c:choose>
                 <c:when test="${page == i}">
                     <li><a href="Store?page=${i}&view=${view}&sort=${sort}${paginate}" class="selected">${i}</a></li>

@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <script src="js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/compare-tab.js"></script>
@@ -67,7 +68,7 @@
             </div>
         <div class="section group">
             <c:forEach var="dec" begin="0" end="3" step="1">
-                <c:set var="i" value="${products.size()-1-dec}"/>
+                <c:set var="i" value="${fn:length(products)-1-dec}"/>
                 <div class="grid_1_of_4 images_1_of_4 products-info">
                     <img src="${products[i].imageUrl}">
                     <a href="Info?id=${products[i].productId}">${products[i].name}</a>
@@ -83,7 +84,7 @@
         </div>
         <div class="section group">
             <c:forEach var="dec" begin="0" end="3" step="1">
-                <c:set var="i" value="${products.size()-5-dec}"/>
+                <c:set var="i" value="${fn:length(products)-5-dec}"/>
                 <div class="grid_1_of_4 images_1_of_4 products-info">
                     <img src="${products[i].imageUrl}">
                     <a href="Info?id=${products[i].productId}">${products[i].name}</a>

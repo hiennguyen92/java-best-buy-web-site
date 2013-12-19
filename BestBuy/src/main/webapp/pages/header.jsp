@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <div class="wrap">
     <!----start-Header---->
     <div class="header">
@@ -23,7 +24,7 @@
                         <li><a href="${pageContext.request.contextPath}/OrderHistory">Orders History</a></li>
                     </c:otherwise>
                 </c:choose>
-                <li><a href="${pageContext.request.contextPath}/Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${Cart.products.size()} items</lable></li>
+                <li><a href="${pageContext.request.contextPath}/Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${fn:length(Cart.products)} items</lable></li>
             </ul>
         </div>
         <div class="clear"> </div>

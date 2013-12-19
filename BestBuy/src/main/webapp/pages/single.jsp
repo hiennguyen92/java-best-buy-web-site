@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <link rel="stylesheet" href="css/jqzoom.css" type="text/css">
 <link rel="stylesheet" href="css/jquery.rating.css" type="text/css">
 <script src="js/jquery.rating.pack.js" type="text/javascript"></script>
@@ -61,7 +62,7 @@
                 </div>
                 <div class="right-value-details">
                     <a href="#">Instock</a>
-                    <p>${product.comments.size()} reviews</p>
+                    <p>${fn:length(product.comments)} reviews</p>
                 </div>
                 <div class="clear"> </div>
             </div>
@@ -183,7 +184,7 @@
             <div class="menu_body" style="display: none;">
                 <div id="comment_section">
                 <c:choose>
-                    <c:when test="${product.comments.size() == 0}">
+                    <c:when test="${fn:length(product.comments) == 0}">
                         <p>This product doesn't have any comment</p>
                     </c:when>
                     <c:otherwise>
@@ -222,7 +223,7 @@
             <p class="menu_head">Accessories<span class="plusminus">+</span></p>
             <div class="menu_body" style="display: none;">
                 <c:choose>
-                    <c:when test="${product.accessories.size() == 0}">
+                    <c:when test="${fn:length(product.accessories) == 0}">
                         <p>This product doesn't have any accessories</p>
                     </c:when>
                     <c:otherwise>

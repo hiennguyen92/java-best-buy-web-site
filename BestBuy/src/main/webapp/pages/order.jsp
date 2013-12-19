@@ -1,4 +1,5 @@
 <script type="text/javascript" src="js/order.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
     <div class="col span_1_of_3">
@@ -18,7 +19,7 @@
                     <span><textarea  name="tb_Address">${User.address}</textarea></span>
                 </div>
                 <div>
-                    <span><label>Total price: $${Cart.totalPrice} (${Cart.products.size()} items)</label></span>
+                    <span><label>Total price: $${Cart.totalPrice} (${fn:length(Cart.products)} items)</label></span>
                 </div>
                 <div>
                     <span>
