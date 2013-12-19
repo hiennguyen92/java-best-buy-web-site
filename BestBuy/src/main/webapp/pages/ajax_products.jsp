@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<script type="text/javascript" src="js/store.js"></script>
+<script type="text/javascript" src="js/change-page.js"></script>
 <div id="wrap" align="center">
 
     <ul>

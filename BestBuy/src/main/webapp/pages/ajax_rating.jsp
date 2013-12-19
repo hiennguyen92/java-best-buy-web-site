@@ -1,7 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="js/jquery.js"></script>
 <script src="js/jquery.MetaData.js"></script>
-<link rel="stylesheet" href="css/jquery.rating.css" type="text/css">
 <script src="js/jquery.rating.pack.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/single.js"></script>
 <label style="float: left">Rating:</label>
