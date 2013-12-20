@@ -45,6 +45,7 @@
         </action>
         <action name="OrderHistory" class="controller.OrderHistory">
             <result name="success" type="tiles">OrderHistory</result>
+            <result name="ajax_orders">/pages/ajax_orders.jsp</result>
         </action>
         <action name="WishList" class="controller.WishList">
             <result name="success" type="tiles">WishList</result>

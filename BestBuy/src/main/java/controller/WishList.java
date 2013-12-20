@@ -83,7 +83,7 @@ public class WishList implements ServletRequestAware {
                 cartDetailDAO.update(cd);
             }
             wishList.getProducts().clear();
-            wishList.setTotalPrice(0);
+            wishList.setTotalPrice(0.0);
             cartDAO.update(wishList);
         }
         return "success";

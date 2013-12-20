@@ -26,7 +26,7 @@ public class Cart implements Serializable {
     @JoinColumn(name="Username")
     private Account account;
     @Column(name = "TotalPrice")
-    private double totalPrice;
+    private Double totalPrice;
     @Column(name = "CartDate")
     private Date date = new Date();
     @ManyToMany(
@@ -38,6 +38,10 @@ public class Cart implements Serializable {
             joinColumns = {@JoinColumn(name = "CartId")},
             inverseJoinColumns = {@JoinColumn(name = "ProductId")})
     private Set<Product> products = new HashSet<Product>(0);
+
+    public Cart() {
+        totalPrice = 0.0;
+    }
 
     public int getCartId() {
         return cartId;
@@ -55,11 +59,11 @@ public class Cart implements Serializable {
         this.account = account;
     }
 
-    public double getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(double totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 

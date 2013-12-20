@@ -42,6 +42,7 @@ public class Order implements ServletRequestAware {
             AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");
             currentUser.setRealName(request.getParameter("tb_RealName"));
             currentUser.setPhone(request.getParameter("tb_Phone"));
+            currentUser.setAddress(request.getParameter("tb_Address"));
             accountDAO.update(currentUser);
             
             CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
@@ -57,7 +58,7 @@ public class Order implements ServletRequestAware {
                 cartDetailDAO.update(cd);
             }
             cart.getProducts().clear();
-            cart.setTotalPrice(0);
+            cart.setTotalPrice(0.0);
             return "complete";
         }
         return "success";
