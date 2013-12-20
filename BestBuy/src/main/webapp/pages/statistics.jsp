@@ -1,7 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <link href="<s:url value="/css/cart.css"/>" rel="stylesheet" />
+<link href="<s:url value="/css/style1.css"/>" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
         <h4>Statistics</h4>
@@ -12,7 +14,7 @@
                     <td></td>
                 </tr>
                 <tr class="product_row">
-                    <td><p>Current members: ${accounts.size()}</p></td>
+                    <td><p>Current members: ${fn:length(accounts)}</p></td>
                 </tr>
                 <tr class="product_row">
                     <td><p>Active members: ${active}</p></td>
@@ -20,6 +22,7 @@
                 </tr>
             </tbody>
         </table>
+        <button type="button" onclick="location.href='ManageAccount'" style="float: right; width: 200px; margin-bottom: 10px">Manage accounts</button>
         <table class="productcart">
             <tbody>
                 <tr class="firstrow">
@@ -27,15 +30,16 @@
                     <td></td>
                 </tr>
                 <tr class="product_row">
-                    <td>Current products: ${Products.size()}</td>
+                    <td>Current products: ${fn:length(Products)}</td>
                     <td></td>
                 </tr>
                 <tr class="product_row">
-                    <td><p>Current brands: ${Brands.size()}</p></td>
-                    <td><p>Current categories: ${Categories.size()}</p></td>
+                    <td><p>Current brands: ${fn:length(Brands)}</p></td>
+                    <td><p>Current categories: ${fn:length(Categories)}</p></td>
                 </tr>
             </tbody>
         </table>
+        <button type="button" onclick="location.href='ManageProduct'" style="float: right; width: 200px; margin-bottom: 10px">Manage products</button>
         <table class="productcart">
             <tbody>
                 <tr class="firstrow">
@@ -62,6 +66,19 @@
                     </c:otherwise>
                 </c:choose>
             </tbody>
-        </table>        
+        </table>
+        <button type="button" onclick="location.href='ManageSale'" style="float: right; width: 200px; margin-bottom: 10px">Manage saleoff</button>
+        <table class="productcart">
+            <tbody>
+                <tr class="firstrow">
+                    <td style="width: 50%">ORDERS</td>
+                    <td></td>
+                </tr>
+                <tr class="product_row">
+                    <td><p>Number of orders: ${fn:length(orders)}</p></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" onclick="location.href='ManageOrder'" style="float: right; width: 200px; margin-bottom: 10px">Manage orders</button>
     </div>
 </div>

@@ -67,4 +67,7 @@
     <definition name="ActionSale" extends="AdminPage">
         <put-attribute name="body" value="/pages/form_saleoff.jsp"/>   
     </definition>
+    <definition name="ManageOrder" extends="AdminPage">
+        <put-attribute name="body" value="/pages/manage_order.jsp"/>   
+    </definition>
 </tiles-definitions>

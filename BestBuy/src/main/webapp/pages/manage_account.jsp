@@ -5,7 +5,7 @@
 <link href="<s:url value="/css/style1.css"/>" rel="stylesheet" />
 <div class="content">
     <div class="content-grids">
-        <h4>Manage account</h4>
+        <h4>Manage Accounts</h4>
         <form id="f_checkout" action="ManageAccount" method="post">
             <button type="submit" name="add" style="float: right">Add account</button>
         </form>
@@ -46,11 +46,13 @@
                         </td>
 
                         <td>
-                            <form id="f_mgn_account" class="f_cart" action="ManageAccount" method="post">
-                                <input type="hidden" name="h_username" value="${account.username}"/>
-                                <input class="img" type="image" src="${pageContext.request.contextPath}/images/edit.png" name="edit"></input>
-                                <input class="img" type="image" src="${pageContext.request.contextPath}/images/remove.png" name="remove"></input>
-                            </form>
+                            <c:if test="${account.username != User.username}">
+                                <form id="f_mgn_account" class="f_cart" action="ManageAccount" method="post">
+                                    <input type="hidden" name="h_username" value="${account.username}"/>
+                                    <input class="img" type="image" src="${pageContext.request.contextPath}/images/edit.png" name="edit"></input>
+                                    <input class="img" type="image" src="${pageContext.request.contextPath}/images/remove.png" name="remove"></input>
+                                </form>
+                            </c:if>
                         </td>
 
                     </tr>
