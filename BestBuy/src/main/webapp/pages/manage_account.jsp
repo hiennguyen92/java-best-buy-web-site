@@ -25,7 +25,7 @@
                     <tr class="product_row">
 
                         <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${account.avatar}" alt="" title='${account.username}' height="48" width="48"></td>
-                        <td><a href="#">${account.username}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/Profile?name=${account.username}">${account.username}</a></td>
                         <td>${account.password}</td>
                         
                         <td>

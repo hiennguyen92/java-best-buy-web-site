@@ -18,7 +18,7 @@
                         <li><a href="${pageContext.request.contextPath}/Login">Login</a></li>                
                     </c:when>
                     <c:otherwise>
-                        <li><a href="#">Hello ${User.username}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/Profile?name=${User.username}">Hello ${User.username}</a></li>
                         <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Log out</a></li>
                         <li><a href="${pageContext.request.contextPath}/WishList">Wish List</a></li>
                         <li><a href="${pageContext.request.contextPath}/OrderHistory">Orders History</a></li>

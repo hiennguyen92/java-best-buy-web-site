@@ -42,6 +42,9 @@
     <definition name="Order" extends="Page">
         <put-attribute name="body" value="/pages/order.jsp"/>    
     </definition>
+    <definition name="Profile" extends="Page">
+        <put-attribute name="body" value="/pages/profile.jsp"/>    
+    </definition>
     <definition name="Contact" extends="Page">
         <put-attribute name="body" value="/pages/contact.jsp"/>    
     </definition>

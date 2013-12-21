@@ -23,7 +23,7 @@
                     <tr class="product_row">
 
                         <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${order.account.avatar}" alt="" title='${order.account.username}' height="48" width="48"></td>
-                        <td><a href="#">${order.account.username}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/Profile?name=${order.account.username}">${order.account.username}</a></td>
                         <td>${fn:length(order.products)}</td>
                         
                         <td><fmt:formatDate value="${order.date}"/></td>
