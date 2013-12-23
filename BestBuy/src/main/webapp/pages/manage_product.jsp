@@ -24,7 +24,7 @@
                     <tr class="product_row">
 
                         <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${product.imageUrl}" alt="" title='${product.name}' height="48" width="48"></td>
-                        <td><a href="Info?id=${product.productId}">${product.name}</a></td>
+                        <td><a href="${pageContext.request.contextPath}/Info?id=${product.productId}">${product.name}</a></td>
                         <c:choose>
                             <c:when test="${product.description.length() > 100}">
                                 <td>${product.description.substring(0, 100)}...</td>                            

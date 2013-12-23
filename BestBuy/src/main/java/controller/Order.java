@@ -35,19 +35,23 @@ public class Order implements ServletRequestAware {
     public String execute() {
         HttpSession session = request.getSession();
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
-        Cart cart = (Cart) session.getAttribute("Cart");
+        AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");
+        CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
+        CartDetailDAO cartDetailDAO = (CartDetailDAO) context.getBean("cartDetailDAO");
         Account currentUser = (Account) session.getAttribute("User");
         
+        if(request.getParameter("wish") != null){
+            request.setAttribute("wish", true);
+        }
+        
         if(request.getParameter("purchase") != null){
-            AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");
+            Cart cart = (Cart) session.getAttribute("Cart");
             currentUser.setRealName(request.getParameter("tb_RealName"));
             currentUser.setPhone(request.getParameter("tb_Phone"));
             currentUser.setAddress(request.getParameter("tb_Address"));
             accountDAO.update(currentUser);
             
-            CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
             cartDAO.add(cart);
-            CartDetailDAO cartDetailDAO = (CartDetailDAO) context.getBean("cartDetailDAO");
             Cart lastCart = cartDAO.getLast();
             CartDetail cd = null;
             for (Product item : cart.getProducts()) {
@@ -59,6 +63,35 @@ public class Order implements ServletRequestAware {
             }
             cart.getProducts().clear();
             cart.setTotalPrice(0.0);
+            return "complete";
+        }
+        
+        if(request.getParameter("purchase_wish") != null){
+            currentUser.setRealName(request.getParameter("tb_RealName"));
+            currentUser.setPhone(request.getParameter("tb_Phone"));
+            currentUser.setAddress(request.getParameter("tb_Address"));
+            accountDAO.update(currentUser);
+            
+            Cart wishList = currentUser.getWishList();
+            Cart cart = new Cart();
+            cart.setAccount(currentUser);
+            cart.setTotalPrice(wishList.getTotalPrice());
+            cart.getProducts().addAll(wishList.getProducts());
+            cartDAO.add(cart);
+            Cart lastCart = cartDAO.getLast();
+            CartDetail cd = null;
+            CartDetail _cd = null;
+            for (Product item : cart.getProducts()) {
+                int cartID = lastCart.getCartId();
+                int itemID = item.getProductId();
+                cd = cartDetailDAO.get(cartID, itemID);
+                _cd = cartDetailDAO.get(wishList.getCartId(), itemID);
+                cd.setQuantity(_cd.getQuantity());
+                cartDetailDAO.update(cd);
+            }
+            wishList.getProducts().clear();
+            wishList.setTotalPrice(0.0);
+            cartDAO.update(wishList);
             return "complete";
         }
         return "success";

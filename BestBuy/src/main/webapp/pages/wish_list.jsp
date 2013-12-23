@@ -72,8 +72,9 @@
 
             </tbody>
         </table>
-                    <form id="f_checkout" action="WishList" method="post">
-                        <button type="submit" name="checkout" style="float: right">Purchase</button>
+                    <form id="f_checkout" action="Order" method="post">
+                        <input type="hidden" name="wish" value=""/>
+                        <button type="submit" name="checkout" style="float: right">CHECKOUT</button>
                     </form>
     </div>
 </div>

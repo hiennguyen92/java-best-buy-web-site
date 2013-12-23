@@ -21,22 +21,22 @@
                     <td></td>
                 </tr>
                 <c:forEach var="user" items="${accounts}">
-                    <c:set var="account" value="${accountDAO.get(user.username)}"/>
+                    <c:set var="userAccount" value="${accountDAO.get(user.username)}"/>
                     <tr class="product_row">
 
-                        <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${account.avatar}" alt="" title='${account.username}' height="48" width="48"></td>
-                        <td><a href="${pageContext.request.contextPath}/Profile?name=${account.username}">${account.username}</a></td>
-                        <td>${account.password}</td>
+                        <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${userAccount.avatar}" alt="" title='${userAccount.username}' height="48" width="48"></td>
+                        <td><a href="${pageContext.request.contextPath}/Profile?name=${userAccount.username}">${userAccount.username}</a></td>
+                        <td>${userAccount.password}</td>
                         
                         <td>
-                            <c:forEach var="role" items="${account.roles}">
+                            <c:forEach var="role" items="${userAccount.roles}">
                                 <p>${role.authority}</p>
                             </c:forEach>
                         </td>
 
                         <td>
                             <c:choose>
-                                <c:when test="${account.enable == 1}">
+                                <c:when test="${userAccount.enable == 1}">
                                     <p>ACTIVE</p>                                    
                                 </c:when>
                                 <c:otherwise>
@@ -46,9 +46,9 @@
                         </td>
 
                         <td>
-                            <c:if test="${account.username != User.username}">
+                            <c:if test="${userAccount.username != User.username}">
                                 <form id="f_mgn_account" class="f_cart" action="ManageAccount" method="post">
-                                    <input type="hidden" name="h_username" value="${account.username}"/>
+                                    <input type="hidden" name="h_username" value="${userAccount.username}"/>
                                     <input class="img" type="image" src="${pageContext.request.contextPath}/images/edit.png" name="edit"></input>
                                     <input class="img" type="image" src="${pageContext.request.contextPath}/images/remove.png" name="remove"></input>
                                 </form>
