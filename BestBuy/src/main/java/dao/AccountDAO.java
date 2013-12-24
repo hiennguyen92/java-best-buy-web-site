@@ -18,7 +18,6 @@ public class AccountDAO extends BaseDAO<Account>{
         setCls(Account.class);
     }
     
-    @Override
     public Account get(String id) {
         Account temp = null;
         Session session = currentSession();

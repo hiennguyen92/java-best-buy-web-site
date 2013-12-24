@@ -56,21 +56,6 @@ public class BaseDAO<T> {
         }
         return temp;
     }
-    
-    public T get(String id) {
-        T temp = null;
-        Session session = currentSession();
-        try {
-            temp = (T) session.get(cls, id);
-        } catch (Exception ex) {
-            //Log the exception
-            logger.error(ex.getMessage());
-            logger.error(ex.getCause());
-        } finally {
-            session.close();
-        }
-        return temp;
-    }
 
     public List<T> getList() {
         List<T> list = null;
