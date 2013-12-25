@@ -55,6 +55,7 @@ public class ManageProduct implements ServletRequestAware {
             String strBrand = request.getParameter("sl_Brand");
             String strType = request.getParameter("sl_Type");
             String url = request.getParameter("h_url");
+            url = url.substring(url.lastIndexOf("images"));
             int id = 0, brand = 0, type = 0;
             if(!strId.equals(""))
                 id = Integer.parseInt(strId);

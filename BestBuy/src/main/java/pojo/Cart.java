@@ -22,7 +22,7 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CartId")
     private int cartId;
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name="Username")
     private Account account;
     @Column(name = "TotalPrice")

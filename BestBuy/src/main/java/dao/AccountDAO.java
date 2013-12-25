@@ -23,6 +23,7 @@ public class AccountDAO extends BaseDAO<Account>{
         Session session = currentSession();
         try {
             temp = (Account) session.get(Account.class, id);
+            temp.getCarts().size();
             temp.getComments().size();
             temp.getRoles().size();
         } catch (Exception ex) {

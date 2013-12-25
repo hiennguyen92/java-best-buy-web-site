@@ -43,7 +43,9 @@ public class ManageAccount implements ServletRequestAware {
 
     public String execute() throws IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
-        AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");      
+        AccountDAO accountDAO = (AccountDAO) context.getBean("accountDAO");  
+        RoleDAO roleDAO = (RoleDAO) context.getBean("roleDAO");
+        uploadFileName = "images/avatar.jpg";
         if(request.getParameter("add_account") != null || request.getParameter("edit_account") != null){
             String userName = request.getParameter("tb_Username");
             String password = request.getParameter("tb_Password");
@@ -52,9 +54,8 @@ public class ManageAccount implements ServletRequestAware {
             String address = request.getParameter("tb_Address");
             String status = request.getParameter("r_status");
             String url = request.getParameter("h_url");
-            if(url.equals(""))
-                url = "images/avatar.jpg";
-            else if(!url.equals("images/avatar.jpg")){
+            url = url.substring(url.lastIndexOf("images"));
+            if(!url.equals("images/avatar.jpg")){
                 String extention = url.substring(url.indexOf('.'));
                 File src = new File(request.getServletContext().getRealPath("/") + "images\\temp" + extention);
                 File dest = new File(request.getServletContext().getRealPath("/") + "images\\avatar_" + userName + extention);
@@ -67,7 +68,6 @@ public class ManageAccount implements ServletRequestAware {
                     AddRoles(context, account);
             }
             else{
-                account.getRoles().clear();
                 if(accountDAO.update(account))
                     AddRoles(context, account);
             }
@@ -87,7 +87,7 @@ public class ManageAccount implements ServletRequestAware {
             accountDAO.delete(account);
         }
         request.setAttribute("accounts", accountDAO.getList());
-        request.setAttribute("accountDAO", accountDAO);
+        request.setAttribute("roleDAO", roleDAO);
         return "success";
     }
     

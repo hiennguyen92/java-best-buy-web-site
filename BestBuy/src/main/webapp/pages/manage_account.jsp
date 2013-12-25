@@ -20,8 +20,7 @@
                     <td style="width: 10%">Status</td>
                     <td></td>
                 </tr>
-                <c:forEach var="user" items="${accounts}">
-                    <c:set var="userAccount" value="${accountDAO.get(user.username)}"/>
+                <c:forEach var="userAccount" items="${accounts}">
                     <tr class="product_row">
 
                         <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${userAccount.avatar}" alt="" title='${userAccount.username}' height="48" width="48"></td>
@@ -29,7 +28,7 @@
                         <td>${userAccount.password}</td>
                         
                         <td>
-                            <c:forEach var="role" items="${userAccount.roles}">
+                            <c:forEach var="role" items="${roleDAO.getList(userAccount.username)}">
                                 <p>${role.authority}</p>
                             </c:forEach>
                         </td>

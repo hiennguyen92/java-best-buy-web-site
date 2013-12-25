@@ -45,6 +45,10 @@ public class Account implements Serializable {
     public Account() { }
 
     public Account(String username, String password, String realName, String phone, String address, String avatar, Integer enable) {
+        init(username, password, realName, phone, address, avatar, enable);
+    }
+    
+    public void init(String username, String password, String realName, String phone, String address, String avatar, Integer enable){
         this.username = username;
         this.password = password;
         this.realName = realName;
