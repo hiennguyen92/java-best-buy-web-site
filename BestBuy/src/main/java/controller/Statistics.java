@@ -8,6 +8,7 @@ package controller;
 
 import dao.AccountDAO;
 import dao.BrandDAO;
+import dao.CartDAO;
 import dao.CategoryDAO;
 import dao.ProductDAO;
 import dao.SaleOffDAO;
@@ -38,6 +39,7 @@ public class Statistics implements ServletRequestAware {
         BrandDAO brandDAO = (BrandDAO) context.getBean("brandDAO");
         CategoryDAO categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
         SaleOffDAO saleOffDAO = (SaleOffDAO) context.getBean("saleOffDAO");
+        CartDAO cartDAO = (CartDAO) context.getBean("cartDAO");
         List<Account> accounts = accountDAO.getList();
         int active = 0;
         int nonActive = 0;
@@ -54,6 +56,7 @@ public class Statistics implements ServletRequestAware {
         request.setAttribute("Brands", brandDAO.getList());
         request.setAttribute("Categories", categoryDAO.getList());
         request.setAttribute("sale", saleOffDAO.getLast());
+        request.setAttribute("ordersSize", cartDAO.getList().size());
         return "success";
     }
     

@@ -44,6 +44,7 @@ $(document).ready(function() {
         var ajax = $.ajax("Info?id="+id+"&ta_content="+content);
         ajax.done(function(msg){
             $("#comment_section").html(msg);
+            $("#ta_content").val("");
         });
         return false;
     });

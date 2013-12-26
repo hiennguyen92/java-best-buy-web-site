@@ -75,7 +75,7 @@
                     <td></td>
                 </tr>
                 <tr class="product_row">
-                    <td><p>Number of orders: ${fn:length(orders)}</p></td>
+                    <td><p>Number of orders: ${ordersSize}</p></td>
                 </tr>
             </tbody>
         </table>

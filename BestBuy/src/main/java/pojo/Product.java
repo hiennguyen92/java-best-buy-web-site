@@ -57,6 +57,7 @@ public class Product implements Serializable {
     @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
     private Set<Image> images = new HashSet<Image>(0); 
     @ManyToMany(
+            cascade = {CascadeType.ALL},
             fetch = FetchType.EAGER,
             targetEntity = Cart.class,
             mappedBy = "products")

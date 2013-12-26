@@ -82,7 +82,7 @@
                         <td>
                             <c:forEach var="i" begin="1" end="10">
                                 <c:choose>
-                                    <c:when test="${product1.rating*2==i}">
+                                    <c:when test="${product1.rating*2>=i&&product1.rating*2<i+1}">
                                         <input name="adv1" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
                                     </c:when>
                                     <c:otherwise>
@@ -94,7 +94,7 @@
                         <td>
                             <c:forEach var="i" begin="1" end="10">
                                 <c:choose>
-                                    <c:when test="${product2.rating*2==i}">
+                                    <c:when test="${product2.rating*2>=i&&product2.rating*2<i+1}">
                                         <input name="adv2" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
                                     </c:when>
                                     <c:otherwise>
@@ -107,7 +107,7 @@
                             <c:if test="${product3 != null}">
                                 <c:forEach var="i" begin="1" end="10">
                                     <c:choose>
-                                        <c:when test="${product3.rating*2==i}">
+                                        <c:when test="${product3.rating*2>=i&&product3.rating*2<i+1}">
                                             <input name="adv3" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
                                         </c:when>
                                         <c:otherwise>
@@ -121,11 +121,11 @@
                             <c:if test="${product4 != null}">
                                 <c:forEach var="i" begin="1" end="10">
                                     <c:choose>
-                                        <c:when test="${product4.rating*2==i}">
-                                            <input name="adv4" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
+                                        <c:when test="${product4.rating*2>=i&&product4.rating*2<i+1}">
+                                            <input name="adv1" type="radio" class="star {split:2}" disabled="disabled" checked="checked"/> 
                                         </c:when>
                                         <c:otherwise>
-                                            <input name="adv4" type="radio" class="star {split:2}" disabled="disabled"/> 
+                                            <input name="adv1" type="radio" class="star {split:2}" disabled="disabled"/> 
                                         </c:otherwise>
                                     </c:choose>
                                 </c:forEach>            

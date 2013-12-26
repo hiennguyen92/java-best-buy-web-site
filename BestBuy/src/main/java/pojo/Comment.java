@@ -22,10 +22,10 @@ public class Comment implements Serializable{
     private int commentId;
     @Column(name = "Content", length = 2000)
     private String content;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name="Username")
     private Account account;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name="ProductId")
     private Product product;
 

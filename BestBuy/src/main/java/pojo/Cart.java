@@ -31,7 +31,6 @@ public class Cart implements Serializable {
     private Date date = new Date();
     @ManyToMany(
             fetch = FetchType.EAGER,
-            cascade = {CascadeType.ALL},
             targetEntity = Product.class)
     @JoinTable(
             name = "Cart_Detail",
