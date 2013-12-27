@@ -96,7 +96,10 @@ public class LogInWithFacebook implements ServletRequestAware {
 
     private void logIn(Account account) {
         Collection<GrantedAuthority> authoritys = new ArrayList<GrantedAuthority>();
-        authoritys.add(new GrantedAuthorityImpl("ROLE_USER"));
+
+        for (UserRole role : account.getRoles()) {
+            authoritys.add(new GrantedAuthorityImpl(role.getAuthority()));
+        }
         Authentication authentication = new UsernamePasswordAuthenticationToken(account, "AAAAA", authoritys);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
