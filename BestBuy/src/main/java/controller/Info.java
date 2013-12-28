@@ -33,6 +33,8 @@ public class Info implements ServletRequestAware {
     }
 
     public String execute() {
+        request.setAttribute("url", request.getRequestURL());
+        request.setAttribute("query", request.getQueryString());
         ApplicationContext context = new ClassPathXmlApplicationContext("hibernate.xml");
         ProductDAO productDAO = (ProductDAO) context.getBean("productDAO");
         CommentDAO commentDAO = (CommentDAO) context.getBean("commentDAO");
