@@ -30,12 +30,12 @@
  	
     <!-- The OAuth2 protected resources are separated out into their own block so we can deal with authorization and error handling 
     separately. This isn't mandatory, but it makes it easier to control the behaviour. -->
-    <http pattern="/images/*" create-session="never"
+    <http pattern="/Service/*" create-session="never"
           entry-point-ref="oauthAuthenticationEntryPoint"
           access-decision-manager-ref="accessDecisionManager"
           xmlns="http://www.springframework.org/schema/security">
         <anonymous enabled="false" />
-        <intercept-url pattern="/images/*" access="ROLE_USER,SCOPE_READ" />
+        <intercept-url pattern="/Service/*" access="ROLE_ADMIN,ROLE_USER,SCOPE_READ" />
         <custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
         <access-denied-handler ref="oauthAccessDeniedHandler" />
     </http>

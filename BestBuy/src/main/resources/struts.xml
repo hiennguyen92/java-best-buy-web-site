@@ -94,4 +94,9 @@
 	</action>
     </package>
  
+    <package name="Service" namespace="/Service" extends="json-default">
+        <action name="GetUserInfo" class="controller.GetUserInfo">
+            <result type="json">${account}</result>
+        </action>
+    </package>
 </struts>
