@@ -13,7 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <head>
         <sj:head/>
         <title>Best Buy</title>
-        <meta property="og:image" content="./images/logo.png"/>
+        <meta property="og:image" content="http://laptrinhhiendai-testappoke.rhcloud.com/images/logo.png"/>
         <meta property="og:title" content="Best Buy Shop"/>
         <meta property="og:description" content="Best Buy Shop" />
         <link href='<s:url value="/css/style.css"/>' rel="stylesheet" type="text/css"  media="all" />
