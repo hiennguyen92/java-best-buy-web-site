@@ -27,6 +27,10 @@
             <result name="success" type="redirect">Home</result>
             <result name="error" type="tiles">Login</result>
         </action>
+        <action name="LogInWithFacebook" class="controller.LogInWithFacebook">
+            <result name="success" type="redirect">Home</result>
+            <result name="error" type="tiles">Login</result>
+        </action>
         <action name="Register" class="controller.Register">
             <result name="success" type="redirect">Login</result>
             <result name="error" type="tiles">Register</result>
@@ -86,12 +90,12 @@
         </action>
         <action name="UploadImage" class="controller.UploadImage">
             <interceptor-ref name="fileUpload">
-       		<param name="allowedTypes">image/png,image/gif,image/jpeg</param>
+                <param name="allowedTypes">image/png,image/gif,image/jpeg</param>
             </interceptor-ref>
-	    <interceptor-ref name="basicStack"/>
+            <interceptor-ref name="basicStack"/>
  
-	    <result name="success">/pages/ajax_upload_image.jsp</result> 
-	</action>
+            <result name="success">/pages/ajax_upload_image.jsp</result> 
+        </action>
     </package>
  
     <package name="Service" namespace="/Service" extends="json-default">

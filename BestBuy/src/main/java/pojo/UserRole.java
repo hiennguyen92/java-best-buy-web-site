@@ -14,7 +14,7 @@ import javax.persistence.*;
  * @author HOANG
  */
 @Entity
-@Table(name = "userroles")
+@Table(name = "UserRoles")
 public class UserRole implements Serializable{
     @Id
     @GeneratedValue

@@ -74,7 +74,7 @@
             </div>
             <div class="share">
                 <ul>
-                    <li> <a href="#"><img src="images/facebook.png" title="facebook" /> FaceBook</a></li>
+                    <li> <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=${url}?${query}"><img src="images/facebook.png" title="Facebook" /> Share on Facebook</a></li>
                     <li> <a href="#"><img src="images/twitter.png" title="Twiiter" />Twiiter</a></li>
                     <li> <a href="#"><img src="images/rss.png" title="Rss" />Rss</a></li>
                 </ul>
