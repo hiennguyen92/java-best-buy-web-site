@@ -32,7 +32,17 @@
 <script>
     function checklogin()
     {
-        if (m_response.status === 'connected') {
+        if (m_response === undefined)
+        {
+            FB.login(function()
+            {
+                if (m_response.status === 'connected')
+                {
+                    login();
+                }
+            });
+        }
+        else if (m_response.status === 'connected') {
             login();
         } else if (m_response.status === 'not_authorized') {
             FB.login();
