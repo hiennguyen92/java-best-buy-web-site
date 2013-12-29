@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Account` (
   `Address` VARCHAR(1000) NULL,
   `WishId` INT(10) NULL,
   `Enable` tinyint(1) NOT NULL,
-  `AvatarUrl` VARCHAR(45) NULL,
+  `AvatarUrl` VARCHAR(100) NULL,
   PRIMARY KEY (`Username`),
   CONSTRAINT `FK_account_cart` FOREIGN KEY (`WishId`) REFERENCES `Cart` (`CartId`))
 ENGINE = InnoDB;
