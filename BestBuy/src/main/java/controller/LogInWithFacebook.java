@@ -79,14 +79,15 @@ public class LogInWithFacebook implements ServletRequestAware {
 
     private User getFacebookUser() throws FacebookException {
         Facebook facebook = new FacebookFactory().getInstance();
-        facebook.setOAuthAppId("185367794993208", "c5dc7981e60a0196c4f50317ea0fe3ed");
+        facebook.setOAuthAppId("587810757944026", "6a5bddc49251d677d4a478c17738940a");
         facebook.setOAuthAccessToken(new AccessToken(AccessTokenKey, null));
 
         return facebook.getMe();
     }
 
     private Account createAccount(User user) {
-        Account account = new Account(user.getUsername(), "AAAAA", user.getName(), "01111", user.getLocale().getCountry(), "images/avatar.jpg", 1);
+        String imageUrl = "http://graph.facebook.com/"+ user.getId() + "/picture?width=200&height=200";
+        Account account = new Account(user.getUsername(), "", user.getName(), "", user.getHometown().getName(), imageUrl, 1);
         UserRole role = new UserRole(account, "ROLE_USER");
         RoleDAO roleDAO = (RoleDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("roleDAO");
         roleDAO.add(role);

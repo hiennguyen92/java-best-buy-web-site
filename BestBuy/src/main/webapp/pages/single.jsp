@@ -7,6 +7,7 @@
 <script src="js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/single.js"></script>
 <script type="text/javascript" src="js/slide.js"></script>
+<script type="text/javascript" src="js/facebook.js"></script>
 <link href="css/single.css" rel="stylesheet" />
 <link href="css/style1.css" rel="stylesheet" />
 <link href="css/slide.css" rel="stylesheet" />
@@ -74,7 +75,7 @@
             </div>
             <div class="share">
                 <ul>
-                    <li> <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=${url}?${query}"><img src="images/facebook.png" title="Facebook" /> Share on Facebook</a></li>
+                    <li> <a href="javascript:void(0)" onclick="shareLink('${url}?${pageContext.request.queryString}');"><img src="images/facebook.png" title="Facebook" /> Share on Facebook</a></li>
                     <li> <a href="#"><img src="images/twitter.png" title="Twiiter" />Twiiter</a></li>
                     <li> <a href="#"><img src="images/rss.png" title="Rss" />Rss</a></li>
                 </ul>

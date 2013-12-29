@@ -28,7 +28,7 @@ public class Account implements Serializable {
     private String phone;
     @Column(name = "Address", length = 1000)
     private String address;
-    @Column(name = "AvatarUrl", length = 45)
+    @Column(name = "AvatarUrl", length = 100)
     private String avatar;
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "WishID")
