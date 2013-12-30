@@ -7,6 +7,7 @@
     <constant name="struts.enable.DynamicMethodInvocation"
                   value="false" />
     <constant name="struts.devMode" value="false" />
+    
     <package name="default" namespace="/" extends="struts-default">
         <result-types>
             <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
@@ -97,10 +98,6 @@
             <result name="success">/pages/ajax_upload_image.jsp</result> 
         </action>
     </package>
- 
-    <package name="Service" namespace="/Service" extends="json-default">
-        <action name="GetUserInfo" class="controller.GetUserInfo">
-            <result type="json">${account}</result>
-        </action>
-    </package>
+    
+    <constant name="struts.action.excludePattern" value="/Service/.*"/>
 </struts>
