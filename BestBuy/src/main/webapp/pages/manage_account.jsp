@@ -22,8 +22,14 @@
                 </tr>
                 <c:forEach var="userAccount" items="${accounts}">
                     <tr class="product_row">
-
-                        <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${userAccount.avatar}" alt="" title='${userAccount.username}' height="48" width="48"></td>
+                        <c:choose>
+                            <c:when test="${userAccount.avatar.substring(0,4).equals('http')}">
+                                <td class="firstcol"><img width="60px" height="60px" src="${userAccount.avatar}" alt="" title='${userAccount.username}' height="48" width="48"></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${userAccount.avatar}" alt="" title='${userAccount.username}' height="48" width="48"></td>
+                            </c:otherwise>
+                        </c:choose>
                         <td><a href="${pageContext.request.contextPath}/Profile?name=${userAccount.username}">${userAccount.username}</a></td>
                         <td>${userAccount.password}</td>
                         

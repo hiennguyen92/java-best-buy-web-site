@@ -15,21 +15,19 @@ import javax.persistence.*;
  * @author HOANG
  */
 @Entity
+@AttributeOverrides({
+    @AttributeOverride( name="realName", column = @Column(name = "RealName", length = 45) ),
+    @AttributeOverride( name="phone", column = @Column(name = "Phone", length = 45) ),
+    @AttributeOverride( name="address", column = @Column(name = "Address", length = 1000) ),
+    @AttributeOverride( name="avatar", column = @Column(name = "AvatarUrl", length = 100) )
+})
 @Table(name = "Account")
-public class Account implements Serializable {
+public class Account extends AccountService implements Serializable {
     @Id
     @Column(name = "Username", length = 45)
     private String username;
     @Column(name = "Password", length = 45)
     private String password;
-    @Column(name = "RealName", length = 45)
-    private String realName;
-    @Column(name = "Phone", length = 45)
-    private String phone;
-    @Column(name = "Address", length = 1000)
-    private String address;
-    @Column(name = "AvatarUrl", length = 100)
-    private String avatar;
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "WishID")
     private Cart wishList = new Cart();
@@ -72,38 +70,6 @@ public class Account implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public Cart getWishList() {
