@@ -163,6 +163,16 @@ public class Store implements ServletRequestAware {
                     i++;
             }
         }
+        param = request.getParameter("tb_Name");
+        if(param != null && !param.equals("")){
+            for(int i = 0; i < products.size();){
+                String name = products.get(i).getName();
+                if(!name.toLowerCase().contains(param.toLowerCase()))
+                    products.remove(products.get(i));
+                else
+                    i++;
+            }
+        }
         request.setAttribute("paginate", paginate);
         request.setAttribute("products", products);
         if(request.getParameter("page") != null || request.getParameter("view") != null

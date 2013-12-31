@@ -5,8 +5,9 @@
     <!----start-Header---->
     <div class="header">
         <div class="search-bar">
-            <form>
-                <input type="text"><input type="submit" value="Search" />
+            <form action="Store" method="post">
+                <input name="tb_Name" type="text">
+                <input type="submit" value="Search" />
             </form>
         </div>
         <div class="clear"> </div>
@@ -44,8 +45,9 @@
                 <li><a href="${pageContext.request.contextPath}/Home">Home</a></li>
                 <li><a href="${pageContext.request.contextPath}/Store">Store</a></li>
                 <li><a href="${pageContext.request.contextPath}/Contact">Contact</a></li>
+                <li><a href="${pageContext.request.contextPath}/Other">Other shop</a></li>
                 <sec:authorize ifAnyGranted="ROLE_ADMIN">
-                <li><a href="${pageContext.request.contextPath}/Admin/Statistics">Manager</a></li>
+                    <li><a href="${pageContext.request.contextPath}/Admin/Statistics">Manager</a></li>
                 </sec:authorize>
             </ul>
         </div>

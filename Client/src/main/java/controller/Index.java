@@ -23,6 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class Index {
+    @RequestMapping({"/index", "/"})
+    public ModelAndView index(){
+        return new ModelAndView("index");
+    }
     
     @RequestMapping(value = "/GetInfo", method = RequestMethod.POST)
     public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response){

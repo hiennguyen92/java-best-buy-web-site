@@ -48,6 +48,9 @@
     <definition name="Contact" extends="Page">
         <put-attribute name="body" value="/pages/contact.jsp"/>    
     </definition>
+    <definition name="Other" extends="Page">
+        <put-attribute name="body" value="/pages/other.jsp"/>    
+    </definition>
     
     <definition name="Statistics" extends="AdminPage">
         <put-attribute name="body" value="/pages/statistics.jsp"/> 

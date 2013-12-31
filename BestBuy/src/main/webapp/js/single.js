@@ -1,5 +1,9 @@
 $(document).ready(function() {
-    $(".jqzoom").jqzoom();
+    $(".zoom").elevateZoom({
+        cursor: "crosshair",
+        zoomWindowWidth: 300,
+        zoomWindowHeight: 300
+    });
     $(".menu_body").hide();
     //toggle the componenet with class menu_body
     $(".menu_head").click(function() {

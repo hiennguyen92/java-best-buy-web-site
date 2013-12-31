@@ -1,16 +1,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<link rel="stylesheet" href="css/jqzoom.css" type="text/css">
 <link rel="stylesheet" href="css/jquery.rating.css" type="text/css">
-<script src="js/jquery.rating.pack.js" type="text/javascript"></script>
-<script src="js/jqzoom.pack.1.0.1.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/single.js"></script>
-<script type="text/javascript" src="js/slide.js"></script>
-<script type="text/javascript" src="js/facebook.js"></script>
 <link href="css/single.css" rel="stylesheet" />
 <link href="css/style1.css" rel="stylesheet" />
 <link href="css/slide.css" rel="stylesheet" />
+<script src="js/jquery.rating.pack.js" type="text/javascript"></script>
+<script src="js/jquery.elevateZoom-3.0.8.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/single.js"></script>
+<script type="text/javascript" src="js/slide.js"></script>
+<script type="text/javascript" src="js/facebook.js"></script>
 <div class="content">
     <input type="hidden" id="productId" value="${product.productId}"/>
     <div class="content-grids">
@@ -24,7 +23,10 @@
             </div>
         </div>
         <div class="detalis-image">
-            <div id="content"> <a href="${product.imageUrl}" class="jqzoom" style="" title="Product-Name"> <img src="${product.imageUrl}"  title='${product.name}' style="border: 1px solid #e5e5e5;"> </a>
+            <div id="content"> 
+                <a href="${product.imageUrl}" style="" title="Product-Name"> 
+                    <img height="300" width="300" class="zoom" src="${product.imageUrl}" data-zoom-image="${product.imageUrl}" title='${product.name}' style="border: 1px solid #e5e5e5;"> 
+                </a>
             </div>
         </div>
         <div class="detalis-image-details">
@@ -91,9 +93,9 @@
                    <div id="products_example">
                            <div id="products">
                                 <div class="slides_container">
-                                    <a href="#" target="_blank"><img src="${product.imageUrl}" alt=" " /></a>
+                                    <a href="#" target="_blank"><img src="${product.imageUrl}" class="zoom" /></a>
                                     <c:forEach var="image" items="${product.images}">
-                                        <a href="#" target="_blank"><img src="${image.url}" alt=" " /></a>                                      
+                                        <a href="#" target="_blank"><img src="${image.url}" class="zoom" /></a>                                      
                                     </c:forEach>
                                 </div>
                                 <ul class="pagination">

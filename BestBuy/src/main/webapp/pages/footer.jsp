@@ -34,7 +34,7 @@
     <div class="clear"> </div>
     <div class="wrap">
         <div class="copy-right">
-            <p>Mobilestore  &#169	 All Rights Reserved | Design By <a href="http://w3layouts.com/">W3Layouts</a></p>
+            <p>Best Buy Shop  &#169	 All Rights Reserved | Design By <a href="http://w3layouts.com/">W3Layouts</a></p>
         </div>
     </div>
 </div>

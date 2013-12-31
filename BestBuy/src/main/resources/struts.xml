@@ -64,7 +64,10 @@
         </action>    
         <action name="Contact" class="controller.Contact">
             <result name="success" type="tiles">Contact</result>
-        </action>        
+        </action>   
+        <action name="Other" class="controller.Other">
+            <result name="success" type="tiles">Other</result>
+        </action>       
     </package>
     
     <package name="Admin" namespace="/Admin" extends="struts-default">
