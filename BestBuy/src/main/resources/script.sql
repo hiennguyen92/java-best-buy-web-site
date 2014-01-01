@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Account` (
   CONSTRAINT `FK_account_cart` FOREIGN KEY (`WishId`) REFERENCES `Cart` (`CartId`))
 ENGINE = InnoDB;
 
-CREATE TABLE `UserRoles` (
+CREATE TABLE IF NOT EXISTS `bestbuydb`.`UserRoles` (
   `RoleID` INT(10) UNSIGNED NOT NULL auto_increment,
   `Username` VARCHAR(45) NOT NULL,
   `Authority` VARCHAR(45) NOT NULL,
