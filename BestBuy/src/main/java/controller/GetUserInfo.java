@@ -1,7 +1,6 @@
 package controller;
 
 import dao.AccountDAO;
-import javax.ws.rs.WebApplicationException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
