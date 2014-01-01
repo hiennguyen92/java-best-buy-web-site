@@ -72,8 +72,8 @@ public class ManageProduct implements ServletRequestAware {
                 Product last = productDAO.getLast();
                 id = last.getProductId();
                 String extention = url.substring(url.indexOf('.'));
-                File src = new File(request.getServletContext().getRealPath("/") + "images\\temp" + extention);
-                File dest = new File(request.getServletContext().getRealPath("/") + "images\\" + id + "_ch" + extention);
+                File src = new File(request.getSession().getServletContext().getRealPath("/") + "images\\temp" + extention);
+                File dest = new File(request.getSession().getServletContext().getRealPath("/") + "images\\" + id + "_ch" + extention);
                 FileUtils.copyFile(src, dest);
                 url = "images/" + id + "_ch" + extention;
             }

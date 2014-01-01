@@ -67,7 +67,7 @@ public class UploadImage implements ServletRequestAware {
         String temp = request.getHeader("Referer");
         previous = temp.substring(temp.lastIndexOf('/') + 1);
         String name = "temp" + uploadFileName.substring(uploadFileName.lastIndexOf('.'));
-        String filePath = request.getServletContext().getRealPath("/") + "images\\" + name;
+        String filePath = request.getSession().getServletContext().getRealPath("/") + "images\\" + name;
         File newFile = new File(filePath);
         FileUtils.copyFile(upload, newFile);
         setUploadFileName("images/" + name);

@@ -57,8 +57,8 @@ public class ManageAccount implements ServletRequestAware {
             url = url.substring(url.lastIndexOf("images"));
             if(!url.equals("images/avatar.jpg")){
                 String extention = url.substring(url.indexOf('.'));
-                File src = new File(request.getServletContext().getRealPath("/") + "images\\temp" + extention);
-                File dest = new File(request.getServletContext().getRealPath("/") + "images\\avatar_" + userName + extention);
+                File src = new File(request.getSession().getServletContext().getRealPath("/") + "images\\temp" + extention);
+                File dest = new File(request.getSession().getServletContext().getRealPath("/") + "images\\avatar_" + userName + extention);
                 FileUtils.copyFile(src, dest);
                 url = "images/avatar_" + userName + extention;
             }
