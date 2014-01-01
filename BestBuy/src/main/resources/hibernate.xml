@@ -16,9 +16,15 @@
             <value>classpath:hibernate.properties</value>
         </property>
     </bean>
-    <bean id="databaseConnect" class="org.apache.tomcat.dbcp.dbcp.BasicDataSource">
+    <bean id="databaseConnect" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${driverClassName}"></property>
         <property name="url" value="${url}"></property>
+        <property name="username" value="${username}"></property>
+        <property name="password" value="${password}"></property>
+    </bean>
+    <bean id="basicDatabaseConnect" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${driverClassName}"></property>
+        <property name="url" value="${basicUrl}"></property>
         <property name="username" value="${username}"></property>
         <property name="password" value="${password}"></property>
     </bean>
