@@ -68,6 +68,9 @@
         <action name="Other" class="controller.Other">
             <result name="success" type="tiles">Other</result>
         </action>       
+        <action name="Setup" class="controller.Setup">
+            <result name="success" type="tiles">Home</result>
+        </action>       
     </package>
     
     <package name="Admin" namespace="/Admin" extends="struts-default">
