@@ -51,6 +51,9 @@
     <definition name="Other" extends="Page">
         <put-attribute name="body" value="/pages/other.jsp"/>    
     </definition>
+    <definition name="Error" extends="Page">
+        <put-attribute name="body" value="/pages/error.jsp"/>   
+    </definition>
     
     <definition name="Statistics" extends="AdminPage">
         <put-attribute name="body" value="/pages/statistics.jsp"/> 

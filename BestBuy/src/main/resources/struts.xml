@@ -71,6 +71,9 @@
         <action name="Setup" class="controller.Setup">
             <result name="success" type="tiles">Home</result>
         </action>       
+         <action name="Error" class="controller.Error">
+            <result name="success" type="tiles">Error</result>
+        </action>        
     </package>
     
     <package name="Admin" namespace="/Admin" extends="struts-default">
