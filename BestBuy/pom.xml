@@ -131,6 +131,7 @@
             <version>2.13</version>
         </dependency>
         <dependency>
+
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
             <version>4.5.1</version>
@@ -139,6 +140,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.1</version>
+
         </dependency>
     </dependencies>
     
