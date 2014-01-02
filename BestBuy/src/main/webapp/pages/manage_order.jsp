@@ -22,7 +22,14 @@
                     <c:if test="${order.account != null}">
                     <tr class="product_row">
 
-                        <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${order.account.avatar}" alt="" title='${order.account.username}' height="48" width="48"></td>
+                        <c:choose>
+                            <c:when test="${order.account.avatar.substring(0,4).equals('http')}">
+                                <td class="firstcol"><img width="60px" height="60px" src="${order.account.avatar}" alt="" title='${order.account.username}' height="48" width="48"></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${order.account.avatar}" alt="" title='${order.account.username}' height="48" width="48"></td>
+                            </c:otherwise>
+                        </c:choose>
                         <td><a href="${pageContext.request.contextPath}/Profile?name=${order.account.username}">${order.account.username}</a></td>
                         <td>${fn:length(order.products)}</td>
                         

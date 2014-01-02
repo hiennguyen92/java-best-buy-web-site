@@ -23,9 +23,9 @@
                 <input type="text"><input type="submit" value="go" />
                 <h3>Fallow Us:</h3>
                 <ul>
-                    <li><a href="#"><img src="images/twitter.png" title="twitter" />Twitter</a></li>
-                    <li><a href="#"><img src="images/facebook.png" title="Facebook" />Facebook</a></li>
-                    <li><a href="#"><img src="images/rss.png" title="Rss" />Rss</a></li>
+                    <li><a href="#"><img src="${pageContext.request.contextPath}/images/twitter.png" title="twitter" />Twitter</a></li>
+                    <li><a href="#"><img src="${pageContext.request.contextPath}/images/facebook.png" title="Facebook" />Facebook</a></li>
+                    <li><a href="#"><img src="${pageContext.request.contextPath}/images/rss.png" title="Rss" />Rss</a></li>
                 </ul>
             </div>
         </div>

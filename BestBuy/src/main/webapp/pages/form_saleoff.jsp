@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <script type="text/javascript" src="<s:url value="/js/jquery-ui.js"/>"></script>
-<script type="text/javascript" src="js/saleoff.js"></script>
+<script type="text/javascript" src="<s:url value="/js/saleoff.js"/>"></script>
 <input id="result" type="hidden" value="${result}"/>
 <div class="content">
     <div class="col span_1_of_3">

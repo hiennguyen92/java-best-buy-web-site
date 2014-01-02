@@ -26,7 +26,7 @@
             <div id="content"> 
                 <a href="${product.imageUrl}" style="" title="Product-Name"> 
                     <c:set var="web" value="${pageContext.request.requestURL}"/>
-                    <img height="300" width="300" class="zoom" src="${web.substring(0, web.length()-12)}/${product.imageUrl}" data-zoom-image="${product.imageUrl}" title='${product.name}' style="border: 1px solid #e5e5e5;"> 
+                    <img height="300" width="300" class="zoom" src="${web.substring(0, web.length()-12)}${product.imageUrl}" data-zoom-image="${product.imageUrl}" title='${product.name}' style="border: 1px solid #e5e5e5;"> 
                 </a>
             </div>
         </div>
