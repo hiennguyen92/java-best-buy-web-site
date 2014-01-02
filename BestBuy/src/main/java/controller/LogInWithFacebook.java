@@ -79,7 +79,7 @@ public class LogInWithFacebook implements ServletRequestAware {
 
     private User getFacebookUser() throws FacebookException {
         Facebook facebook = new FacebookFactory().getInstance();
-        facebook.setOAuthAppId("587810757944026", "6a5bddc49251d677d4a478c17738940a");
+        facebook.setOAuthAppId("185367794993208", "c5dc7981e60a0196c4f50317ea0fe3ed");
         facebook.setOAuthAccessToken(new AccessToken(AccessTokenKey, null));
 
         return facebook.getMe();
