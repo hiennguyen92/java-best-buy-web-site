@@ -24,23 +24,23 @@ $(document).ready(function() {
        var from = $("input[name='tb_From']").val();
        var to = $("input[name='tb_To']").val();
        
-       if(name == ""){
+       if(name ===""){
             alert("you haven't entered event name!");
             return false;
        }       
-       else if(description == ""){
+       else if(description === ""){
             alert("you haven't entered event description!");
             return false;
        }       
-       else if(percent == ""){
+       else if(percent === ""){
             alert("you haven't entered sale off percent!");
             return false;
        }
-       else if(from == ""){
+       else if(from === ""){
             alert("you haven't entered begin date!");
             return false;
        }
-       else if(to == ""){
+       else if(to === ""){
             alert("you haven't entered end date!");
             return false;
        }

@@ -1,7 +1,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+	xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/context 
@@ -12,6 +13,7 @@
 	<context:component-scan base-package="controller" />
 
 	<mvc:annotation-driven />
+        <import resource="jasper-views.xml" />
         <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -21,4 +23,11 @@
             <value>.jsp</value>
         </property>
     </bean>
+    
+            
+
+        <bean class="org.springframework.web.servlet.view.XmlViewResolver"
+			p:location="/WEB-INF/jasper-views.xml"  p:order="0" />
+    
+    
 </beans>

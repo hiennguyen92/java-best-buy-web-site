@@ -6,7 +6,7 @@
     <div class="header">
         <div class="search-bar">
             <form action="Store" method="post">
-                <input name="tb_Name" type="text">
+                <input name="tb_SName" type="text">
                 <input type="submit" value="Search" />
             </form>
         </div>
