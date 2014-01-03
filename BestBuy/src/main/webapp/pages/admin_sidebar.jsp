@@ -5,5 +5,6 @@
         <li><a href="ManageAccount">Manage Accounts</a></li>
         <li><a href="ManageSale">Manage Sale off</a></li>
         <li><a href="ManageOrder">Manage Orders</a></li>
+        <li><a href="ManageReport">Manage Reports</a></li>
     </ul>
 </div>

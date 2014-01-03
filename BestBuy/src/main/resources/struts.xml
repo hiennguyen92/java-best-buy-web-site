@@ -98,6 +98,9 @@
         <action name="ManageOrder" class="controller.ManageOrder">
             <result name="success" type="tiles">ManageOrder</result>
         </action>
+        <action name="ManageReport" class="controller.ManageReport">
+            <result name="success" type="tiles">ManageReport</result>
+        </action>
         <action name="UploadImage" class="controller.UploadImage">
             <interceptor-ref name="fileUpload">
                 <param name="allowedTypes">image/png,image/gif,image/jpeg</param>

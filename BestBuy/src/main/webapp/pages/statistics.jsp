@@ -80,5 +80,18 @@
             </tbody>
         </table>
         <button type="button" onclick="location.href='ManageOrder'" style="float: right; width: 200px; margin-bottom: 10px">Manage orders</button>
+        <table class="productcart">
+                <tbody>
+                <tr class="firstrow">
+                            <td style="width: 50%">REPORTS</td>
+                            <td></td>
+                        </tr>
+                        <tr class="product_row">
+                            <td><p>Reports Website</p></td>
+                        </tr>
+                    </tbody>
+            </table>
+            <button type="button" onclick="location.href='ManageReport'" style="float: right; width: 200px; margin-bottom: 10px">Manage reports</button>
+
     </div>
 </div>

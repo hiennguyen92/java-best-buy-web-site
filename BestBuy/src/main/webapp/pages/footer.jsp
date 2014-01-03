@@ -2,21 +2,29 @@
     <div class="wrap">
         <div class="section group">
             <div class="col_1_of_4 span_1_of_4">
-                <h3>Our Info</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <h3>Support</h3>
+                <p>Product Support<br/>
+                Setup & Support Services<br/>
+                Extended Service Plans<br/>
+                Product Manuals <br/>
+                Customer Service<br/>
+                FAQs
+                </p>
+                
             </div>
             <div class="col_1_of_4 span_1_of_4">
-                <h3>Latest-News</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <h3>Stores</h3>
+                <p>Authorized Dealer<br/>
+                Student Store<br/>
+                Business Store</p>
             </div>
             <div class="col_1_of_4 span_1_of_4">
                 <h3>Store Location</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p>227 Nguyen Van Cu, HCMC</p>
                 <h3>Order-online</h3>
                 <p>080-1234-56789</p>
                 <p>080-1234-56780</p>
+                
             </div>
             <div class="col_1_of_4 span_1_of_4 footer-lastgrid">
                 <h3>News-Letter</h3>

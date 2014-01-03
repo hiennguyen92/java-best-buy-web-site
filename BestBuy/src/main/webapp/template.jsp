@@ -19,6 +19,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <link href='<s:url value="/css/style.css"/>' rel="stylesheet" type="text/css"  media="all" />
         <link href='http://fonts.googleapis.com/css?family=Londrina+Solid|Coda+Caption:800|Open+Sans' rel='stylesheet' type='text/css'>
         <script src='<s:url value="/js/jquery.MetaData.js"/>'></script>
+        <script src='<s:url value="/js/notify-combined.js"/>'></script>
+        <script src='<s:url value="/js/notify-combined.min.js"/>'></script>
     </head>
     <body>
         <!----start-Header---->

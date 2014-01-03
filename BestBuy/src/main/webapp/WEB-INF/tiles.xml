@@ -79,4 +79,7 @@
     <definition name="ManageOrder" extends="AdminPage">
         <put-attribute name="body" value="/pages/manage_order.jsp"/>   
     </definition>
+    <definition name="ManageReport" extends="AdminPage">
+        <put-attribute name="body" value="/pages/manage_report.jsp"/>   
+    </definition>
 </tiles-definitions>

@@ -20,23 +20,33 @@ $(document).ready(function() {
        $("input[name='h_url']").val(url);
        
        if(name == ""){
-            alert("you haven't entered product name!");
+            //alert("you haven't entered product name!");
+            $.notify("You haven't entered product name!","error");
+            $("input[name='tb_Name']").focus();
             return false;
        }       
        else if(description == ""){
-            alert("you haven't entered description!");
+            //alert("you haven't entered description!");
+            $.notify("You haven't entered description!","error");
+            $("input[name='tb_Description']").focus();
             return false;
        }   
        else if(price == ""){
-            alert("you haven't entered price!");
+            //alert("you haven't entered price!");
+            $.notify("You haven't entered price!","error");
+            $("input[name='tb_Price']").focus();
             return false;
        }
        else if(screen != null && screen == ""){
-            alert("you haven't entered screen size!");
+            //alert("you haven't entered screen size!");
+            $.notify("You haven't entered screen size!","error");
+            $("input[name='tb_Screen']").focus();
             return false;
        }
        else if(warranty == ""){
-            alert("you haven't entered warranty time!");
+            //alert("you haven't entered warranty time!");
+            $.notify("You haven't entered warranty time!","error");
+            $("input[name='tb_Warranty']").focus();
             return false;
        }
        else if(url == ""){

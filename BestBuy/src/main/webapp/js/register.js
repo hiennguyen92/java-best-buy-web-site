@@ -9,18 +9,22 @@ $(document).ready(function() {
        var repassword = $("input[name='tb_RePassword']").val();
        
        if(username == ""){
-            alert("you haven't entered username!");
+
+            $.notify("You haven't entered username!","error");
+            $("input[name='tb_Username']").focus();
             return false;
        }       
        else if(password == ""){
-            alert("you haven't entered password!");
+            $.notify("You haven't entered password!","error");
+            $("input[name='tb_Password']").focus();
             return false;
        }       
        else if(repassword != null && password != repassword){
-            alert("password and re-password aren't the same!");
+            $.notify("Password and re-password aren't the same!","error");
+            $("input[name='tb_RePassword']").focus();
             return false;
        }
        
        return true;
     });
-});
+}); 
