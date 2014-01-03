@@ -25,23 +25,33 @@ $(document).ready(function() {
        var to = $("input[name='tb_To']").val();
        
        if(name ===""){
-            alert("you haven't entered event name!");
+            //alert("you haven't entered event name!");
+            $.notify("You haven't entered event name!","error");
+            $("input[name='tb_Name']").focus();
             return false;
        }       
        else if(description === ""){
-            alert("you haven't entered event description!");
+            //alert("you haven't entered event description!");
+            $.notify("You haven't entered event description!","error");
+            $("input[name='tb_Description']").focus();
             return false;
        }       
        else if(percent === ""){
-            alert("you haven't entered sale off percent!");
+            //alert("you haven't entered sale off percent!");
+            $.notify("You haven't entered sale off percent!","error");
+            $("input[name='tb_Percent']").focus();
             return false;
        }
        else if(from === ""){
-            alert("you haven't entered begin date!");
+            //alert("you haven't entered begin date!");
+            $.notify("You haven't entered begin date!","error");
+            $("input[name='tb_From']").focus();
             return false;
        }
        else if(to === ""){
-            alert("you haven't entered end date!");
+            //alert("you haven't entered end date!");
+            $.notify("You haven't entered end date!","error");
+            $("input[name='tb_To']").focus();
             return false;
        }
        return true; 

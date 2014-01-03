@@ -10,15 +10,18 @@ $(document).ready(function() {
        $("input[name='h_url']").val($("#imgUpload").attr("src"));
        
        if(username == ""){
-            alert("you haven't entered username!");
+            $.notify("You haven't entered username!","error");
+            $("input[name='tb_Username']").focus();
             return false;
        }       
        else if(password == ""){
-            alert("you haven't entered password!");
+            $.notify("You haven't entered password!","error");
+            $("input[name='tb_Password']").focus();
             return false;
        }       
-       else if(repassword != null && password != repassword){
-            alert("password and re-password aren't the same!");
+       else if(repassword != "" && password != repassword){
+            $.notify("Password and re-password aren't the same!","error");
+            $("input[name='tb_RePassword']").focus();
             return false;
        }
        
