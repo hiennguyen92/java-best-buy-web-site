@@ -10,6 +10,10 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
     <context:component-scan base-package="controller" />
+    
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="/WEB-INF/oauth.properties"/>
+    </bean>
 
     <mvc:annotation-driven />
     <bean
@@ -20,5 +24,19 @@
         <property name="suffix">
             <value>.jsp</value>
         </property>
+    </bean>
+    
+    <bean id="userController" class="controller.UserController">
+        <property name="service" ref="getUserService"/>
+    </bean>
+
+    <bean id="getUserService" class="serivce.GetUserService">
+        <property name="bestBuyUrl" value="${BestBuyUrlPattern}" />
+        <property name="template">
+            <bean class="org.springframework.security.oauth.consumer.client.OAuthRestTemplate">
+                <constructor-arg ref="bestBuyUser" />
+            </bean>
+        </property>
+
     </bean>
 </beans>

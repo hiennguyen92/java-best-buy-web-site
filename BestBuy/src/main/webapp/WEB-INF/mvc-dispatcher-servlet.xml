@@ -1,7 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
         http://www.springframework.org/schema/beans     
         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
         http://www.springframework.org/schema/context 
@@ -9,10 +9,10 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-	<context:component-scan base-package="controller" />
+    <context:component-scan base-package="spring" />
 
-	<mvc:annotation-driven />
-        <bean
+    <mvc:annotation-driven />
+    <bean
         class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
             <value>/pages/</value>
@@ -20,5 +20,10 @@
         <property name="suffix">
             <value>.jsp</value>
         </property>
+    </bean>
+    
+    <bean id="accessConfirm" class="oauth.AccessConfirm">
+        <property name="tokenServices" ref="tokenServices"/>
+        <property name="consumerDetailsService" ref="consumerDetails"/>
     </bean>
 </beans>

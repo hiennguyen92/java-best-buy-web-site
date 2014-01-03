@@ -32,7 +32,13 @@ public class Store implements ServletRequestAware {
     public String execute() {
         HttpSession session = request.getSession();
         ProductDAO productDAO = (ProductDAO) new ClassPathXmlApplicationContext("hibernate.xml").getBean("productDAO");
-        List<Product> products = (List<Product>) session.getAttribute("Products");
+        List<Product> products = productDAO.getList();
+        for(int i = 0; i < products.size();){
+            if(products.get(i).getProduct() != null)
+                products.remove(products.get(i));
+            else
+                i++;
+        }
         int page = 1;
         int view = 16;
         int sort = 1;

@@ -16,25 +16,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import serivce.GetUserService;
 
 /**
  *
  * @author HOANG
  */
 @Controller
-public class Index {
-    @RequestMapping({"/index", "/"})
-    public ModelAndView index(){
+public class UserController {
+    private GetUserService service;
+
+    public void setService(GetUserService service) {
+        this.service = service;
+    }
+    
+    @RequestMapping({"/","/index"})
+    public ModelAndView home(HttpServletRequest request, HttpServletResponse response){
         return new ModelAndView("index");
     }
     
-    @RequestMapping(value = "/GetInfo", method = RequestMethod.POST)
+    @RequestMapping("/GetInfo")
     public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response){
-        String name = request.getParameter("tb_Name");
-        Map<String, String> vars = new HashMap<String, String>();
-        vars.put("name", name);
-        RestTemplate template = new RestTemplate();
-        AccountService account = (AccountService) template.getForObject("http://localhost:39653/BestBuy/Service/user/{name}", AccountService.class, vars);
+        String name = request.getParameter("name");
+        AccountService account = service.get(name);
         request.setAttribute("name", name);
         request.setAttribute("user", account);
         return new ModelAndView("user_info");

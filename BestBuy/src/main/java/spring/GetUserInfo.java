@@ -1,4 +1,4 @@
-package controller;
+package spring;
 
 import dao.AccountDAO;
 import org.springframework.context.ApplicationContext;

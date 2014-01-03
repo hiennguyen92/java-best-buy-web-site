@@ -8,9 +8,9 @@
         <title>Best Buy client</title>
     </head>
     <body>
-        <form action="GetInfo" method="post">
+        <form action="GetInfo" method="get">
             Name:
-            <input name="tb_Name" type="text" />
+            <input name="name" type="text" />
             <input type="submit" value="Get info"/>
         </form>
     </body>

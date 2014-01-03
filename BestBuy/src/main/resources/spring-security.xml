@@ -19,7 +19,7 @@
         <intercept-url pattern="/WishList" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/Order" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/OrderHistory" access="ROLE_ADMIN,ROLE_USER" />
-        <intercept-url pattern="/Service/request_token_authorized.jsp" access="ROLE_USER" />
+        <intercept-url pattern="/Service/request_token_authorized.jsp" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         
         <form-login login-page="/Login" default-target-url="/Login" always-use-default-target="true"
@@ -53,8 +53,8 @@
                     require10a="false"/>
 
     <oauth:consumer-details-service id="consumerDetails">
-        <oauth:consumer name="Tonr.com" key="tonr-consumer-key" secret="SHHHHH!!!!!!!!!!" resourceName="Your Photos"
-                    resourceDescription="Your photos that you have uploaded to sparklr.com."/>
+        <oauth:consumer name="client" key="client-key" secret="SHHHHH!!!!!!!!!!" resourceName="User infomation"
+                    resourceDescription="User's informations on Best Buy Shop"/>
     </oauth:consumer-details-service>
 
     <oauth:token-services id="tokenServices"/>

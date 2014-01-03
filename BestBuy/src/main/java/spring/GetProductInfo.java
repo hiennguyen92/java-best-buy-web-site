@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package controller;
+package spring;
 
 import dao.ProductDAO;
 import org.springframework.context.ApplicationContext;

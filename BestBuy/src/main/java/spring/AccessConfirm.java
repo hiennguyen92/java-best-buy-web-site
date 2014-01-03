@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package oauth;
+package spring;
 
 import java.util.TreeMap;
 import javax.servlet.http.HttpServletRequest;
@@ -27,31 +27,17 @@ public class AccessConfirm {
     private OAuthProviderTokenServices tokenServices;
     private ConsumerDetailsService consumerDetailsService;
 
-    public OAuthProviderTokenServices getTokenServices() {
-        return tokenServices;
-    }
-
-    public void setTokenServices(OAuthProviderTokenServices tokenServices) {
-        this.tokenServices = tokenServices;
-    }
-
-    public ConsumerDetailsService getConsumerDetailsService() {
-        return consumerDetailsService;
-    }
-
-    public void setConsumerDetailsService(ConsumerDetailsService consumerDetailsService) {
-        this.consumerDetailsService = consumerDetailsService;
-    }
-
-    @RequestMapping(value="/oauth/confirm_access", method = RequestMethod.GET)
-    protected ModelAndView handleRequestInternal(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/oauth/confirm_access")
+    public ModelAndView getAccessConfirmation(HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
         String token = request.getParameter("oauth_token");
         if (token == null) {
             throw new IllegalArgumentException("A request token to authorize must be provided.");
         }
 
-        OAuthProviderToken providerToken = getTokenServices().getToken(token);
-        ConsumerDetails consumer = getConsumerDetailsService().loadConsumerByConsumerKey(providerToken.getConsumerKey());
+        OAuthProviderToken providerToken = tokenServices.getToken(token);
+        ConsumerDetails consumer = consumerDetailsService
+                .loadConsumerByConsumerKey(providerToken.getConsumerKey());
 
         String callback = request.getParameter("oauth_callback");
         TreeMap<String, Object> model = new TreeMap<String, Object>();
@@ -61,5 +47,13 @@ public class AccessConfirm {
         }
         model.put("consumer", consumer);
         return new ModelAndView("access_confirmation", model);
+    }
+
+    public void setTokenServices(OAuthProviderTokenServices tokenServices) {
+        this.tokenServices = tokenServices;
+    }
+
+    public void setConsumerDetailsService(ConsumerDetailsService consumerDetailsService) {
+        this.consumerDetailsService = consumerDetailsService;
     }
 }
