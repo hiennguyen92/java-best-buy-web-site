@@ -39,7 +39,7 @@ import pojo.Product;
 @RequestMapping("/download")
 public class DownloadReport {
     
-    @RequestMapping(value = "/account/pdf", method = RequestMethod.GET)
+    @RequestMapping(value = "/account/AccountReportPDF", method = RequestMethod.GET)
     public ModelAndView AccountReportPDF(ModelAndView modelAndView){
 		
 		JRDataSource datasource  = getDataAccount();
@@ -51,7 +51,7 @@ public class DownloadReport {
 		return modelAndView;
 	}
     
-    @RequestMapping(value = "/account/xls", method = RequestMethod.GET)
+    @RequestMapping(value = "/account/AccountReportXLS", method = RequestMethod.GET)
     public ModelAndView AccountReportXLS(ModelAndView modelAndView){
 		
 		JRDataSource datasource  = getDataAccount();
@@ -64,7 +64,7 @@ public class DownloadReport {
 	}
     
     
-    @RequestMapping(value = "/product/pdf", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/ProductReportPDF", method = RequestMethod.GET)
     public ModelAndView ProductReportPDF(ModelAndView modelAndView){
 		
 		JRDataSource datasource  = getDataProduct();
@@ -76,7 +76,7 @@ public class DownloadReport {
 		return modelAndView;
     }
     
-    @RequestMapping(value = "/product/xls", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/ProductReportXLS", method = RequestMethod.GET)
     public ModelAndView ProductReportXLS(ModelAndView modelAndView){
 		
 		JRDataSource datasource  = getDataProduct();
@@ -90,7 +90,7 @@ public class DownloadReport {
     
     
     
-    @RequestMapping(value = "/saleoff/pdf", method = RequestMethod.GET)
+    @RequestMapping(value = "/saleoff/SaleOffReportPDF", method = RequestMethod.GET)
     public ModelAndView SaleOffReportPDF(ModelAndView modelAndView) throws ParseException{
 		
 		JRDataSource datasource  = getDataSaleOff();
@@ -103,7 +103,7 @@ public class DownloadReport {
     }
     
     
-    @RequestMapping(value = "/saleoff/xls", method = RequestMethod.GET)
+    @RequestMapping(value = "/saleoff/SaleOffReportXLS", method = RequestMethod.GET)
     public ModelAndView SaleOffReportXLS(ModelAndView modelAndView) throws ParseException{
 		
 		JRDataSource datasource  = getDataSaleOff();
@@ -117,7 +117,7 @@ public class DownloadReport {
     
     
     
-    @RequestMapping(value = "/cart/pdf", method = RequestMethod.GET)
+    @RequestMapping(value = "/cart/CartReportPDF", method = RequestMethod.GET)
     public ModelAndView CartReportPDF(ModelAndView modelAndView)throws ParseException{
 		
 		JRDataSource datasource  = getDataCart();
@@ -130,7 +130,7 @@ public class DownloadReport {
     }
     
     
-    @RequestMapping(value = "/cart/xls", method = RequestMethod.GET)
+    @RequestMapping(value = "/cart/CartReportXLS", method = RequestMethod.GET)
     public ModelAndView CartReportXLS(ModelAndView modelAndView) throws ParseException{
 		
 		JRDataSource datasource  = getDataCart();
@@ -170,7 +170,7 @@ public class DownloadReport {
                 rpAccount con = new rpAccount();
                 con.setName("\t"+cart.getAccount().getUsername());
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                con.setPhantram(cart.getTotalPrice()+"$\t"+formatter.format(cart.getDate()));
+                con.setPhantram(cart.getTotalPrice()+"$\t\t"+formatter.format(cart.getDate()));
                 items.add(con);
             }
         }

@@ -21,11 +21,14 @@
         <intercept-url pattern="/OrderHistory" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/Service/request_token_authorized.jsp" access="ROLE_USER" />
         <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-        
+        <intercept-url pattern="/Service/download/*" access="ROLE_ADMIN" />
+
         <form-login login-page="/Login" default-target-url="/Login" always-use-default-target="true"
                     authentication-failure-url="/Login" />
         <logout logout-success-url="/Home" />
     </http>
+    
+   
  
     <authentication-manager alias="authenticationManager" xmlns="http://www.springframework.org/schema/security">
         <authentication-provider>

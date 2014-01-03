@@ -20,26 +20,34 @@
                 <tr>
 
                     <td >
-                        <a href="/BestBuy/Service/download/account/pdf">Download PDF</a>
+                        <c:url value="/Service/download/account/AccountReportPDF" var="AccountReportPDF"/>
+                        <a href="${AccountReportPDF}">Download PDF</a>
                         <br>
-                        <a href="/BestBuy/Service/download/account/xls">Download EXCEL</a>
+                        <c:url value="/Service/download/account/AccountReportXLS" var="AccountReportXLS"/>
+                        <a href="${AccountReportXLS}">Download EXCEL</a>
                     </td>
                     
                     <td >
-                        <a href="/BestBuy/Service/download/product/pdf">Download PDF</a>
+                        <c:url value="/Service/download/product/ProductReportPDF" var="ProductReportPDF"/>
+                        <a href="${ProductReportPDF}">Download PDF</a>
                         <br>
-                        <a href="/BestBuy/Service/download/product/xls">Download EXCEL</a>
+                        <c:url value="/Service/download/product/ProductReportXLS" var="ProductReportXLS"/>
+                        <a href="${ProductReportXLS}">Download EXCEL</a>
                     </td>
                     
                     <td >
-                        <a href="/BestBuy/Service/download/saleoff/pdf">Download PDF</a>
+                        <c:url value="/Service/download/saleoff/SaleOffReportPDF" var="SaleOffReportPDF"/>
+                        <a href="${SaleOffReportPDF}">Download PDF</a>
                         <br>
-                        <a href="/BestBuy/Service/download/saleoff/xls">Download EXCEL</a>
+                        <c:url value="/Service/download/saleoff/SaleOffReportXLS" var="SaleOffReportXLS"/>
+                        <a href="${SaleOffReportXLS}">Download EXCEL</a>
                     </td>
                    <td >
-                        <a href="/BestBuy/Service/download/cart/pdf">Download PDF</a>
+                       <c:url value="/Service/download/cart/CartReportPDF" var="CartReportPDF"/>
+                        <a href="${CartReportPDF}">Download PDF</a>
                         <br>
-                        <a href="/BestBuy/Service/download/cart/xls">Download EXCEL</a>
+                        <c:url value="/Service/download/cart/CartReportXLS" var="CartReportXLS"/>
+                        <a href="${CartReportXLS}">Download EXCEL</a>
                     </td>
                     
                 </tr>
