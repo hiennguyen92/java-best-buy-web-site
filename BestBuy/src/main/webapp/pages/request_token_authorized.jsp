@@ -9,7 +9,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Mobilestore Website Template | About :: W3layouts</title>
+        <title>Best Buy</title>
         <link href="<c:url value="/css/style.css"/>" rel="stylesheet" type="text/css"  media="all" />
          <link href="<c:url value="/css/style1.css"/>" rel="stylesheet" type="text/css"  media="all" />
         <meta name="keywords" content="Mobilestore iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
@@ -19,11 +19,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="wrap">
             <!----start-Header---->
             <div class="header">
-                <div class="search-bar">
-                    <form>
-                        <input type="text"><input type="submit" value="Search" />
-                    </form>
-                </div>
                 <div class="clear"> </div>
                 <div class="header-top-nav">
                     <ul>
@@ -54,7 +49,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!----End-Header---->
         <div class="clear"> </div>
         <div class="wrap">
-            <div class="content">
+            <div class="content" style="height: 500px">
                 <div class="about">
                     <h4>ACCESS SUCCESSFUL</h4>
                     <p>You have successfully authorized the request for a protected resource.</p>

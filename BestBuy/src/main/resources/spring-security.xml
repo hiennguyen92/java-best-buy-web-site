@@ -19,7 +19,6 @@
         <intercept-url pattern="/WishList" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/Order" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/OrderHistory" access="ROLE_ADMIN,ROLE_USER" />
-        <intercept-url pattern="/Service/request_token_authorized.jsp" access="ROLE_ADMIN,ROLE_USER" />
         <intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
         <intercept-url pattern="/Service/download/*" access="ROLE_ADMIN" />
 
@@ -27,8 +26,6 @@
                     authentication-failure-url="/Login" />
         <logout logout-success-url="/Home" />
     </http>
-    
-   
  
     <authentication-manager alias="authenticationManager" xmlns="http://www.springframework.org/schema/security">
         <authentication-provider>
@@ -51,7 +48,7 @@
                     request-token-url="/Service/oauth/request_token"
                     authenticate-token-url="/Service/oauth/authorize"
                     user-approval-url="/Service/oauth/confirm_access"
-                    access-granted-url="/Service/request_token_authorized.jsp"
+                    access-granted-url="/Service/oauth/request_token_authorized"
                     access-token-url="/Service/oauth/access_token"
                     require10a="false"/>
 

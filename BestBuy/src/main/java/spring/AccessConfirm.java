@@ -48,6 +48,11 @@ public class AccessConfirm {
         model.put("consumer", consumer);
         return new ModelAndView("access_confirmation", model);
     }
+    
+    @RequestMapping("/oauth/request_token_authorized")
+    public ModelAndView authorized(HttpServletRequest request, HttpServletResponse response){
+        return new ModelAndView("request_token_authorized");
+    }
 
     public void setTokenServices(OAuthProviderTokenServices tokenServices) {
         this.tokenServices = tokenServices;
