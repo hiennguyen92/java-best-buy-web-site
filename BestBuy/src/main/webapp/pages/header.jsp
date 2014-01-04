@@ -17,14 +17,14 @@
                     <c:when test="${User == null}">
                         <li><a href="${pageContext.request.contextPath}/Register">Register</a></li>
                         <li><a href="${pageContext.request.contextPath}/Login">Login</a></li>                
-                    </c:when>
-                    <c:otherwise>
+                        </c:when>
+                        <c:otherwise>
                         <li><a href="${pageContext.request.contextPath}/Profile?name=${User.username}">Hello ${User.username}</a></li>
                         <li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Log out</a></li>
                         <li><a href="${pageContext.request.contextPath}/WishList">Wish List</a></li>
                         <li><a href="${pageContext.request.contextPath}/OrderHistory">Orders History</a></li>
-                    </c:otherwise>
-                </c:choose>
+                        </c:otherwise>
+                    </c:choose>
                 <li><a href="${pageContext.request.contextPath}/Cart"><span>shopingcart&nbsp;&nbsp;: </span></a><lable> &nbsp;${fn:length(Cart.products)} items</lable></li>
             </ul>
         </div>
@@ -46,9 +46,10 @@
                 <li><a href="${pageContext.request.contextPath}/Store">Store</a></li>
                 <li><a href="${pageContext.request.contextPath}/Contact">Contact</a></li>
                 <li><a href="${pageContext.request.contextPath}/Other">Other shop</a></li>
-                <sec:authorize ifAnyGranted="ROLE_ADMIN">
+                    <sec:authorize ifAnyGranted="ROLE_ADMIN">
                     <li><a href="${pageContext.request.contextPath}/Admin/Statistics">Manager</a></li>
-                </sec:authorize>
+                    <li><a href="${pageContext.request.contextPath}/Admin/ManageReport">Report</a></li>
+                    </sec:authorize>
             </ul>
         </div>
         <div class="clear"> </div>
