@@ -14,7 +14,7 @@
                     <td class="firstcol" style="width: 25%">Account</td>
                     <td style="width: 25%">Product</td>
                     <td style="width: 25%">Sale Off</td>
-                    <td style="width: 25%">Card</td>
+                    <td style="width: 25%">Cart</td>
                     <td></td>
                 </tr>
                 <tr>
