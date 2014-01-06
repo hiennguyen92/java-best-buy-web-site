@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `bestbuydb`.`Cart` (
   `Username` VARCHAR(45) NULL,
   `TotalPrice` DOUBLE NULL,
   `CartDate` DATE NULL,
+  `Checked` tinyint(1) NULL,
   PRIMARY KEY (`CartId`),
   INDEX `FK_Account_idx` (`Username` ASC),
   CONSTRAINT `FK_Account`
