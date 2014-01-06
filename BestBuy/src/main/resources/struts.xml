@@ -69,7 +69,7 @@
             <result name="success" type="tiles">Other</result>
         </action>       
         <action name="Setup" class="controller.Setup">
-            <result name="success" type="tiles">Home</result>
+            <result name="success" type="redirect">Home</result>
         </action>       
          <action name="Error" class="controller.Error">
             <result name="success" type="tiles">Error</result>
@@ -97,6 +97,7 @@
         </action>
         <action name="ManageOrder" class="controller.ManageOrder">
             <result name="success" type="tiles">ManageOrder</result>
+            <result name="action" type="tiles">ActionOrder</result>
         </action>
         <action name="ManageReport" class="controller.ManageReport">
             <result name="success" type="tiles">ManageReport</result>

@@ -51,6 +51,7 @@ public class Order implements ServletRequestAware {
             currentUser.setAddress(request.getParameter("tb_Address"));
             accountDAO.update(currentUser);
             
+            cart.setChecked(false);
             cartDAO.add(cart);
             Cart lastCart = cartDAO.getLast();
             CartDetail cd = null;
@@ -61,8 +62,7 @@ public class Order implements ServletRequestAware {
                 cd.setQuantity(item.getQuantity());
                 cartDetailDAO.update(cd);
             }
-            cart.getProducts().clear();
-            cart.setTotalPrice(0.0);
+            session.setAttribute("Cart", new Cart(currentUser, 0.0, null));
             return "complete";
         }
         
@@ -77,6 +77,7 @@ public class Order implements ServletRequestAware {
             cart.setAccount(currentUser);
             cart.setTotalPrice(wishList.getTotalPrice());
             cart.getProducts().addAll(wishList.getProducts());
+            cart.setChecked(false);
             cartDAO.add(cart);
             Cart lastCart = cartDAO.getLast();
             CartDetail cd = null;
@@ -92,6 +93,7 @@ public class Order implements ServletRequestAware {
             wishList.getProducts().clear();
             wishList.setTotalPrice(0.0);
             cartDAO.update(wishList);
+            session.setAttribute("Cart", new Cart(currentUser, 0.0, null));
             return "complete";
         }
         return "success";

@@ -28,9 +28,9 @@
         <property name="username" value="${username}"></property>
         <property name="password" value="${password}"></property>
     </bean>
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="databaseConnect"></property>
-          <property name="packagesToScan" value="pojo"/>
+        <property name="packagesToScan" value="pojo"></property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">${dialect}</prop>

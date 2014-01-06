@@ -43,10 +43,6 @@ public class Home implements ServletRequestAware {
         session.setAttribute("Brands", brandDAO.getList());
         session.setAttribute("Categories", categoryDAO.getList());
         List<Product> products = productDAO.getList();
-        for(Product product : products){
-            if(product.getSalePrice() == null)
-                product.setSalePrice(product.getPrice());
-        }
         session.setAttribute("Sale", saleOffDAO.getLast());
         session.setAttribute("Products", products);
         for(int i = 0; i < products.size();){

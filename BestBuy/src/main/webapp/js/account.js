@@ -19,7 +19,7 @@ $(document).ready(function() {
             $("input[name='tb_Password']").focus();
             return false;
        }       
-       else if(repassword != "" && password != repassword){
+       else if(repassword != null && repassword != "" && password != repassword){
             $.notify("Password and re-password aren't the same!","error");
             $("input[name='tb_RePassword']").focus();
             return false;

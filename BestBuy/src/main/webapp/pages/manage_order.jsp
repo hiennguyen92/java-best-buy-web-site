@@ -19,7 +19,7 @@
                     <td></td>
                 </tr>
                 <c:forEach var="order" items="${orders}">
-                    <c:if test="${order.account != null}">
+                    <c:if test="${order.checked != null && !order.checked}">
                     <tr class="product_row">
 
                         <c:choose>
@@ -38,10 +38,10 @@
                         <td>$<fmt:formatNumber type="number" value="${order.totalPrice}" maxFractionDigits="2" minFractionDigits="2"/></td>
 
                         <td>
-                            <form id="f_mgn_account" class="f_cart" action="#" method="post">
-                                <input type="hidden" name="h_username" value="${account.username}"/>
+                            <form id="f_mgn_account" class="f_cart" action="ManageOrder" method="post">
+                                <input type="hidden" name="h_id" value="${order.cartId}"/>
+                                <input class="img" type="image" src="${pageContext.request.contextPath}/images/check.jpg" name="check"></input>
                                 <input class="img" type="image" src="${pageContext.request.contextPath}/images/edit.png" name="edit"></input>
-                                <input class="img" type="image" src="${pageContext.request.contextPath}/images/remove.png" name="remove"></input>
                             </form>
                         </td>
 

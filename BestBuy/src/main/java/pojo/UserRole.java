@@ -20,7 +20,7 @@ public class UserRole implements Serializable{
     @GeneratedValue
     @Column(name = "RoleID")
     private int roleId;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name="Username")
     private Account account;
     @Column(name = "Authority")

@@ -49,8 +49,8 @@ $(document).ready(function() {
             $("input[name='tb_Warranty']").focus();
             return false;
        }
-       else if(url == ""){
-            alert("you haven't chosen a image!");
+       else if(url == null){
+            $.notify("you haven't chosen a image!");
             return false;
        }
        

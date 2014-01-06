@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib uri="/WEB-INF/functions" prefix="f" %>
-<c:forEach var="order" items="${orders}">
-    <c:if test="${order.checked != null && order.checked}">
-        <div class="span_2_of_3"><p>Date: <fmt:formatDate value="${order.date}"/><p></div>
+<link href="${pageContext.request.contextPath}/css/cart.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/css/style1.css" rel="stylesheet" />
+<div class="content">
+    <div class="content-grids">
         <table class="productcart"><!--************************ begin productcart ************************-->
 
             <tbody>
@@ -18,8 +19,8 @@
                     <c:set var="cd" value="${f:s_get(order.cartId, item.productId)}" />
                     <tr class="product_row">
 
-                        <td class="firstcol"><img width="60px" height="60px" src="${item.imageUrl}" alt="" title='${item.name}' height="48" width="48"></td>
-                        <td><a href="Info?id=${item.productId}">${item.name}</a></td>
+                        <td class="firstcol"><img width="60px" height="60px" src="${pageContext.request.contextPath}/${item.imageUrl}" alt="" title='${item.name}' height="48" width="48"></td>
+                        <td><a href="${pageContext.request.contextPath}/Info?id=${item.productId}">${item.name}</a></td>
 
                         <td>
                             <p>${cd.quantity}</p>
@@ -55,5 +56,10 @@
 
             </tbody>
         </table>
-    </c:if>
-</c:forEach>
+                    <form id="f_checkout" action="ManageOrder" method="post">
+                        <input type="hidden" name="h_id" value="${order.cartId}"/>
+                        <button type="submit" name="cancel" style="float: right">Cancel</button>
+                        <button type="submit" name="check.x" style="float: right">Check</button>
+                    </form>
+    </div>
+</div>

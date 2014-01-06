@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 /**
  *
@@ -22,13 +23,15 @@ public class Cart implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CartId")
     private int cartId;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name="Username")
     private Account account;
     @Column(name = "TotalPrice")
     private Double totalPrice;
     @Column(name = "CartDate")
     private Date date = new Date();
+    @Column(name = "Checked")
+    private Boolean checked;
     @ManyToMany(
             fetch = FetchType.EAGER,
             targetEntity = Product.class)
@@ -40,6 +43,12 @@ public class Cart implements Serializable {
 
     public Cart() {
         totalPrice = 0.0;
+    }
+
+    public Cart(Account account, Double totalPrice, Boolean checked) {
+        this.account = account;
+        this.totalPrice = totalPrice;
+        this.checked = checked;
     }
 
     public int getCartId() {
@@ -80,6 +89,14 @@ public class Cart implements Serializable {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
     }
     
 }

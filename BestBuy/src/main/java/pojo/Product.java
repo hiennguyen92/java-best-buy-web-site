@@ -41,13 +41,13 @@ public class Product implements Serializable {
     private String imageUrl;
     @Column(name = "SalePrice")
     private Double salePrice;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "CategoryId")
     private Category category;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name = "BrandId")
     private Brand brand;
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
     @JoinColumn(name="Tag")
     private Product product;
     @OneToMany(mappedBy = "product", cascade = {CascadeType.ALL})
